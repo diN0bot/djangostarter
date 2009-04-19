@@ -1,0 +1,14 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Select Weather Theme{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+				
+{% block content %}
+	<div id="thin_column">
+		<h3 style="letter-spacing: .135em;">Screenshot</h3>
+		<img src="{{ MEDIA_URL }}twitter/imager/img/{{ image_name }}">
+	</div>
+{% endblock %}

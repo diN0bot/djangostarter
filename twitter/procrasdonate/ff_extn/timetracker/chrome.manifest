@@ -1,0 +1,25 @@
+content	timetrack	chrome/chromeFiles/content/
+overlay	chrome://browser/content/browser.xul chrome://timetrack/content/panel.xul
+
+locale	timetrack	cs-CZ	chrome/chromeFiles/locale/cs-CZ/
+locale	timetrack	da-DK	chrome/chromeFiles/locale/da-DK/
+locale	timetrack	de-DE	chrome/chromeFiles/locale/de-DE/
+locale	timetrack	en-US	chrome/chromeFiles/locale/en-US/
+locale	timetrack	es-ES	chrome/chromeFiles/locale/es-ES/
+locale	timetrack	fr-FR	chrome/chromeFiles/locale/fr-FR/
+locale	timetrack	he-IL	chrome/chromeFiles/locale/he-IL/
+locale	timetrack	hr-HR	chrome/chromeFiles/locale/hr-HR/
+locale	timetrack	hu-HU	chrome/chromeFiles/locale/hu-HU/
+locale	timetrack	it-IT	chrome/chromeFiles/locale/it-IT/
+locale	timetrack	ko-Kr	chrome/chromeFiles/locale/ko-Kr/
+locale	timetrack	nl-NL	chrome/chromeFiles/locale/nl-NL/
+locale	timetrack	pl-PL	chrome/chromeFiles/locale/pl-PL/
+locale	timetrack	pt-BR	chrome/chromeFiles/locale/pt-BR/
+locale	timetrack	ru-RU	chrome/chromeFiles/locale/ru-RU/
+locale	timetrack	sk-SK	chrome/chromeFiles/locale/sk-SK/
+locale	timetrack	sl-SI	chrome/chromeFiles/locale/sl-SI/
+locale	timetrack	tr-TR	chrome/chromeFiles/locale/tr-TR/
+locale	timetrack	uk-UA	chrome/chromeFiles/locale/uk-UA/
+locale	timetrack	zh-CN	chrome/chromeFiles/locale/zh-CN/
+locale	timetrack	zh-TW	chrome/chromeFiles/locale/zh-TW/
+

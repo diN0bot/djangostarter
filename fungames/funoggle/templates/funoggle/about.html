@@ -1,0 +1,51 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}About Weatherizer{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+		
+{% block content %}
+	<div id="thin_column">
+		<h3>Backgrounds are fun!</h3>
+		<p>
+			A few months ago, Google labs launched <a href="http://googlesystem.blogspot.com/2008/11/gmail-themes.html">Gmail Themes</a>.
+		</p>
+		<p>
+			When I saw this, I selected a peaceful-looking theme called "Tree". Curiously, that selection required that I enter my location. 
+		</p>
+		<p>
+			As the days went by I discovered my gmail background changed according to the weather. 
+			When it rained, gmail became overcast. Water droplets glistened on the workspace bar. 
+		</p>
+		<p>
+			There was something joyful and whimsical about discovering new backgrounds as the weather changed.
+		</p>
+		<p>
+			With Weatherizer, I hope to bring that joy to Twitter. 
+		</p>
+		<h3>The more the merrier</h3>
+		<p>
+			More is better. More themes, more backgrounds per theme, more variations, more sharing.
+		</p>
+		<p>
+			Weatherization encourages anyone to create and share themes. Themes can have as few as 6 or as many as 47 backgrounds or icons, and 
+			may eventually incorporate temperature and time of day information.</p>
+		<p>
+			<a href="{% url imager %}">Discover a new theme</a> and <a href="{% url feedback "imager" %}">share your experience</a>.
+		</p>
+		<h3>How does it work?</h3>
+		<p>
+			See the <a href="{% url imager_help %}">help section</a> or have a <a href="{% url feedback "imager" %}">two-way conversation</a>.
+		</p>
+	</div>
+{% endblock %}
+
+{% comment %}
+# Weatherizer - Updates users's twitter backgrounds to reflect their local weather. Users select which theme of background images to use - by y0i
+{% endcomment %}

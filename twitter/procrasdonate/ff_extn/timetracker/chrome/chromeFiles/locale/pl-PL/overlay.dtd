@@ -1,0 +1,29 @@
+<!ENTITY title "Czas surfowania">
+<!ENTITY pref.title "TimeTracker - opcje">
+<!ENTITY pref.displaygroup "Wyświetlanie">
+<!ENTITY pref.displaymodelabel "Licz czas surfowania od:">
+<!ENTITY pref.displayToday "dzisiaj">
+<!ENTITY pref.displayReset "ostatniego zerowania">
+<!ENTITY pref.displayInstall "zainstalowania TimeTrackera">
+<!ENTITY pref.showsecondscheck "Wyświetl sekundy">
+<!ENTITY pref.idlegroup "Limit czasu bezczynności">
+<!ENTITY pref.timeout "Czas bezczynności:">
+<!ENTITY pref.seconds "sek">
+<!ENTITY pref.timeoutdesc "Po tym czasie bezczynności Firefoksa TimeTracker zatrzyma liczenie czasu">
+<!ENTITY pref.workgroup "Filtr wykluczeń">
+<!ENTITY pref.filter "Lista">
+<!ENTITY pref.workdesc "Witryny zawierające filtr nie będą śledzone. Opcja ta może być używana do uniknięcia liczenia czasu na forach i w intranecie">
+<!ENTITY pref.worksample "Filtry oddzielaj spacją. Np.&apos;www.usablehack.com support mozilla.org&apos;">
+<!ENTITY pref.pausegroup "Przerwa">
+<!ENTITY pref.pausecheck "Nie włączaj liczenia czasu na nowo otwieranych oknach">
+<!ENTITY pref.pausedesc "Kliknij na ikonie zegara lub czasie, aby zatrzymać/kontynuować śledzenie tego okna">
+<!ENTITY popup-resethours "godzin od zerowania">
+<!ENTITY popup-resetdate "na">
+<!ENTITY popup-noresetyet "(nie zerowane)">
+<!ENTITY popup-totalhours "godzin">
+<!ENTITY popup-startdate "od czasu instalacji">
+<!ENTITY popup-today "godzin dzisiaj">
+<!ENTITY context-options "Opcje">
+<!ENTITY context-options-key "O">
+<!ENTITY context-reset "Zeruj">
+<!ENTITY context-reset-key "Z">

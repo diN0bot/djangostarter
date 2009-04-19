@@ -1,0 +1,27 @@
+;; Object content/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "content/"
+  :tables (list 
+   (semanticdb-table "prefman.js"
+    :major-mode 'javascript-mode
+    :tags 'nil
+    :file "prefman.js"
+    :pointmax 2662
+    )
+   (semanticdb-table "script-compiler.js"
+    :major-mode 'javascript-mode
+    :tags 'nil
+    :file "script-compiler.js"
+    :pointmax 5988
+    )
+   (semanticdb-table "pageaddict.js"
+    :major-mode 'javascript-mode
+    :tags 'nil
+    :file "pageaddict.js"
+    :pointmax 27548
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre3"
+  :semanticdb-version "2.0pre3"
+  )

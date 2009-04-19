@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "TimeTracker 选项">
+<!ENTITY pref.displaygroup "显示">
+<!ENTITY pref.displaymodelabel "从……开始显示使用时间">
+<!ENTITY pref.displayToday "今天">
+<!ENTITY pref.displayReset "最后一次重置">
+<!ENTITY pref.displayInstall "自从安装">
+<!ENTITY pref.showsecondscheck "显示秒">
+<!ENTITY pref.idlegroup "闲置时暂停计时">
+<!ENTITY pref.timeout "暂停计时">
+<!ENTITY pref.seconds "秒">
+<!ENTITY pref.timeoutdesc "如果一段时间内没有使用Firefox，Timetrack会停止计时">
+<!ENTITY pref.workgroup "不要统计过滤列表里面程序的使用时间">
+<!ENTITY pref.filter "过滤列表">
+<!ENTITY pref.workdesc "包含过滤项的网址。浏览这些网址的时候，TimeTrack会暂停计时。">
+<!ENTITY pref.worksample "用空格分隔过滤项，如&apos;www.usablehack.com support mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "暂停">
+<!ENTITY pref.pausecheck "打开新窗口时停止计时">
+<!ENTITY pref.pausedesc "点击时钟来暂停或继续计时">
+<!ENTITY popup-resethours "自从重新计时">
+<!ENTITY popup-resetdate "开启">
+<!ENTITY popup-noresetyet "永不重新计时">
+<!ENTITY popup-totalhours "小时">
+<!ENTITY popup-startdate "自从安装起">
+<!ENTITY popup-today "今天浏览用时">
+<!ENTITY context-options "选项">
+<!ENTITY context-options-key "O">
+<!ENTITY context-reset "重新计时">
+<!ENTITY context-reset-key "R">

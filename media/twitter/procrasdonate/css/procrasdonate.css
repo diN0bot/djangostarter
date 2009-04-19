@@ -1,0 +1,38 @@
+
+h5 {
+  font-family:Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  text-align: left;
+  margin: 0em;
+  padding: 0em;
+}
+
+.right { float: right; }
+.left { float: left; font-size: 1.5em; padding: 2px; }
+
+#logo { position: absolute; left: 2em; top: 1em; }
+#logo img { background: none; width: 14em; }
+
+.annotated_url { float: right; margin-right: -10em; }
+
+.help { text-align: right; color: #777777; }
+.summaryhelp { float: left; padding: .5em 0em 0em .5em; color: #777777; }
+td { padding: 1em 0em 1em 0em; vertical-align: middle; }
+.above_helprow td { padding-bottom: 0em; }
+.helprow td { padding-top: 0em; }
+label { padding-right: 1em; }
+
+#edit_account_info { font-size: 1.6em; margin: 0em; padding: 1em 0em 0em 9.8em; }
+#process_account_form { margin-right: 2em; }
+
+/*
+ul { list-style-type: none; }
+ul li input { display: block; text-align: center; }
+*/
+
+.smallheader { font-variant: small-caps; color: #6C0B5D; letter-spacing: .2em; }
+
+.step { display: inline; padding: 0em 2em; }
+#page_steps .selected { background: yellow; }
+

@@ -1,0 +1,115 @@
+{% extends 'challenge/base.html' %}
+
+{% block window_title %}Finder{% endblock %}
+
+{% block head %}
+<style type="text/css">
+	#content { width: 700px; margin: auto; }
+	#content div a:hover { color: blue; }
+</style>
+
+<script>
+	$(document).ready( function(){
+		$("body").append("<table width='100%' id='debug_table'><tr><th>border</th><th>offset top</th><th>offset left</th><th>position top</th><th>position left</th></tr></table>");
+		$("body").prepend("<div id='debug'></div>");
+		
+		var old_border = "none";
+		var old_background = "none";
+		var selected_id = "";
+		var selected_position = "";
+		var selected_top = "";
+		var selected_left = "";
+		var selected_last_pageX = 0;
+		var selected_last_pageY = 0;
+		
+		$("a").removeAttr("href");
+		$("*").each( function() {
+			var id = $(this).attr("id");
+			if (!id) {
+				id = Math.floor(Math.random() * 100000000)
+				$(this).attr("id", id);
+			}
+			$("#debug").append("<span class='ding'>["+id+"]</span>");
+		});
+		$(".ding").hover(
+			function() {
+				var wrapped_id = $(this).text();
+				var id = wrapped_id.substring(1, wrapped_id.length-1);
+				old_background = $("#"+id).css("backround");
+				$("#"+id).css("background", "yellow");
+			},
+			function() {
+				var wrapped_id = $(this).text();
+				var id = wrapped_id.substring(1, wrapped_id.length-1);
+				$("#"+id).css("background", old_background);
+				old_background = "none";
+			}
+		);
+		$("div").click( function() {
+			//$(this).css("background", "green");
+		});
+		$("div").hover(
+			function() { // hovering
+				if ($(this).children("div").length == 0) {
+					old_border = $(this).css("border");
+					$(this).css("border", "1px dotted #aaaaaa");
+					$("#debug_table").append("<tr class='"+$(this).attr("id")+"'>"+
+							"<td>"+old_border+"</td>"+
+							"<td>"+$(this).offset().top.toFixed(0)+"</td><td>"+$(this).offset().left+"</td>"+
+							"<td>"+$(this).position().top.toFixed(0)+"</td><td>"+$(this).position().left+"</td>"+
+							"</tr>");
+				}
+			},
+			function() { // moved away
+				if ($(this).children("div").length == 0) {
+					$(this).css("border", old_border);
+					old_border = "none";
+					$("#debug_table ."+$(this).attr("id")).remove();
+				}
+			}
+		)
+		.mousedown( function() {
+			if ($(this).children("div").length == 0) {
+				selected_id = $(this).attr("id");
+				selected_position = $(this).css("position");
+				selected_top = $(this).css("top");
+				selected_left = $(this).css("left");
+				$(this).css("position", "relative").css("background", "red");
+			}
+		}).mouseup( function() {
+			//if ($(this).children("div").length == 0) {
+				selected_id = "";
+				$(this).css("position", selected_position).css("background", "none");
+				$(this).css("top", selected_top);
+				$(this).css("left", selected_left);
+				selected_position = "";
+				selected_top = "";
+				selected_left = "";
+				selected_last_pageX = 0;
+				selected_last_pageY = 0;
+			//}
+		}).mousemove( function(e) {
+			if ($(this).children("div").length == 0) {
+				if (selected_id) {
+					$("#"+selected_id).css("left", e.pageX-selected_last_pageX).css("top", e.pageY-selected_last_pageY);
+					selected_last_pageX = e.pageX;
+					selected_last_pageY = e.pageY;
+				}
+			}
+		});
+				
+	});
+</script>
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+	<div><a href="">Find nearby activity</a>(<a href="">to do right now</a>)(<a href="">fit into calendar</a>)</div>
+	<div><a href="">Find activity to organize nearby</a></div>
+	<div><a href="">Share an activity<a href=""></a></div>
+	<div><a href="">Share a story of doing an activity</a></div>
+	<div><a href="">Find people with similar interests</a></div>
+
+{% endblock %}

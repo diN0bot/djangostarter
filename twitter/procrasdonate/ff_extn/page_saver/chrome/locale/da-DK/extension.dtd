@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Pearl Crescent Page Saver indstillinger">
+<!ENTITY PageSaverGeneralTab.label "Generel">
+<!ENTITY PageSaverCaptureTab.label "Skærmskud">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Sidehoved og sidefod">
+<!ENTITY PageSaverDestinationTab.label "Destination">
+<!ENTITY PageSaverShortcuts.label "Primære tastaturgenveje:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "Primær tastaturgenvej eller klik på værktøjslinje-funktionen gemmer et billede af:">
+<!ENTITY PageSaverSaveVisibleArea.label "den synlige del af siden">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Gemmer et billede af den synlige del af siden">
+<!ENTITY PageSaverSaveEntireArea.label "hele siden">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Gemmer et billede af hele siden">
+<!ENTITY PageSaverSaveSelectedRegion.label "et område du markerer">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Gem et billede af et område du markerer">
+<!ENTITY PageSaverSaveEntireFrame.label "en komplet ramme">
+<!ENTITY PageSaverImageHeaderGroup.label "Sidehoved">
+<!ENTITY PageSaverAddHeader.label "Tilføj et sidehoved til hvert gemt billede">
+<!ENTITY PageSaverAddHeader.tooltip "Tilføj et brugerdefineret sidehoved til hvert gemt billede">
+<!ENTITY PageSaverImageHeaderPref.label "Sidehoved tekstmønster:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Format-streng til brugerdefineret sidehoved">
+<!ENTITY PageSaverImageFooterGroup.label "Sidefod">
+<!ENTITY PageSaverAddFooter.label "Tilføj en sidefod til hvert gemt billede">
+<!ENTITY PageSaverAddFooter.tooltip "Tilføj en brugerdefineret sidefod til hvert gemt billede">
+<!ENTITY PageSaverImageFooterPref.label "Sidefod tekstmønster:">
+<!ENTITY PageSaverImageFooterPref.tooltip "Format-streng til brugerdefineret sidefod">
+<!ENTITY PageSaverPrefsDestination.label "Gem billeder til:">
+<!ENTITY PageSaverDestLocalFile.label "en lokal fil">
+<!ENTITY PageSaverDestLocalFile.tooltip "Gem billeder til en lokal fil">
+<!ENTITY PageSaverDestClipboard.label "klippebordet">
+<!ENTITY PageSaverDestClipboard.tooltip "Kopierer til klippebordet så de kan indsættes i andre applikationer">
+<!ENTITY PageSaverDestServer.label "en fil på en server">
+<!ENTITY PageSaverDestServer.tooltip "Gem billeder til en server (typisk ved at bruge FTP eller HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Tastaturgenvej">
+<!ENTITY PageSaverShortCutInstruction.label "For at definere tastaturgenvejen, klik i nedenstående felt og tryk en tastekombination som f.eks. Ctrl+F12. For at slette den, tryk på Delete- eller Backspace-tasten.">
+<!ENTITY PageSaverRegionShortCutKey.label "Vælg område tastaturgenvej">
+<!ENTITY PageSaverShortCut.tooltip "Klik her og tryk en tastekombination som f.eks. Ctrl+F12">
+<!ENTITY PageSaverShortCutReminder.label "Bemærk: Tastaturgenveje virker først i nye vinduer.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Vis browser kontekstmenu-elementer for at gemme et billede af:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "Styrer hvilke Page Saver-elementer der vises i browserens kontekstmenu">
+<!ENTITY PageSaverShowInStatusBar.label "Vis Page Saver i Firefox statuslinje">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Viser Page Saver-ikon i Firefox statuslinje">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "Ved indlæsning af websider, forbered optagelse af Flash-indhold">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "Kan forårsage at nogle sider der indeholder Flash ikke indlæses korrekt">
+<!ENTITY PageSaverPlaySound.label "Afspil en lyd efter et billede er taget">
+<!ENTITY PageSaverPlaySound.tooltip "Afspil en lyd efter et billede er taget">
+<!ENTITY PageSaverDestFile.label "Billedfil:">
+<!ENTITY PageSaverFileNamePref.label "Filnavn-mønster:">
+<!ENTITY PageSaverFileNamePref.tooltip "Format-streng for filnavn">
+<!ENTITY PageSaverExample.label "Eksempel:">
+<!ENTITY PageSaverPromptBeforePref.label "Spørg før der gemmes til en lokal fil">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Spørg efter filnavn og placering før der gemmes">
+<!ENTITY PageSaverOverwriteFilePref.label "Overskriv eksisterende lokalfil">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Fjern markeringen fra dette felt for at få Page Saver til at bruge et unikt filnavn">
+<!ENTITY PageSaverImageSizePref.label "Størrelse på gemt billede:">
+<!ENTITY PageSaverImageSizePref.tooltip "Størrelse på gemt billede (procent af original størrelse eller maksimum dimension i pixel)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#x25; af original">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "pixel (maksimal dimension)">
+<!ENTITY PageSaverImageFormatMenu.label "Billeformat:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Gem i Portable Network Graphics format">
+<!ENTITY PNGTransparencyPref.label "Inkluder information om gennemsigtighed">
+<!ENTITY PNGTransparencyPref.tooltip "Inkluder information om gennemsigtighed (vil forøge filstørrelse)">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Gem i JPEG format">
+<!ENTITY PageSaverJPEGQualityPref.label "Kvalitet:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Et tal mellem 0 og 100; jo højere tal, jo bedre kvalitet">
+<!ENTITY PageSaverServerURI.label "Serveradresse:">
+<!ENTITY PageSaverServerURIExample.label "f.eks. ftp://ftp.eksempel.com/minmappe/">
+<!ENTITY PageSaverServerURI.tooltip "ftp://, http://, eller https:// adresse på serveren">
+<!ENTITY PageSaverServerID.label "Brugernavn:">
+<!ENTITY PageSaverServerID.tooltip "Brugernavn for at logge ind på denne server">
+<!ENTITY PageSaverServerPassword.label "Kodeord:">
+<!ENTITY PageSaverServerPassword.tooltip "Kodeord der bruges til at logge ind på denne server">
+<!ENTITY saveVisiblePageImageContextMenu.label "Gem billede af synlig del som...">
+<!ENTITY saveEntirePageImageContextMenu.label "Gem billede af hele siden som...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Gem billede af område du vælger...">
+<!ENTITY saveFrameImageContextMenu.label "Gem billede af hele denne ramme...">
+<!ENTITY pageSaverFrameMenu.label "Gem billede af hele rammen">
+<!ENTITY pageSaverFeedbackContextMenu.label "Send feedback...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Forbered på optagelse af Flash-indhold">
+<!ENTITY pageSaverOptionsContextMenu.label "Gem side-indstillinger...">
+<!ENTITY pageSaverSaveToFileMenu.label "Billedet vil blive gemt til en lokal fil">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Billedet vil blive kopieret til udklipsholder">
+<!ENTITY pageSaverSaveToServerMenu.label "Billedet vil blive gemt til server">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "Gem et billede af den nuværende side">
+<!ENTITY regionCaptureButton.label "Optag">

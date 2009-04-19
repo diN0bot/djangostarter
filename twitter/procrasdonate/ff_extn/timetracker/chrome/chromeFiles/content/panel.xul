@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css" href="chrome://timetrack/content/style.css" ?>
+
+<!-- Copyright 2006 Juan Casares -->
+
+
+<!DOCTYPE overlay SYSTEM "chrome://timetrack/locale/overlay.dtd">
+
+<overlay id="timetrack-overlay" 
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		
+<statusbar id="status-bar">
+	<statusbarpanel 
+			id="timetrack-panel" class="active" 
+			tooltip="timetrack-tooltip" 
+			context="timetrack-contextmenu" 
+			onclick="timetrackTogglePaused(event)">
+
+		<html:canvas id="timetrack-canvas" width="18" height="18"></html:canvas>
+		<label id="timetrack-label" value="&title;*"/>
+	</statusbarpanel>  
+</statusbar>
+
+
+<popupset id="mainPopupSet">
+	<tooltip id="timetrack-tooltip" orient="vertical" noautohide="true" position="before_start">    
+		<hbox>
+			<vbox pack="center" align="center">
+				<image id="timetrack-tooltip-icon" width="24" height="24" src="chrome://timetrack/content/clock24.png"/>
+			</vbox>
+			<spacer style="width: 8px"/>
+			<vbox>
+				<label value="&title;" class="popup-title"/>
+				<spacer style="height: 0.2em"/>
+				<hbox>
+					<label id="timetrack-popup-todayHours" class="popup-value" value="NNN"/>
+					<label value="&popup-today;"/>
+				</hbox>
+				<spacer style="height: 0.2em"/>
+				<hbox>
+					<label id="timetrack-popup-resetHours" class="popup-value" value="NNN"/>
+					<label value="&popup-resethours; &popup-resetdate;"/>
+					<label id="timetrack-popup-resetDate" value="DDD"/>
+					<label id="timetrack-popup-noResetYet" value="&popup-noresetyet;" style="display:none;"/>
+				</hbox>
+				<spacer style="height: 0.2em"/>
+				<hbox>
+					<label id="timetrack-popup-totalHours" class="popup-value" value="NNN"/>
+					<label value="&popup-totalhours; &popup-startdate;"/>
+					<label id="timetrack-popup-startDate" value="DDD"/>
+				</hbox>				
+			</vbox>
+		</hbox>
+	</tooltip>
+	
+	<popup id="timetrack-contextmenu" orient="vertical">
+		<menuitem label="&context-reset;" accesskey="&context-reset-key;" oncommand="timetrackReset()"/>
+		<menuitem label="&context-options;" accesskey="&context-options-key;" oncommand="timetrackOpenOptions()"/>
+	</popup>
+</popupset>
+
+
+<!-- Import script -->
+<script type="application/x-javascript" 
+	src="chrome://timetrack/content/script.js">
+</script>
+ 
+</overlay>

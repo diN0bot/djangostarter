@@ -1,0 +1,8 @@
+<div id="comments">
+	<h3>
+	  {{ total_comments }} Comments
+	</h3>
+	{% for comment in comments %}
+		{% render_responses comment %}
+	{% endfor %}
+</div>

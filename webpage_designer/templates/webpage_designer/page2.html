@@ -1,0 +1,96 @@
+{% extends 'challenge/base.html' %}
+
+{% block window_title %}Finder{% endblock %}
+
+{% block head %}
+<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery.drag.resize.js"></script>
+
+<style type="text/css">
+	#content { width: 700px; margin: auto; }
+	#content div a:hover { color: blue; }
+	
+	#editor {
+	    position:relative;
+	    border:1px #999 dashed;
+	    overflow:scroll;
+	    width:960px;
+	    height:500px;
+	}
+	
+	.block {
+	    position: absolute;
+	    left: 50px;
+	    background: #ddd;
+	    /* border-collapse:collapse; */
+	}
+	
+	.handle, .resize {
+	    display:block;
+	    width:20px;
+	    height:20px;
+	    background:#ff2;
+	    cursor:move;
+	    position: relative;
+	    visibility: hidden;
+	}
+	
+	.handle {
+	    border-bottom:1px #999 solid;
+	    border-right:1px #999 solid;
+	    left: -20px;
+	}
+	
+	.resize {
+	    position:absolute;
+	    right:-20px;
+	    bottom:0;
+	    border-top:1px #999 solid;
+	    border-left:1px #999 solid;
+	}
+</style>
+
+<script>
+	$(document).ready( function(){
+
+	    $("#editor").dragResize({grid:20});
+				
+	});
+</script>
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+	<div id="debug"></div>
+	<div id="debug2"></div>
+
+	<div><a href="">Find nearby activity</a>(<a href="">to do right now</a>)(<a href="">fit into calendar</a>)</div>
+	<div><a href="">Find activity to organize nearby</a></div>
+	<div><a href="">Share an activity<a href=""></a></div>
+	<div><a href="">Share a story of doing an activity</a></div>
+	<div><a href="">Find people with similar interests</a></div>
+	
+	<div id="editor">
+		<div class="block" id="alpha">
+			<div class="handle">d</div>
+			<div class="resize">r</div>
+			<div class="block">
+				<div class="handle">d</div>
+				<div class="resize">r</div>
+				<p>alpha: chip the glasses, crack the plates</p>
+			</div>
+			<div class="block" id="gamma">
+				<div class="handle">d</div>
+				<div class="resize">r</div>
+				<p>gamma: that's what bilbo baggins hates</p>
+			</div>
+		</div>
+		<div class="block" id="yeta">
+			<div class="handle">d</div>
+			<div class="resize">r</div>
+			<p>yeta: Little Wriggly Wrolly Polarly Bear</p>
+			<div><a href="">Find people with similar interests</a></div>
+		</div>
+	</div>
+
+{% endblock %}

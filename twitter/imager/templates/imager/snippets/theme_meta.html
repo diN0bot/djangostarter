@@ -1,0 +1,35 @@
+
+<div class="theme_meta">
+	<div class="background_or_avatar_statement">
+		{% if theme.background_not_avatar %}
+			{% if theme.replace_not_cover %}
+				Replaces Background
+			{% else %}
+				Adds to Background
+			{% endif %}
+		{% else %}
+			{% if theme.replace_not_cover %}
+				Replaces Avatar
+			{% else %}
+				Adds to Avatar
+			{% endif %}
+		{% endif %}
+	</div>
+	
+	<div class="theme_name">
+		<a href="{% url theme theme.slug %}">
+			{{ theme.name }}
+		</a>
+	</div>
+	
+	<div class="undertheme">
+		<img alt="" src="{{ theme.author.profile_img_url }}">
+		by
+		<span class="theme_author">
+			<a href="http://twitter.com/{{ theme.author }}">
+				{{ theme.author }}
+			</a>
+		</span>
+	</div>
+	<div class="description">{{ theme.author_comments }}</div>
+</div>

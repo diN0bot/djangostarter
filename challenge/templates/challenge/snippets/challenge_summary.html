@@ -1,0 +1,11 @@
+<a href="{% url challenge challenge.slug %}">{{ challenge.title }}</a>
+
+{{ challenge.summary }}
+<ht>
+{{ challenge.slug }}
+
+{% with challenge.user as user %}
+{% with challenge.time as time %}
+	{% include 'challenge/snippets/user_and_time.html' %}
+{% endwith %}
+{% endwith %}

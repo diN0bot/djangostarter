@@ -1,0 +1,33 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Select Weather Theme{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+				
+{% block content %}
+	<div id="thin_column">
+		<h3 style="letter-spacing: .135em;">Weatherize your twitter background</h3>
+		<p>
+		Every hour we'll update your twitter background to reflect your local weather.
+		</p>
+		<a href="{% url screen_shot "weatherized_snapshot.png" %}">
+			Screenshot<br />
+			<img src="{{ MEDIA_URL }}twitter/imager/img/weatherized_snapshot.png" 
+				height=132 width=124 >
+		</a>
+		<p>
+		Select a weather theme below or <a href="{% url create_theme %}">create a theme</a> to share.
+		</p>
+		<div id="themes">
+			{% for theme in themes %}
+				<div class="select_theme">
+					{% include 'imager/snippets/theme_summary.html' %}
+				</div>
+				<div style="margin: 2em;"></div>
+			{% endfor %}
+		</div>
+	
+	</div>
+{% endblock %}

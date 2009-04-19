@@ -1,0 +1,22 @@
+﻿<!ENTITY options_window_title			"Aging Tabs偏好設定">
+<!ENTITY tab_background.label			"自訂分頁顏色 (A)">
+<!ENTITY tab_background.accesskey		"A">
+<!ENTITY tab_text.label				"自訂分頁文字顏色 (B)">
+<!ENTITY tab_text.accesskey			"B">
+<!ENTITY tab_background_target.label		"自訂老化的分頁顏色 (C)">
+<!ENTITY tab_background_target.accesskey	"C">
+<!ENTITY highlight.label			"高亮度選擇的分頁 (D)">
+<!ENTITY highlight.accesskey			"D">
+<!ENTITY highlight_background.label		"自訂高亮度分頁的顏色 (E)">
+<!ENTITY highlight_background.accesskey		"E">
+<!ENTITY highlight_text.label			"自訂高亮度分頁的文字顏色 (F)">
+<!ENTITY highlight_text.accesskey		"F">
+<!ENTITY trigger_choice.label			"設定分頁的年齡依據...">
+<!ENTITY trigger_tab_switch.label		"切換分頁時 (G)">
+<!ENTITY trigger_tab_switch.accesskey		"G">
+<!ENTITY trigger_url_change.label		"網址列的值改變時 (H)">
+<!ENTITY trigger_url_change.accesskey		"H">
+<!ENTITY trigger_interval_seconds.label		"依秒數老化 (I): ">
+<!ENTITY trigger_interval_seconds.accesskey	"I">
+<!ENTITY amount_per_step.label			"每一步驟的老化速度 (J)">
+<!ENTITY amount_per_step.accesskey		"J">

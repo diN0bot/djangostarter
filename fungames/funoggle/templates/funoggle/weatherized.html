@@ -1,0 +1,268 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherized!{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+		{% if not twitter_user %}
+			<h3>Check weatherized status</h3>
+			<form id="authorize_form" method="post">
+				<table>
+				<tbody>
+					{% if not twitter_user %}
+						<tr><td class="error" colspan=2>{{ errors.username }}</td></tr>
+						<tr>
+							<td><label>username: </label></td>
+							<td><input type="text" class="imager_username" name="username" value="{{username}}" /></td>
+						</tr>
+					{% endif %}
+					{% if not twitter_user.password %}
+						<tr><td class="error" colspan=2>{{ errors.password }}</td></tr>
+						<tr>
+							<td><label>password: </label></td>
+							<td><input type="password" name="password" /></td>
+						</tr>
+					{% endif %}
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Check weatherizer status" /></td>
+					</tr>
+				</tbody>
+				</table>
+			</form>
+			<p>Log in to check your weatherized details, change your zipcode or stop weatherization.</p>
+			<p>If you have not yet weatherized, please <a href="{% url imager %}">choose a theme</a> first.</p>
+				
+			<h3>Password security guarantee</h3>
+			<div id="password_guarantee">
+				<p>
+				This form will not store your password. Of course, if you already weatherized
+				your background then we are already storing your password.
+				</p>
+				<p>
+				<a href="{% url imager_help %}">Learn more</a>
+				</p>
+			</div>
+		{% else %}
+			{% with twitter_user.weatherized_background as WB %}
+			{% with twitter_user.weatherized_avatar as WA %}
+			
+			{% if not WB and not WA %}
+				<h3>Time to weatherize?</h3>
+				<p>
+					Your twitter background and avatar are NOT weatherized. To weatherize,  
+					<a href="{% url imager %}">select a weather theme</a>.
+				</p>
+			{% else %}
+	
+				<div class="WB_status">
+					{% if WB.background_success %}
+						<h3>Background weatherization success!</h3>
+						<p>
+						Check out your <a href="http://twitter.com/{{ twttier_user.twitter_username }}">
+						twitter homepage</a>
+						</p>
+					{% endif %}
+					{% if WB and not WB.background_success %}
+						<h3>Hmmm...</h3>
+						<p>
+							Weatherizer could not successfully weatherize your background:
+						</p>
+						<span style="color: #8A4304;">{{ WB.error_message }}</span>
+					{% endif %}
+					{% if not WB %}
+						<h3>Background is not weatherized</h3>
+						<p>Your twitter background is NOT weatherized. To weatherize,  
+						<a href="{% url imager %}">select a background weather theme</a>.
+						</p>
+					{% endif %}
+				</div>
+				
+				<div class="WA_status">
+					{% if WA.background_success %}
+						<h3>Avatar weatherization success!</h3>
+						<p>
+						Check out your <a href="http://twitter.com/{{ twttier_user.twitter_username }}">
+						twitter homepage</a>
+						</p>
+					{% endif %}
+					{% if WA and not WA.background_success %}
+						<h3>Hmmm...</h3>
+						<p>
+							Weatherization could not successfully weatherize your avatar:
+						</p>
+						<span style="color: #8A4304;">{{ WA.error_message }}</span>
+					{% endif %}
+					{% if not WA %}
+						<h3>Avatar is not weatherized</h3>
+						<p>Your twitter avatar is NOT weatherized. To weatherize,  
+						<a href="{% url imager %}">select an avatar weather theme</a>.
+						</p>
+					{% endif %}
+				</div>
+				
+				<div style="clear: both; height: 1em;"> </div>
+				{# <h3>Status</h3> #}
+				
+				{% if WB %}
+					<p style="text-align: center;">
+						<span style="color: #156451;">Current weather condition is </span> <span class="code_name">{{ WB.current_code.name }}</span>
+					</p>
+				
+					<p style="text-align: center;">
+						<span style="color: #156451;">Current zipcode is </span> {{ twitter_user.zipcode }} <a href="{% url change_zipcode_background %}">change</a>
+					</p>
+				{% else %}
+					{% if WA %}
+						<p style="text-align: center;">
+							<span style="color: #156451;">Current weather condition is </span> <span class="code_name">{{ WA.current_code.name }}</span>
+						</p>
+					
+						<p style="text-align: center;">
+							<span style="color: #156451;">Current zipcode is </span> {{ twitter_user.zipcode }} <a href="{% url change_zipcode_avatar %}">change</a>
+						</p>
+					{% endif %}
+				{% endif %}
+
+{% if WB %}
+<table>
+<tbody>
+	<tr>
+		<td>
+			{% if WB and WB.original_background %}
+			<span style="color: #156451;">Before Background Weatherization</span>
+			{% endif %}
+		</td>
+		<td>
+			{% if WB and WB.weatherized_background %}
+			<span style="color: #156451;">After Background Weatherization </span>
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% if WB and WB.original_background %}
+			{% thumbnail WB.original_background.width WB.original_background.height True %}
+			<a href="{{ WB.original_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ WB.original_background.url }}"></a><br />
+			{% endif %}
+		</td>
+		<td>
+			{% if WB and WB.weatherized_background %}
+			{% thumbnail WB.weatherized_background.width WB.weatherized_background.height True %}
+			<a href="{{ WB.weatherized_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ WB.weatherized_background.url }}"></a><br />
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% if WB and not WB.theme.replace_not_cover and WB.original_background %}
+			<a href="{% url change_background_background %}">change</a>
+			{% endif %}
+		</td>
+		<td>
+		</td>
+	</tr>
+</tbody>
+</table>				
+{% endif %}
+{% if WA %}					
+<table>
+<tbody>
+	<tr>
+		<td>
+			{% if WA and WA.original_background %}
+			<span style="color: #156451;">Before Background Weatherization</span>
+			{% endif %}
+		</td>
+		<td>
+			{% if WA and WA.weatherized_background %}
+			<span style="color: #156451;">After Background Weatherization </span>
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% if WA and WA.original_background %}
+			{% thumbnail WA.original_background.width WA.original_background.height True %}
+			<a href="{{ WA.original_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ WA.original_background.url }}"></a><br />
+			{% endif %}
+		</td>
+		<td>
+			{% if WA and WA.weatherized_background %}
+			{% thumbnail WA.weatherized_background.width WA.weatherized_background.height True %}
+			<a href="{{ WA.weatherized_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ WA.weatherized_background.url }}"></a><br />
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% if WA and not WA.theme.replace_not_cover and WA.original_background %}
+			<a href="{% url change_background_background %}">change</a>
+			{% endif %}
+		</td>
+		<td>
+		</td>
+	</tr>
+</tbody>
+</table>
+{% endif %}
+
+				<h3 style="clear: both;">Feedback</h3>
+				<p>
+					Request new features and get help with problems on the feedback page 
+				</p>
+				<p style="text-align: center;">
+					<a href="{% url feedback "imager" %}"><button class="link">Give Feedback!</button></a>
+				</p>
+				
+				<h3>Weatherizing is not for everyone</h3>
+				<p>
+				Help weatherizer become more fun and useful. Provide feedback
+				on your weatherized experience and wishlist:
+				</p>
+				<form method="post">
+					<textarea name="reason_why" rows=8 cols=70></textarea>
+					<br />
+					{% if WB %}
+					<input class="link" type="submit" name="stop_background" value="Stop weatherizing my BACKGROUND" />
+					{% endif %}
+					{% if WA and WB %}
+					<span style="padding-left: 2.5em;"></span>
+					{% endif %}
+					{% if WA %}
+					<input class="link" type="submit" name="stop_avatar" value="Stop weatherizing my AVATAR" />
+					{% endif %}
+				</form>
+				<p>Stopping means that weatherizer will no longer update your background or avatar. 
+				You'll still need to change your background or avatar via your Twitter 
+				<a href="http://twitter.com/account/settings">Settings</a>.</p>
+				
+				{% if WB %}
+				<h3>Current background weatherization</h3>
+					{% with WB.theme as theme %}
+						{% include 'imager/snippets/theme_summary.html' %}
+					{% endwith %}
+				{% endif %}
+				
+				{% if WA %}
+				<h3>Current avatar weatherization</h3>
+					{% with WA.theme as theme %}
+						{% include 'imager/snippets/theme_summary.html' %}
+					{% endwith %}
+				{% endif %}
+				
+			{% endif %}
+			
+			{% endwith %}
+			{% endwith %}
+		{% endif %}
+	</div>
+{% endblock %}

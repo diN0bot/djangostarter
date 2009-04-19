@@ -1,0 +1,1 @@
+..\idl\xpidl -m typelib -w -v -I ..\idl -e components\nsITimetrackService.xpt components\nsITimetrackService.idl

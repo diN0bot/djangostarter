@@ -1,0 +1,22 @@
+<!ENTITY options_window_title "Настройки Aging Tabs">
+<!ENTITY tab_background.label "Цвет вкладки">
+<!ENTITY tab_background.accesskey "П">
+<!ENTITY tab_text.label "Цвет текста на вкладке">
+<!ENTITY tab_text.accesskey "т">
+<!ENTITY tab_background_target.label "Конечный цвет вкладки">
+<!ENTITY tab_background_target.accesskey "к">
+<!ENTITY highlight.label "Подсветка выбранной вкладки">
+<!ENTITY highlight.accesskey "в">
+<!ENTITY highlight_background.label "Цвет подсветки">
+<!ENTITY highlight_background.accesskey "о">
+<!ENTITY highlight_text.label "Цвет текста подсвеченной вкладки">
+<!ENTITY highlight_text.accesskey "д">
+<!ENTITY trigger_choice.label "Изменять возраст вкладок">
+<!ENTITY trigger_tab_switch.label "при переключении между ними">
+<!ENTITY trigger_tab_switch.accesskey "р">
+<!ENTITY trigger_url_change.label "при изменении значения адресной строки">
+<!ENTITY trigger_url_change.accesskey "а">
+<!ENTITY trigger_interval_seconds.label "в секунд:">
+<!ENTITY trigger_interval_seconds.accesskey "с">
+<!ENTITY amount_per_step.label "Изменение цвета за шаг">
+<!ENTITY amount_per_step.accesskey "ш">

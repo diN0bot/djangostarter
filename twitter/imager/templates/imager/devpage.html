@@ -1,0 +1,131 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherizer Development Notes{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+		
+{% block content %}
+	<div id="thin_column">
+	
+	<h3>Known Bugs</h3>
+		<ul class="paragraph_list">
+			<li>Icons appear pixelated/noisy/unreadable on some backgrounds. Forecasts, too.</li>
+			<li>Not all zipcodes have weather reports => Find more weather report feeds.</li>
+		</ul>
+	
+	<h3>Feature Pipeline</h3>
+		<ul class="paragraph_list">
+			<li></li>
+		</ul>
+		
+	<h3>Weather</h3>
+		<p>
+		In order to determine local weather conditions, I rely on <a href="http://developer.yahoo.com/weather/">
+		Yahoo! Weather</a>, which provides a REST RSS feed.
+		</p>
+		<p>
+		It seems that not all zipcodes are available from Yahoo!'s weather feed. 
+		If you know of a better data source please <a href="{% url feedback "imager" %}">let me know</a>.
+		</p>
+	
+	<h3>Image Manipulation</h3>
+		<p>
+		For image manipulation I use the Python Image Library (PIL), which is part of python2.5's standard
+		library, as well as ImageMagick, a command line utility.
+		</p>
+		<p>
+		Weatherization performs the following image manipulation steps:
+		</p>
+		<ul class="paragraph_list">
+			<li>If theme image is an icon, paste icon onto user's selected background. At the time of weatherization, this background 
+			was either explicitly provided by the user or copied
+			from the user's twitter homepage.</li>
+			<li>Generate a transparent image of forecast text and paste it onto the background.</li>
+		</ul>
+		<p>
+		A few interesting points:
+		</p>
+		<ul class="paragraph_list">
+			<li>Size: Twitter requires backgrounds to be less than 800 Kb. A user might upload an image 
+			that, once iconified and forecasted, is larger than 800 Kb. In that case, weatherizer must 
+			resample the iamge to reduce its DPI. As a last resort, weatherizer will reduce the image's 
+			width and height.</li>
+			
+			<li>Time: Although weatherization typically happens in a low frequency cron-job, the weatherize 
+			command is also run when a user
+			initially authorizes weatherization. This is to give users immediate feedback on their new
+			twitter homepage. It also means that weatherization should be somewhat snappy. Thus, I am careful
+			not to write the image to disk or read the image from disk unnecessarily.
+			</li>
+			<li>Appearance: In order that the 
+			forecast text shows up on light and dark backgrounds, I originally gave white text a black
+			shadow. In ImageMagic this is done by writing the text twice, first with large black strokes, then with normal white strokes. 
+			Before adding the white text, the image is blurred, thereby providing a fuzzy shadow. This blur can take a 
+			non-trivial amount of time, plus it didn't always look right. Normal stroke-black text is now written on top of non-blurred 8-stroke white text.
+			</li>
+		</ul>
+		
+	<h3>Password Flow</h3>
+		<p>
+		Users shouldn't have to sign in until absolutely necessary. They should be able to 
+		</p>
+	
+	<h3>Page Design</h3>
+		<p>
+		</p>
+	
+	<h3>Themes</h3>
+		<p>
+		</p>
+	
+	<h3>User Community</h3>
+		<p>
+		</p>
+		
+	<h3>Twitter Suite Architecture</h3>
+		<p>
+		I developed the twitter apps suite inside <a href="http://bilumi.org/browser/huginmunin/trunk/web/starter">
+		Starter</a>, a django project I was in the
+		midst of putting together at the same time. Starter
+		includes the frameworks, internal APIs and apps that Dan and I developed for
+		<a href="http://bilumi.org">Buy It Like You Mean It (bilumi)</a>. The goal of
+		Starter is to facilitate faster app creation.
+		</p>
+		<p>
+		The twitter suite is itself a single app, as well as a collection of apps.
+		On the one hand, each twitter app is treated 
+		independently at the overall project level: the settings.APPS variable lists 'twitter' (suite overview),
+		'twitter.imager' (weatherizer) and 'twitter.twoggle' (twoggle), and thus the project automatically finds the context 
+		processors, middleware, template directories and models of each twitter app. Similarly,
+		each app's urls are automatically integrated.
+		</p>
+		<p>
+		On the other hand, the twitter apps are not listed in a top-level Starter folder, but instead
+		reside inside the twitter app. Hierarchical apps! The Twitter ('twitter') contains models 
+		and utilities common to all twitter apps. This includes the TwitterUser model and authorization 
+		utilities, feedback and comment templates and views, and the twitter API library.
+		</p>
+		<p>
+		Inside of Twitter lives Twoggle ('twitter.twoggle') and Weatherizer ('twitter.imager'). 
+		Each of these apps looks exactly like a normal app, except for the 'twitter.' preppended
+		to their import names.
+		</p>
+		<p>
+		The Twitter app does have to know about it's children when generating the top menu bars. Instead of each app providing hooks,
+		the twitter overview has a single templatetag with app-specific methods defined there. 
+		</p>
+		<p>
+		The onus on each twitter sub-app for integrating with the twitter suit architecture is small.
+		Each twitter sub-app can choose to define two variables in its views to facilitate the top menu bars. This assumes those views
+		render templates derived from the twitter app's base.html.
+		Finally, the url names must be specific to the app so as not to collide with other app's
+		url names.
+		</p>
+	
+{% endblock %}

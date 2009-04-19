@@ -1,0 +1,22 @@
+<!ENTITY options_window_title			"Možnosti Aging Tabs">
+<!ENTITY tab_background.label			"Vlastní barva panelu">
+<!ENTITY tab_background.accesskey		"V">
+<!ENTITY tab_text.label				"Vlastní barva textu na panelu">
+<!ENTITY tab_text.accesskey			"e">
+<!ENTITY tab_background_target.label		"Vlastní cílová barva slábnutí">
+<!ENTITY tab_background_target.accesskey	"a">
+<!ENTITY highlight.label			"Zvýraznit vybraný panel">
+<!ENTITY highlight.accesskey			"n">
+<!ENTITY highlight_background.label		"Vlastní barva zvýraznění panelu">
+<!ENTITY highlight_background.accesskey		"r">
+<!ENTITY highlight_text.label			"Vlastní barva textu zvýrazněného panelu">
+<!ENTITY highlight_text.accesskey		"x">
+<!ENTITY trigger_choice.label			"Slábnout ...">
+<!ENTITY trigger_tab_switch.label		"Při změně panelu">
+<!ENTITY trigger_tab_switch.accesskey		"z">
+<!ENTITY trigger_url_change.label		"Při změně URL v adresním řádku">
+<!ENTITY trigger_url_change.accesskey		"U">
+<!ENTITY trigger_interval_seconds.label		"Po sekundách:">
+<!ENTITY trigger_interval_seconds.accesskey	"s">
+<!ENTITY amount_per_step.label			"Množství slábnutí při jednom kroku:">
+<!ENTITY amount_per_step.accesskey		"M">

@@ -1,0 +1,46 @@
+
+overlay	chrome://browser/content/browser.xul	chrome://pagesaver/content/browserOverlay.xul
+content	pagesaver	jar:chrome/pagesaver.jar!/content/
+
+skin	pagesaver	classic/1.0	jar:chrome/pagesaver.jar!/skin/
+style	chrome://global/content/customizeToolbar.xul	chrome://pagesaver/skin/browserOverlay.css
+
+locale	pagesaver	en-US	jar:chrome/pagesaver.jar!/locale/en-US/
+
+locale	pagesaver	cs-CZ	jar:chrome/pagesaver.jar!/locale/cs-CZ/
+
+locale	pagesaver	da-DK	jar:chrome/pagesaver.jar!/locale/da-DK/
+
+locale	pagesaver	de-DE	jar:chrome/pagesaver.jar!/locale/de-DE/
+
+locale	pagesaver	el-GR	jar:chrome/pagesaver.jar!/locale/el-GR/
+
+locale	pagesaver	es-ES	jar:chrome/pagesaver.jar!/locale/es-ES/
+
+locale	pagesaver	fr-FR	jar:chrome/pagesaver.jar!/locale/fr-FR/
+
+locale	pagesaver	it-IT	jar:chrome/pagesaver.jar!/locale/it-IT/
+
+locale	pagesaver	ja-JP	jar:chrome/pagesaver.jar!/locale/ja-JP/
+
+locale	pagesaver	ko-KR	jar:chrome/pagesaver.jar!/locale/ko-KR/
+
+locale	pagesaver	nl-NL	jar:chrome/pagesaver.jar!/locale/nl-NL/
+
+locale	pagesaver	pl-PL	jar:chrome/pagesaver.jar!/locale/pl-PL/
+
+locale	pagesaver	pt-BR	jar:chrome/pagesaver.jar!/locale/pt-BR/
+
+locale	pagesaver	ru-RU	jar:chrome/pagesaver.jar!/locale/ru-RU/
+
+locale	pagesaver	sk-SK	jar:chrome/pagesaver.jar!/locale/sk-SK/
+
+locale	pagesaver	sl-SI	jar:chrome/pagesaver.jar!/locale/sl-SI/
+
+locale	pagesaver	tr-TR	jar:chrome/pagesaver.jar!/locale/tr-TR/
+
+locale	pagesaver	uk-UA	jar:chrome/pagesaver.jar!/locale/uk-UA/
+
+locale	pagesaver	zh-CN	jar:chrome/pagesaver.jar!/locale/zh-CN/
+
+locale	pagesaver	zh-TW	jar:chrome/pagesaver.jar!/locale/zh-TW/

@@ -1,0 +1,24 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Overview{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css"></link>
+{% endblock %}
+
+
+{% block title %}
+	<h2>Overview</h2>
+{% endblock %}
+					
+{% block content %}
+	<div id="thin_column">
+		<h3>Weatherizer</h3>
+		<img class="paragraph_logo" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+		<p class="paragraph_text">
+			<a href="{% url imager %}">Weatherizer</a>
+			automatically updates your twitter homepage background image 
+			according to your local weather.
+		</p>
+	</div>
+{% endblock %}

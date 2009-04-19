@@ -1,0 +1,21 @@
+#include "nsISupports.idl"
+[scriptable, uuid(01BB9060-7C13-11DA-8BDE-F66BAD1E3F3A)]
+interface nsITimetrackService : nsISupports {
+	void handleUserActive ();
+	void handleLostFocus ();
+	void handleGotFocus ();
+	void refresh ();
+	void reset ();
+
+	void snooze (in long msSnoozeTime);
+	readonly attribute boolean active;
+	readonly attribute boolean workSite;
+	readonly attribute boolean paused;
+	readonly attribute string dayTotal;
+	readonly attribute long secDayTotal;
+	readonly attribute string extensionStartDate;
+	readonly attribute long secExtensionTotal;
+	readonly attribute string resetDate;
+	readonly attribute long secResetTotal;
+
+};

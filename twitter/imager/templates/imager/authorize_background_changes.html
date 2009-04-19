@@ -1,0 +1,77 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherize!{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+		
+{% block content %}
+	<div id="thin_column">
+		<h3 style="letter-spacing: .135em;">Weatherize your twitter background</h3>
+		<p>
+		Every hour we'll update an icon on your twitter background to reflect your local weather.
+		</p>
+		
+		{% include 'imager/snippets/theme_meta.html' %}
+		{% include 'imager/snippets/before_after_screenshots.html' %}
+		<div style="clear: both; height: 1em;"></div>
+		
+		<h3>Weatherize</h3>
+
+		<form id="authorize_form" method="post" enctype="multipart/form-data" action="">
+			{% for random_error in form.errors.random %}
+				<p class="error">{{ random_error|safe }}</p>
+			{% endfor %}
+			<table>
+			<tbody>
+				{{ form }}
+			</tbody>
+			</table>
+			<p>
+				<input type="submit" value="Weatherize!" />
+			</p>
+		</form>
+		<small>Please be patient. Weatherizing may take a minute.</small>
+		
+		<h3>Tips</h3>
+			<ul class="paragraph_list">
+			
+			{% include 'imager/snippets/zipcode_tips.html' %}
+			
+			{% if not theme.replace_background %}
+				<li>If no background is provided, Weatherizer will use your current twitter background.
+				Be aware that Twitter may fail to provide Weatherizer with your current background if it changed recently.
+				</li>
+			{% endif %}
+
+			{% include 'imager/snippets/background_tips.html' %}
+			
+			<li><a href="{% url feedback "imager" %}">Let me know</a> if you have problems.</li>
+			</ul>
+
+		<h3>Password security guarantee</h3>
+		<div id="password_guarantee">
+			<p>
+			Weatherizer only uses your twitter password for two things:
+			</p>
+			<ul class="paragraph_list">
+				<li>Update your background image according to your local weather.</li>
+				<li>Add you as a follower of <a href="http://twitter.com/weatherizer">
+				@weatherizer</a>. You can un-follow at any time.</li>
+			</ul>
+			<p>
+			You can stop weatherization at any time by clicking on
+			<a href="{% url weatherized %}">My Weatherizer</a>.
+			</p>
+			<p>
+			For more information check out the <a href="{% url imager_help %}#trust">Help</a> page.
+			</p>
+		</div>
+
+	</div>
+{% endblock %}

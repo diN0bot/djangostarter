@@ -1,0 +1,31 @@
+<div class="day">
+	{% comment %}
+	<div class="month_name">{{ comment.time|date:"M" }}</div>
+	<div class="day_number">{{ comment.time|date:"j" }}</div>
+	<div class="day_name">{{ comment.time|date:"l" }}</div>
+	{% endcomment %}
+	<img alt="" src="{{ comment.twitter_user.profile_img_url }}">
+</div>
+
+
+<div class="name">
+	{% if comment.twitter_user %}
+		<a href="http://twitter.com/{{ comment.twitter_user.twitter_username }}">{{ comment.twitter_user.twitter_username }}</a>
+	{% else %}
+		anonymous
+	{% endif %}
+</div>
+
+<div class="time_ago">
+	{% time_ago2 comment.time %}
+</div>
+
+<div class="message">
+	{% if close_last_p %}
+		{{ comment.message|markup }}
+	{% else %}
+		{{ comment.message|markup:"dont_close_last_p" }}
+		<span class="reply"><a href="{% url reply comment.key comment.id %}">reply</a></span>
+		</p>
+	{% endif %}
+</div>

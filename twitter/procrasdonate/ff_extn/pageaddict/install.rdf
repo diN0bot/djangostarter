@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+<Description about="urn:mozilla:install-manifest">
+<em:id>{5d393167-8b1c-4ce1-8593-0ba5f39f3210}</em:id>
+<em:name>pageaddict</em:name>
+<em:version>0.4</em:version>
+<em:description>Monitor your internet addiction</em:description>
+<em:creator>PageAddict</em:creator>
+<em:contributor>Greasemonkey Compiler by Anthony Lieuallen;</em:contributor>
+<em:contributor>http://www.arantius.com/</em:contributor>
+<em:homepageURL>pageaddict.com</em:homepageURL>
+<em:targetApplication>
+<Description>
+<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+<em:minVersion>1.5</em:minVersion>
+<em:maxVersion>4.0.0.*</em:maxVersion>
+</Description>
+</em:targetApplication>
+</Description>
+</RDF>

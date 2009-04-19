@@ -1,0 +1,45 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Feedback{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css"></link>
+{% endblock %}
+
+
+{% block title %}
+	<h2>Feedback</h2>
+{% endblock %}
+					
+{% block content %}
+	<div id="thin_column">
+		<h3>Twitter</h3>
+			<p>
+			Tweet to us: <a href="http://twitter.com/home?status=@{{ twit_name }}">@{{ twit_name }}</a>
+			</p>
+			<p>
+			Follow us on twitter: <a href="http://twitter.com/home?status=follow%20{{ twit_name }}">follow {{ twit_name }}</a
+			</p>
+			<p>
+			Send us direct messages: <a href="http://twitter.com/home?status=d%20{{ twit_name }}">d {{ twit_name }}</a>
+			</p>
+		<h3>Email</h3>
+			<p>
+			Email us: <a href="mailto:{{ twit_name }}@whynoti.org">{{ twit_name }}@whynoti.org</a>
+			</p>
+			<p>
+			Join project announcements list: 
+			<form method="post" id="join_announcement_list_form">
+				<input type="text" name="join_announcement_list_text" size=25 />
+				<input class="button" type="submit" name="join_announcement_list" value="subscribe!" />
+			</form>
+			</p>
+		<h3>Comment</h3>
+			<p>
+				{% include 'twitter/snippets/add_comment.html' %}
+			</p>
+			
+			{% include 'twitter/snippets/comments.html' %}
+
+	</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Pearl Crescent Page Saver opties">
+<!ENTITY PageSaverGeneralTab.label "Algemeen">
+<!ENTITY PageSaverCaptureTab.label "Afbeelding vastleggen">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Kop- en voettekst">
+<!ENTITY PageSaverDestinationTab.label "Doel">
+<!ENTITY PageSaverShortcuts.label "Sneltoetsen:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "Primaire sneltoets of klikken op een werkbalkonderdeel bewaart een afbeelding van:">
+<!ENTITY PageSaverSaveVisibleArea.label "het zichtbare gedeelte van de pagina">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Een afbeelding van het zichtbare gedeelte van de pagina opslaan">
+<!ENTITY PageSaverSaveEntireArea.label "de gehele pagina">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Een afbeelding van de gehele pagina opslaan">
+<!ENTITY PageSaverSaveSelectedRegion.label "een geselecteerd gebied">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Een afbeelding van een geselecteerd gebied opslaan">
+<!ENTITY PageSaverSaveEntireFrame.label "een heel frame">
+<!ENTITY PageSaverImageHeaderGroup.label "Koptekst">
+<!ENTITY PageSaverAddHeader.label "Een koptekst aan elke afbeelding toevoegen">
+<!ENTITY PageSaverAddHeader.tooltip "Een aangepaste koptekst aan elke afbeelding toevoegen">
+<!ENTITY PageSaverImageHeaderPref.label "Koptekst-tekstpatroon:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Opmaak voor aangepaste koptekst">
+<!ENTITY PageSaverImageFooterGroup.label "Voettekst">
+<!ENTITY PageSaverAddFooter.label "Een voettekst aan elke afbeelding toevoegen">
+<!ENTITY PageSaverAddFooter.tooltip "Een aangepaste voettekst aan elke afbeelding toevoegen">
+<!ENTITY PageSaverImageFooterPref.label "Voettekst-tekstpatroon:">
+<!ENTITY PageSaverImageFooterPref.tooltip "Opmaak voor aangepaste voettekst">
+<!ENTITY PageSaverPrefsDestination.label "Afbeeldingen opslaan in:">
+<!ENTITY PageSaverDestLocalFile.label "een lokaal bestand">
+<!ENTITY PageSaverDestLocalFile.tooltip "Afbeeldingen opslaan in een lokaal bestand">
+<!ENTITY PageSaverDestClipboard.label "het klembord">
+<!ENTITY PageSaverDestClipboard.tooltip "Afbeeldingen naar het klembord kopiëren zodat ze in andere toepassingen kunnen worden geplakt">
+<!ENTITY PageSaverDestServer.label "een bestand op een server">
+<!ENTITY PageSaverDestServer.tooltip "Afbeeldingen opslaan op een server (typisch door gebruik te maken van FTP of HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Primaire sneltoets">
+<!ENTITY PageSaverShortCutInstruction.label "Klik om de sneltoets in te stellen in het onderstaande tekstveld en druk dan een toetscombinatie zoals Ctrl+F12. Druk om deze te verwijderen op Delete of Backspace.">
+<!ENTITY PageSaverRegionShortCutKey.label "Sneltoets voor een gebied selecteren">
+<!ENTITY PageSaverShortCut.tooltip "Klik hier en druk een toetscombinatie als Ctrl+F12">
+<!ENTITY PageSaverShortCutReminder.label "Opmerking: Sneltoetswijzigingen worden toegepast op nieuwe vensters.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Contextmenu-onderdelen in browser weergeven bij opslaan van een afbeelding van:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "De weergave van Page Saver-onderdelen in het contextmenu van de browser beheren">
+<!ENTITY PageSaverShowInStatusBar.label "Page Saver in de statusbalk van Firefox weergeven">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Page Saver-pictogram in de statusbalk van Firefox weergeven">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "Bij het laden van webpagina’s vastleggen van Flash-inhoud mogelijk maken">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "Hierdoor worden sommige pagina’s met Flash-inhoud mogelijk onjuist geladen">
+<!ENTITY PageSaverPlaySound.label "Geluid afspelen na vastleggen van een afbeelding">
+<!ENTITY PageSaverPlaySound.tooltip "Geluid afspelen na vastleggen van een afbeelding">
+<!ENTITY PageSaverDestFile.label "Afbeeldingsbestand:">
+<!ENTITY PageSaverFileNamePref.label "Bestandsnaampatroon:">
+<!ENTITY PageSaverFileNamePref.tooltip "Bestandsnaamopmaak">
+<!ENTITY PageSaverExample.label "Voorbeeld:">
+<!ENTITY PageSaverPromptBeforePref.label "Vragen voor opslaan als lokaal bestand">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Vragen om bestandsnaam en locatie voor opslaan">
+<!ENTITY PageSaverOverwriteFilePref.label "Bestaande lokale bestanden overschrijven">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Vink deze box uit om Page Saver een unieke bestandsnaam te laten gebruiken">
+<!ENTITY PageSaverImageSizePref.label "Grootte van de opgeslagen afbeelding:">
+<!ENTITY PageSaverImageSizePref.tooltip "Grootte van de opgeslagen afbeelding (percentage van de oorspronkelijke grootte of maximale grootte in pixels)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; van het origineel">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "pixels (maximale grootte)">
+<!ENTITY PageSaverImageFormatMenu.label "Afbeeldingsopmaak:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "In Portable Network Graphics-opmaak opslaan">
+<!ENTITY PNGTransparencyPref.label "Inclusief transparantie-informatie">
+<!ENTITY PNGTransparencyPref.tooltip "Inclusief transparantie-informatie (dit vergroot de bestandsgrootte)">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Opslaan in JPEG-opmaak">
+<!ENTITY PageSaverJPEGQualityPref.label "Kwaliteit:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Een getal tussen 0 en 100; gebruik een hoger getal voor een betere kwaliteit">
+<!ENTITY PageSaverServerURI.label "Serverlocatie:">
+<!ENTITY PageSaverServerURIExample.label "b.v. ftp://ftp.example.com/mijnmap/">
+<!ENTITY PageSaverServerURI.tooltip "Het ftp://, http://, of https:// adres van deze server">
+<!ENTITY PageSaverServerID.label "Gebruikersnaam:">
+<!ENTITY PageSaverServerID.tooltip "De gebruikersnaam die moet worden gebruikt om op deze server in te loggen">
+<!ENTITY PageSaverServerPassword.label "Wachtwoord:">
+<!ENTITY PageSaverServerPassword.tooltip "Het wachtwoord dat moet worden gebruikt om op deze server in te loggen">
+<!ENTITY saveVisiblePageImageContextMenu.label "Afbeelding van zichtbaar gedeelte opslaan...">
+<!ENTITY saveEntirePageImageContextMenu.label "Afbeelding van gehele pagina opslaan...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Afbeelding van geselecteerd gebied opslaan...">
+<!ENTITY saveFrameImageContextMenu.label "Afbeelding van dit gehele frame opslaan...">
+<!ENTITY pageSaverFrameMenu.label "Afbeelding van gehele frame opslaan">
+<!ENTITY pageSaverFeedbackContextMenu.label "Feedback versturen...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Vastleggen van Flash-inhoud mogelijk maken">
+<!ENTITY pageSaverOptionsContextMenu.label "Page Saver opties...">
+<!ENTITY pageSaverSaveToFileMenu.label "Afbeelding wordt als lokaal bestand opgeslagen">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Afbeelding wordt naar het klembord gekopieerd">
+<!ENTITY pageSaverSaveToServerMenu.label "Afbeelding wordt op server opgeslagen">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "Afbeelding van de huidige pagina opslaan">
+<!ENTITY regionCaptureButton.label "Vastleggen">

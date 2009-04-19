@@ -1,0 +1,30 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Upload Image{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+			
+{% block content %}
+	<div id="thin_column">
+		<h3>Current Image</h3>
+		<div class="image">
+			{% include 'imager/snippets/show_image_and_code.html' %}
+		</div>
+
+		<h3>Upload new image</h3>
+		<form method="post" enctype="multipart/form-data">
+			{{ form.as_p }}
+			<p><input type="submit" value="Upload!" /></p>
+		</form>
+		<p style="float: right; "><a href="{% url edit_theme theme.slug %}">Cancel</a></p>
+		
+		<h3>Tips</h3>
+		<p>Currently, only .gif and .png images are supported.</p>
+		<p>Tall, slim images are ideal. A ratio of 200 x 50 works well.</p>
+		<p>Use transparency so that images blend into the background. The background color may
+		be used to indicate the current temperature or time of day, or else be a personal 
+		preference of the twitter user.</p>
+	</div>
+{% endblock %}

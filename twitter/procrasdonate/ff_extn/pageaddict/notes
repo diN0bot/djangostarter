@@ -1,0 +1,50 @@
+	
+	$.post(
+		'http://tipjoy.com/api/tweetpayment/',
+		{ twitter_username: "diN0bot",
+		  twitter_password: "pea15nut",
+		  text: "p something to cwallardo test"
+		},
+		function(r) {
+			GM_log('xmlhttpRequest worked '+r.status+' '+r.responseText);
+			GM_log('xmlhttpRequest :::: '+r);
+		},
+		"xml",
+	);
+	
+function snoopy() {
+	//var send_to_url = 'http://localhost:8000/Main/test/xmlhttprequest/';
+	var send_to_url = 'http://tipjoy.com/api/tweetpayment/';
+	//var text = 'p 1¢ @cwallardo testing';
+	var text = 'p something to cwallardo test';
+	var params = 'twitter_username=weatherizer&twitter_password=pea15nut&text='+escape(text);
+	GM_xmlhttpRequest({
+	    method: 'POST',
+	    url: send_to_url,
+	    data: params,
+	    headers: {
+	        "User-agent": "Mozilla/4.0 (compatible) Greasemonkey",
+	        "Accept": "application/atom+xml,application/xml,text/xml",
+	        "Content-type": "application/x-www-form-urlencoded",
+	        "Content-length": params.length
+	    },
+	    onload: function(r) {
+	    	GM_log('xmlhttpRequest worked '+r.status+' '+r.responseText);
+	    },
+	    onerror: function(r) {
+	        GM_log('xmlhttpRequest failed');
+	    }
+	});
+}
+
+
+
+CREATE worked 200 {"username": "weatherizer", "userid": 44607, "result": "success", "profile_image_url": "http://s3.amazonaws.com/twitter_thumbs/default.jpg"}
+
+PAYMENT worked 200 {"reason": "missing target", "request": "/api/tweetpayment/", "result": "failure"}
+    
+      text  p 2¢ @ivankirigin for testing 1..2..3...    
+    encURI  p%202%C2%A2%20%40ivankirigin%20for%20testing%201..2..3...
+    escape  p%202%A2%20@ivankirigin%20for%20testing%201..2..3...
+    
+    PAYMENT worked 200 {"isLoan": true, "request": "/api/tweetpayment/", "transaction_ids": [42903], "tweet_id": 1527557570, "transactionTime": "2009-04-15 12:13:21.043950", "result": "success"}

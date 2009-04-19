@@ -1,0 +1,53 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherizer Help{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+				
+{% block content %}
+	<div id="thin_column">
+		<h3>What is this?</h3>
+		<p>
+		This site is part of a twitter application that udpates users's twitter homepage backgrounds
+		to reflect their local weather.
+		</p>
+		<a href="{% url screen_shot "weatherized_snapshot.png" %}">
+			Screenshot<br />
+			<img src="{{ MEDIA_URL }}twitter/imager/img/weatherized_snapshot.png" 
+				height=132 width=124 >
+		</a>
+		<h3>How does it work?</h3>
+		<p>
+		Use this site to <a href="{% url imager %}">select</a> a weather theme.
+		You will also need to authorize this application to update your twitter background on
+		behalf of you.
+		</p>
+		<p>
+		Every hour, a script checks the <a href="http://developer.yahoo.com/weather/">
+		Yahoo! Weather RSS Feed</a> for your local weather report. From the theme you selected,
+		the script chooses the image that best matches the current weather conditions. Finally,
+		the script uses the <a href="http://apiwiki.twitter.com/REST+API+Documentation">
+		Twitter REST Api</a>to update your twitter homepage's background.
+		</p>
+		<h3>Theme content owernership</h3>
+		<small>(draft. this may change.)</small>
+		<a href="">legalese</a>
+		<p>
+			This application does not own uploaded content, though we reserve the right to commercialize it.
+		</p>
+		<p>
+			Theme creators are responsible for only uploading images that they have the right to distribute and grant commercial access.
+		</p>
+		<h3>Terms of use</h3>
+		<small>(draft. this may change.)</small>
+		<a href="">legalese</a>
+		<p>
+		This application reserves the right to change the terms of use at any time.
+		This application reserves the right to remove any theme or content for any reason, 
+		deny weatherization to any twitter user, as well as 
+		discontinue service at any time.
+		</p>
+	</div>
+{% endblock %}

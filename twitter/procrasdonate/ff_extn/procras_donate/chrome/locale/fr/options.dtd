@@ -1,0 +1,22 @@
+<!ENTITY options_window_title			"Préférences d’Aging Tabs">
+<!ENTITY tab_background.label			"Couleur personnalisée pour les onglets">
+<!ENTITY tab_background.accesskey		"C">
+<!ENTITY tab_text.label				"Couleur personnalisée pour le texte des onglets">
+<!ENTITY tab_text.accesskey			"e">
+<!ENTITY tab_background_target.label		"Couleur personnalisée pour les onglets âgés">
+<!ENTITY tab_background_target.accesskey	"a">
+<!ENTITY highlight.label			"Mettre en surbrillance l’onglet actif">
+<!ENTITY highlight.accesskey			"b">
+<!ENTITY highlight_background.label		"Couleur de surbrillance personnalisée">
+<!ENTITY highlight_background.accesskey		"o">
+<!ENTITY highlight_text.label			"Couleur du texte en surbrillance personnalisée">
+<!ENTITY highlight_text.accesskey		"x">
+<!ENTITY trigger_choice.label			"Vieillir les onglets...">
+<!ENTITY trigger_tab_switch.label		"Lors du changement d’onglet">
+<!ENTITY trigger_tab_switch.accesskey		"g">
+<!ENTITY trigger_url_change.label		"Lors du changement d’URL">
+<!ENTITY trigger_url_change.accesskey		"U">
+<!ENTITY trigger_interval_seconds.label		"Par secondes :">
+<!ENTITY trigger_interval_seconds.accesskey	"s">
+<!ENTITY amount_per_step.label			"Incrémenter l’âge par pas :">
+<!ENTITY amount_per_step.accesskey		"I">

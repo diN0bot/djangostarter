@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Настройки Pearl Crescent Page Saver">
+<!ENTITY PageSaverGeneralTab.label "Основные">
+<!ENTITY PageSaverCaptureTab.label "Создание скриншота">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Колонтитулы">
+<!ENTITY PageSaverDestinationTab.label "Расположение">
+<!ENTITY PageSaverShortcuts.label "Клавиатурные сокращения:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "При быстром вызове или нажатии на значке:">
+<!ENTITY PageSaverSaveVisibleArea.label "сделать скриншот видимой части страницы">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Скриншот видимой части страницы">
+<!ENTITY PageSaverSaveEntireArea.label "сделать скриншот всей страницы">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Скриншот всей страницы">
+<!ENTITY PageSaverSaveSelectedRegion.label "сделать скриншот выделенной области">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Скриншот выделенной области">
+<!ENTITY PageSaverSaveEntireFrame.label "сделать скриншот целого фрейма">
+<!ENTITY PageSaverImageHeaderGroup.label "Верхний колонтитул">
+<!ENTITY PageSaverAddHeader.label "Добавлять заголовок в скриншоты">
+<!ENTITY PageSaverAddHeader.tooltip "Добавлять указанный заголовок в скриншоты">
+<!ENTITY PageSaverImageHeaderPref.label "Пример заголовка:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Формат строки для указания требуемого">
+<!ENTITY PageSaverImageFooterGroup.label "Нижний колонтитул">
+<!ENTITY PageSaverAddFooter.label "Добавлять нижний колонтитул в скриншоты">
+<!ENTITY PageSaverAddFooter.tooltip "Добавлять указанный нижний колонтитул в скриншоты">
+<!ENTITY PageSaverImageFooterPref.label "Пример колонтитула:">
+<!ENTITY PageSaverImageFooterPref.tooltip "Формат строки для указания требуемого">
+<!ENTITY PageSaverPrefsDestination.label "Сохранять скриншот:">
+<!ENTITY PageSaverDestLocalFile.label "локальным файлом на диске">
+<!ENTITY PageSaverDestLocalFile.tooltip "Сохранить скриншот в локальный файл">
+<!ENTITY PageSaverDestClipboard.label "в буфере обмена">
+<!ENTITY PageSaverDestClipboard.tooltip "Копировать скриншот в буфер обмена для последующей вставки в других приложениях">
+<!ENTITY PageSaverDestServer.label "в каталоге на сервере">
+<!ENTITY PageSaverDestServer.tooltip "Сохранять скриншот на сервере (обычно используется FTP или HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Быстрый вызов">
+<!ENTITY PageSaverShortCutInstruction.label "Для определения требуемой комбинации быстрого вызова установите курсор в текстовое поле (расположенное ниже), и нажмите требуемую комбинацию (например Ctrl+F12). Для удаления введённой комбинации воспользуйтесь клавишей Backspace.">
+<!ENTITY PageSaverRegionShortCutKey.label "Быстрый вызов для выделения области">
+<!ENTITY PageSaverShortCut.tooltip "Нажмите здесь и введите требуемую комбинацию клавиш, наподобие Ctrl+F12">
+<!ENTITY PageSaverShortCutReminder.label "Примечание: Изменённая комбинация клавиш быстрого вызова вступит в силу только в новом окне браузера.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Показывать в контекстном меню элементы для сохранения:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "Измените какие элементы Pagу Saver должны присутствовать в контекстном меню">
+<!ENTITY PageSaverShowInStatusBar.label "Показывать Page Saver в строке состояния">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Показывать значок Page Saver в строке состояния">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "При загрузке страниц готовиться к захвату Flash-содержимого">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "Страницы с Flash могут быть загружены некорректно">
+<!ENTITY PageSaverPlaySound.label "Проигрывать аудиофайл после сохранения скриншота">
+<!ENTITY PageSaverPlaySound.tooltip "Проигрывать аудиофайл после сохранения скриншота">
+<!ENTITY PageSaverDestFile.label "Файл скриншота:">
+<!ENTITY PageSaverFileNamePref.label "Шаблон имени файла:">
+<!ENTITY PageSaverFileNamePref.tooltip "Строка формата имени файла">
+<!ENTITY PageSaverExample.label "Например:">
+<!ENTITY PageSaverPromptBeforePref.label "Спрашивать перед сохранением в файл">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Предлагать выбрать имя файла скриншота и его расположение перед сохранением">
+<!ENTITY PageSaverOverwriteFilePref.label "Перезаписывать существующий локальный файл">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Сбросьте флажок чтобы Page Saver использовал уникальные имена файлов">
+<!ENTITY PageSaverImageSizePref.label "Размер скриншота:">
+<!ENTITY PageSaverImageSizePref.tooltip "Размер скриншота (в процентах от оригинала или максимальный размер в пикселях)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; от оригинала">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "пикселей (максимальный размер)">
+<!ENTITY PageSaverImageFormatMenu.label "Формат изображения:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Сохранять в формате Portable Network Graphics">
+<!ENTITY PNGTransparencyPref.label "Включая информацию о прозрачности">
+<!ENTITY PNGTransparencyPref.tooltip "Включение информации о прозрачности увеличит размер файла скриншота">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Сохранять в формате JPEG">
+<!ENTITY PageSaverJPEGQualityPref.label "Качество:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Значение может быть между 0 и 100; использование большего значения обозначает лучшее качество">
+<!ENTITY PageSaverServerURI.label "Сервер:">
+<!ENTITY PageSaverServerURIExample.label "например, ftp://ftp.mozilla-russia.org/modex/">
+<!ENTITY PageSaverServerURI.tooltip "Адрес ftp://, http:// или https:// требуемого сервера">
+<!ENTITY PageSaverServerID.label "Логин:">
+<!ENTITY PageSaverServerID.tooltip "Логин используется для подключения к серверу">
+<!ENTITY PageSaverServerPassword.label "Пароль:">
+<!ENTITY PageSaverServerPassword.tooltip "Пароль используется для подключения к серверу">
+<!ENTITY saveVisiblePageImageContextMenu.label "Скриншот видимой части страницы...">
+<!ENTITY saveEntirePageImageContextMenu.label "Скриншот всей страницы...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Скриншот выделенной области...">
+<!ENTITY saveFrameImageContextMenu.label "Скриншот данного фрейма...">
+<!ENTITY pageSaverFrameMenu.label "Скриншот данного целого фрейма">
+<!ENTITY pageSaverFeedbackContextMenu.label "Обратная связь...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Подготовиться к захвату Flash-содержимого">
+<!ENTITY pageSaverOptionsContextMenu.label "Настройки Page Saver...">
+<!ENTITY pageSaverSaveToFileMenu.label "Скриншот сохранять в локальный файл">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Скриншот копировать в буфер обмена">
+<!ENTITY pageSaverSaveToServerMenu.label "Скриншот загружать на сервер">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "Скриншот текущей страницы">
+<!ENTITY regionCaptureButton.label "Захватить">

@@ -1,0 +1,50 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Select Weather Theme{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+				
+{% block content %}
+	<div id="thin_column">
+		<h3 style="letter-spacing: .135em;">Weatherize your twitter background</h3>
+		<p>
+		Every hour, <a href="http://twitter.com/weatherizer">Weatherizer</a> updates your twitter background to reflect your local weather.
+		</p>
+		<p>
+		Select a weather theme below or <a href="{% url create_theme %}">create your own</a>.
+		</p>
+		<div id="themes">
+			{% for theme in themes %}
+				{% comment %}
+				<div class="number_users">
+					{{ theme.number_theme_users }} weatherized users	
+				</div>
+				{% endcomment %}
+				
+				{% ifequal twitter_user.weatherized_background.theme.id theme.id %}
+					{% include 'imager/snippets/my_weatherizer_select_link.html' %}
+				{% else %}
+					{% ifequal twitter_user.weatherized_avatar.theme.id theme.id %}
+						{% include 'imager/snippets/my_weatherizer_select_link.html' %}
+					{% else %}
+						<div class="lefty weatherize_selection">
+							<a href="{% url authorize_background_changes theme.slug %}">
+								<button>Weatherize!</button>	
+							</a>
+						</div>
+					{% endifequal %}
+				{% endifequal %}
+				
+				{% include 'imager/snippets/theme_summary.html' %}
+				
+			{% endfor %}
+		</div>
+	
+	</div>
+{% endblock %}

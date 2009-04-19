@@ -1,0 +1,46 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}About{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css"></link>
+{% endblock %}
+
+
+{% block title %}
+	<h2>About</h2>
+{% endblock %}
+					
+{% block content %}
+	<div id="thin_column">
+	  <p>Twitter apps for fun!</p>
+	  {% comment %}
+		<p>fun challenges in well formed twitter sandbox</p>
+		<p>build interesting architecture, algorithms, community</p>
+		<p>next steps? sustainability? collaboration?</p>
+		<p>
+		<a href="http://books.google.com/books?id=dbCJ40j7t1sC&pg=PA176&lpg=PA176&dq=sartre+%22why+not+i%22&source=bl&ots=i2DbVBFprg&sig=45OlsoYzSrJNEMMe5dwsGXIKYqs">
+		"And why not I?"</a> realization in Nausea by Jean-Paul Sartre (trans. Lloyd Alexander).
+		</p>
+		{% endcomment %}
+	  {% comment %}
+		<h3>Suite of Applications</h3>
+		<p></p>
+		
+		<h3>User Community</h3>
+		<p></p> 
+		
+		<h3>Personal Development</h3>
+		<p>fun challenges in well formed twitter sandbox</p>
+		<p>build interesting architecture, algorithms, community</p>
+		<p>next step: sustainability. if you have interesting projects or skills let's talk.</p>
+		
+		<h3>Why Not I?</h3>
+		<p>
+		<a href="http://books.google.com/books?id=dbCJ40j7t1sC&pg=PA176&lpg=PA176&dq=sartre+%22why+not+i%22&source=bl&ots=i2DbVBFprg&sig=45OlsoYzSrJNEMMe5dwsGXIKYqs">
+		"And why not I?"</a> realization in Nausea by Jean-Paul Sartre (trans. Lloyd Alexander).
+		</p>
+	{% endcomment %}
+		
+	</div>
+{% endblock %}

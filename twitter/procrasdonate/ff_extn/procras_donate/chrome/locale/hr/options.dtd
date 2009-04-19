@@ -1,0 +1,22 @@
+<!ENTITY options_window_title			"Aging Tabs Postavke">
+<!ENTITY tab_background.label			"Prilagođena boja kartice">
+<!ENTITY tab_background.accesskey		"P">
+<!ENTITY tab_text.label				"Prilagođena boja teksta kartice">
+<!ENTITY tab_text.accesskey			"l">
+<!ENTITY tab_background_target.label		"Prilagođena ciljana boja starenja">
+<!ENTITY tab_background_target.accesskey	"a">
+<!ENTITY highlight.label			"Istakni odabranu karticu">
+<!ENTITY highlight.accesskey			"I">
+<!ENTITY highlight_background.label		"Prilagođena boja isticanja">
+<!ENTITY highlight_background.accesskey		"s">
+<!ENTITY highlight_text.label			"Prilagođena boja isticanja teksta">
+<!ENTITY highlight_text.accesskey		"t">
+<!ENTITY trigger_choice.label			"Starenje ...">
+<!ENTITY trigger_tab_switch.label		"Kod promjene kartica">
+<!ENTITY trigger_tab_switch.accesskey		"r">
+<!ENTITY trigger_url_change.label		"Kada se promijene vrijednost trake web adrese">
+<!ENTITY trigger_url_change.accesskey		"w">
+<!ENTITY trigger_interval_seconds.label		"Po sekundama:">
+<!ENTITY trigger_interval_seconds.accesskey	"s">
+<!ENTITY amount_per_step.label			"Iznos starenja po koraku:">
+<!ENTITY amount_per_step.accesskey		"k">

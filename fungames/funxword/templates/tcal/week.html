@@ -1,0 +1,71 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}~~~~{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/tcal/css/week.css"></link>
+{% endblock %}
+
+{% block content %}
+	{% if twitter_user %}
+		<form method="post" id="activity_form">
+			<label>Add activity: </label>
+			<input type="text" name="new_activity" id="activity_input" size=80 />
+			<script type="text/javascript">
+				$(document).ready( function() {
+					$("#activity_input").focus();
+				});
+			</script>
+		</form>
+	{% else %}
+		<form method="post" id="username_form">
+			<label>Enter a twitter username: </label>
+			<input type="text" name="username" id="username_input" size=15 />
+			<script type="text/javascript">
+				$(document).ready( function() {
+					$("#username_input").focus();
+				});
+			</script>
+		</form>
+	{% endif %}
+	
+	<table class="week">
+	<tbody>
+		<tr>
+		{% for weekday in week %}
+			<td class="day">
+				<div class="month_name">{{ month_name|slice:":3" }}</div>
+				<div class="day_number">{{ weekday|date:"j" }}</div>
+				<div class="day_name">{{ weekday|date:"l" }}</div>
+			</td>
+		{% endfor %}
+		</tr>
+		{% for hour_row in grouped_meetings_across_dates %}
+			<tr>
+				{% for meeting_group in hour_row %}
+					<td>
+						{% for meeting in meeting_group %}
+							<div class="meeting 
+								{% ifequal meeting.twitter_user twitter_user %}
+									user_meeting
+								{% else %}
+									friend_meeting
+								{% endifequal %}
+							">
+								{{ meeting.when|date:"P" }}
+									{% ifnotequal meeting.twitter_user twitter_user %}
+										<a href="{% url week meeting.twitter_user.twitter_username day month_name year %}">{{ meeting.twitter_user.twitter_username }}</a>
+									{% endifnotequal %}
+								{{ meeting.message }}
+								{% if meeting.tweet_link %}
+									<a class="twitter_icon" href="{{ meeting.tweet_link }}"><img class="twitter_icon" src="{{MEDIA_URL}}twitter/img/twitter_icon.jpg"></a>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+{% endblock %}

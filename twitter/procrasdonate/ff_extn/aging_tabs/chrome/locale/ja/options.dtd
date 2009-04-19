@@ -1,0 +1,22 @@
+﻿<!ENTITY options_window_title			"Aging Tabs の設定">
+<!ENTITY tab_background.label			"タブの色をカスタマイズ (A)">
+<!ENTITY tab_background.accesskey		"A">
+<!ENTITY tab_text.label				"タブの文字色をカスタマイズ (B)">
+<!ENTITY tab_text.accesskey			"B">
+<!ENTITY tab_background_target.label		"古くなったタブの色をカスタマイズ (C)">
+<!ENTITY tab_background_target.accesskey	"C">
+<!ENTITY highlight.label			"選択されたタブを強調表示 (D)">
+<!ENTITY highlight.accesskey			"D">
+<!ENTITY highlight_background.label		"タブの色をカスタマイズ (E)">
+<!ENTITY highlight_background.accesskey		"E">
+<!ENTITY highlight_text.label			"文字の色をカスタマイズ (F)">
+<!ENTITY highlight_text.accesskey		"F">
+<!ENTITY trigger_choice.label			"古くなるタイミング ...">
+<!ENTITY trigger_tab_switch.label		"タブを切り替えた時 (G)">
+<!ENTITY trigger_tab_switch.accesskey		"G">
+<!ENTITY trigger_url_change.label		"ロケーションバーの値が変わる時 (H)">
+<!ENTITY trigger_url_change.accesskey		"H">
+<!ENTITY trigger_interval_seconds.label		"一定の秒数が経つたび (I):">
+<!ENTITY trigger_interval_seconds.accesskey	"I">
+<!ENTITY amount_per_step.label			"古くなる速さ (J)">
+<!ENTITY amount_per_step.accesskey		"J">

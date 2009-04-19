@@ -1,0 +1,35 @@
+
+#username {font-family:Georgia, "Times New Roman", Times, serif; font-size:4em; margin-bottom: 0em; letter-spacing: .2em; word-spacing: 1em; }
+#username_form { margin-top: 4.75em; padding-bottom: .5em; }
+
+#month {
+	color:#156451;
+	font-size: 1.5em;
+	margin: 2em 0em 0em 0em;
+	font-variant: small-caps;
+	letter-spacing: 3em;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	}
+
+.week { margin-top: 4em; }
+
+.week td, .week tr { height: 0em; padding: 0em; margin: 0em; }
+.week td { width: 12em; }
+
+.week .has_meetings { width: 12em; padding: .3em .4em 0em .4em; }
+
+.week .day .month_name { color:#156451; line-height:1.5em; position: relative; bottom: -.9em; }
+.week .day .day_number { font-size: 3em; font-weight: bold; color: #cccccc; padding: 0em; margin: 0em; }
+.week .day .day_name { color:#156451; line-height:1.5em; position: relative; top: -.9em; }
+
+.week .meeting { line-height:1.5; font-size:.9em; margin-top: 1em; text-align: left; }
+.week .user_meeting { color:#8A4304; }
+.week .friend_meeting { color:#aaaaaa; }
+.twitter_icon { border: none; }
+
+#friends_header { text-align: right; font-size: 1.5em; margin-top: 3em; }
+#friends { text-align: right; color: #555555; }
+.friend { text-align: right; display: inline; padding: 0em 0em 1em 1em; }
+#add_friend { text-align: right; padding: 1em; }
+
+.hidden { display: none; }

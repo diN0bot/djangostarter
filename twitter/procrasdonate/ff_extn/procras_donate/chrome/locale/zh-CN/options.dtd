@@ -1,0 +1,22 @@
+﻿<!ENTITY options_window_title			"Aging Tabs 选项">
+<!ENTITY tab_background.label			"自定义标签颜色 (A)">
+<!ENTITY tab_background.accesskey		"A">
+<!ENTITY tab_text.label				"自定义标签字体颜色 (B)">
+<!ENTITY tab_text.accesskey			"B">
+<!ENTITY tab_background_target.label		"自定义渐变对象颜色 (C)">
+<!ENTITY tab_background_target.accesskey	"C">
+<!ENTITY highlight.label			"高亮显示选中的标签 (D)">
+<!ENTITY highlight.accesskey			"D">
+<!ENTITY highlight_background.label		"自定义高亮标签颜色 (E)">
+<!ENTITY highlight_background.accesskey		"E">
+<!ENTITY highlight_text.label			"自定义高亮标签字体颜色 (F)">
+<!ENTITY highlight_text.accesskey		"F">
+<!ENTITY trigger_choice.label			"渐变规则">
+<!ENTITY trigger_tab_switch.label		"当切换标签时 (G)">
+<!ENTITY trigger_tab_switch.accesskey		"G">
+<!ENTITY trigger_url_change.label		"当地址栏内容改变时 (H)">
+<!ENTITY trigger_url_change.accesskey		"H">
+<!ENTITY trigger_interval_seconds.label		"自动切换每隔秒 (I): ">
+<!ENTITY trigger_interval_seconds.accesskey	"I">
+<!ENTITY amount_per_step.label			"每步渐变数量 (J):">
+<!ENTITY amount_per_step.accesskey		"J">

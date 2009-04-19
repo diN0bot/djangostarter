@@ -1,0 +1,36 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Edit Theme Info - Upload Screen Shot{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+		<h3>Current Screen Shot</h3>
+		{% if screenshot %}
+			<a href="{% url screen_shot theme.slug type %}">
+				{% if is_before %}Before{% else %}After{% endif %}
+				<br />
+				<img alt="screenshot" src="{{ screenshot.url }}" height=132 width=124 >
+			</a>
+		{% else %}
+			<p>No screen shot uploaded</p>
+		{% endif %}
+
+		<h3>Upload New Screen Shot</h3>
+		<form method="post" enctype="multipart/form-data">
+			{{ form.as_p }}
+			<p><input type="submit" value="Upload!" /></p>
+			<p><a href="{% url edit_theme theme.slug %}">Cancel</a></p>
+		</form>
+		
+		<h3>Tips</h3>
+		<p>Supported image formats: gif, png, jpg and jpeg</p>
+	</div>
+{% endblock %}

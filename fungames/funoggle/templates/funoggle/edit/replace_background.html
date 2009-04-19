@@ -1,0 +1,52 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Edit Theme Info - Replace or cover existing background{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+		<h4>Currently, {{ theme.name }}'s images 
+		{% if theme.replace_not_cover %}replace{% else %}partially cover {% endif %}
+		a user's 
+		{% if theme.background_not_avatar %}background{% else %}avatar{% endif %}
+		</h4>
+		
+		<div style="height: 1em;"> </div>
+		
+		<form method="post">
+			<table>
+			<tbody>
+				<tr><td style="text-align: right;">Change theme so that its images: </td><td>
+					<input type="radio" name="replace_not_cover" value="replace" {% if theme.replace_not_cover %}checked{% endif %}/>
+					<label>replace</label>
+				</td><td>
+					<input type="radio" name="replace_not_cover" value="cover" {% if not theme.replace_not_cover %}checked{% endif %} />
+					<label>partial cover</label>
+				</td></tr>
+				
+				<tr><td style="text-align: right;">a user's</td><td>
+					<input type="radio" name="background_not_avatar" value="background" {% if theme.background_not_avatar %}checked="checked"{% endif %} >
+					<label>background</label>
+				</td><td>
+					<input type="radio" name="background_not_avatar" value="avatar" {% if not theme.background_not_avatar %}checked="checked"{% endif %}>
+					<label>avatar</label>
+				</td></tr>
+			</tbody>
+			</table>
+			
+			<p style="text-align: right;">
+				<input type="submit" value="Save">
+			</p>
+			<p>
+				<a href="{% url edit_theme theme.slug %}">Cancel</a>
+			</p>
+		</form>
+	</div>
+{% endblock %}

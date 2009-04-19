@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Pearl Crescent Page Saver オプション">
+<!ENTITY PageSaverGeneralTab.label "全般">
+<!ENTITY PageSaverCaptureTab.label "画像のキャプチャー">
+<!ENTITY PageSaverHeaderAndFooterTab.label "ヘッダーとフッター">
+<!ENTITY PageSaverDestinationTab.label "保存先">
+<!ENTITY PageSaverShortcuts.label "キーボードショートカット:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "キーボードショートカットかツールバーのボタンがクリックされた時:">
+<!ENTITY PageSaverSaveVisibleArea.label "表示されている部分のみ">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "表示されている部分のみ画像として保存します">
+<!ENTITY PageSaverSaveEntireArea.label "ページ全体">
+<!ENTITY PageSaverSaveEntireArea.tooltip "ページ全体を画像として保存します">
+<!ENTITY PageSaverSaveSelectedRegion.label "選択された範囲">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "選択された範囲を画像として保存します">
+<!ENTITY PageSaverSaveEntireFrame.label "すべてのフレーム">
+<!ENTITY PageSaverImageHeaderGroup.label "ヘッダー">
+<!ENTITY PageSaverAddHeader.label "キャプチャした画像にヘッダーを追加">
+<!ENTITY PageSaverAddHeader.tooltip "キャプチャされた画像にはカスタムヘッダーも含まれます">
+<!ENTITY PageSaverImageHeaderPref.label "カスタムヘッダー:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "カスタムヘッダーを入力してください">
+<!ENTITY PageSaverImageFooterGroup.label "フッター">
+<!ENTITY PageSaverAddFooter.label "キャプチャした画像にフッターを追加">
+<!ENTITY PageSaverAddFooter.tooltip "キャプチャされた画像にはカスタムフッターも含まれます">
+<!ENTITY PageSaverImageFooterPref.label "カスタムフッター:">
+<!ENTITY PageSaverImageFooterPref.tooltip "カスタムフッターを入力してください">
+<!ENTITY PageSaverPrefsDestination.label "画像の保存先:">
+<!ENTITY PageSaverDestLocalFile.label "ローカル">
+<!ENTITY PageSaverDestLocalFile.tooltip "画像をローカルファイルとして保存します">
+<!ENTITY PageSaverDestClipboard.label "クリップボード">
+<!ENTITY PageSaverDestClipboard.tooltip "他のアプリケーションへ貼り付けられるように画像をクリップボードへコピーします">
+<!ENTITY PageSaverDestServer.label "サーバー">
+<!ENTITY PageSaverDestServer.tooltip "サーバーに画像を保存します (FTP か HTTP を使用します)">
+<!ENTITY PageSaverShortCutKey.label "キーボードショートカット">
+<!ENTITY PageSaverShortCutInstruction.label "キーボードショートカットを設定するには、以下のテキストエリアをクリックした後に Ctrl+F12 のようにキーを組み合わせて押して下さい。Delete または Backspace キーを押す事で設定を消す事ができます。">
+<!ENTITY PageSaverRegionShortCutKey.label "キーボードショートカットの選択">
+<!ENTITY PageSaverShortCut.tooltip "ここをクリックした後に Ctrl+F12 のように組み合わせたキーを押してください">
+<!ENTITY PageSaverShortCutReminder.label "注意: キーボードショートカットの変更は新しいウィンドウが開かれた後に有効になります。">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "コンテキストメニューの表示:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "どの項目をブラウザのコンテキストメニューに表示するか指定してください">
+<!ENTITY PageSaverShowInStatusBar.label "Page Saver をステータスバーに表示">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Page Saver のアイコンをステータスバーに表示します">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "Web ページの読み込み時に Flash のコンテンツも取得">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "複数の Flash のコンテンツを含むページを誤って読み込む可能性があります">
+<!ENTITY PageSaverPlaySound.label "画像のキャプチャーが終わった事を音で知らせる">
+<!ENTITY PageSaverPlaySound.tooltip "画像のキャプチャーが終わった事を音で知らせます">
+<!ENTITY PageSaverDestFile.label "画像ファイル:">
+<!ENTITY PageSaverFileNamePref.label "ファイルの保存名:">
+<!ENTITY PageSaverFileNamePref.tooltip "保存されるファイル名の形式">
+<!ENTITY PageSaverExample.label "例:">
+<!ENTITY PageSaverPromptBeforePref.label "保存時に確認を表示する">
+<!ENTITY PageSaverPromptBeforePref.tooltip "保存する前にファイル名と保存先を確認します">
+<!ENTITY PageSaverOverwriteFilePref.label "同じ名前のファイルがある時は上書きする">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "チェックを外すと Page Saver は自動的に固有のファイル名を付けます">
+<!ENTITY PageSaverImageSizePref.label "保存する画像の大きさ:">
+<!ENTITY PageSaverImageSizePref.tooltip "保存する画像の大きさ (パーセント指定の場合はオリジナルの大きさ。ピクセル指定の場合は最大値)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; (オリジナル)">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "ピクセル (最大値)">
+<!ENTITY PageSaverImageFormatMenu.label "画像の形式:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Portable Network Graphics 形式で保存">
+<!ENTITY PNGTransparencyPref.label "透明度情報を含める">
+<!ENTITY PNGTransparencyPref.tooltip "透明度に関する情報を含ます(この情報を含めるとファイルの容量が増えます)">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "JPEG 形式で保存">
+<!ENTITY PageSaverJPEGQualityPref.label "品質:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "0 から 100 の数値を入力してくｄさい。数値が大きくすると保存品質が上がります。">
+<!ENTITY PageSaverServerURI.label "サーバーの URL:">
+<!ENTITY PageSaverServerURIExample.label "例: ftp://ftp.example.com/mydir/">
+<!ENTITY PageSaverServerURI.tooltip "このサーバーのアドレスには ftp://, http(s):// を使用できます">
+<!ENTITY PageSaverServerID.label "ユーザー名:">
+<!ENTITY PageSaverServerID.tooltip "このサーバーへのログインに使用するユーザー名">
+<!ENTITY PageSaverServerPassword.label "パスワード:">
+<!ENTITY PageSaverServerPassword.tooltip "このサーバーへのログインに使用するパスワード">
+<!ENTITY saveVisiblePageImageContextMenu.label "表示部分のみ画像として保存...">
+<!ENTITY saveEntirePageImageContextMenu.label "ページ全体を画像として保存...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "選択された範囲を画像として保存...">
+<!ENTITY saveFrameImageContextMenu.label "このフレームを画像として保存...">
+<!ENTITY pageSaverFrameMenu.label "すべてのフレームを画像として保存">
+<!ENTITY pageSaverFeedbackContextMenu.label "フィードバックを送信...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Flash コンテンツをキャプチャー">
+<!ENTITY pageSaverOptionsContextMenu.label "Page Saver オプション...">
+<!ENTITY pageSaverSaveToFileMenu.label "画像をローカルファイルとして保存">
+<!ENTITY pageSaverSaveToClipboardMenu.label "画像をクリップボードにコピー">
+<!ENTITY pageSaverSaveToServerMenu.label "画像をサーバーに保存">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "表示中のページを画像として保存します">
+<!ENTITY regionCaptureButton.label "キャプチャー">

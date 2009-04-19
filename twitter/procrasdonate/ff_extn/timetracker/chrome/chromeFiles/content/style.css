@@ -1,0 +1,80 @@
+.active label {
+
+}
+
+.inactive label {
+	color: GrayText;
+}
+
+prefpane {
+	font-size: 110%;
+}
+
+.textbox-seconds {
+	width: 4em;
+}
+
+.textbox-filter {
+	width: 40em;
+}
+
+.wide {
+	width: 100%;
+}
+
+radio {
+	padding-bottom: 0;
+	margin-bottom: 0em;
+	margin-top: 0em;
+	margin-left: 0;
+	padding-left:0;
+}
+
+radiogroup {
+	padding-bottom: 1em;
+}
+
+.description {
+	font-size: 90%;
+	
+}
+
+.pref-label {
+	min-width:4em;
+}
+
+.pref-hspacer {
+	width: 0.5em;
+}
+
+.popup-title {
+	font-size: 110%;
+}
+
+.popup-value {
+	font-weight:bold;
+}
+
+
+#timetrack-tooltip {
+	padding: 0px 5px 5px 8px;
+	/*background-color: white;*/
+}
+
+
+#timetrack-tooltip > * {
+	/*background-color: white;
+	color: black;*/
+}
+
+#timetrack-tooltip label {
+	padding: 0.2em;
+	margin: 0;
+}
+
+
+#timetrack-canvas {
+	width: 18px;
+	height: 18px;
+}
+

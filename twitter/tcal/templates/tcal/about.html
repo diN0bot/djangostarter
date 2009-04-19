@@ -1,0 +1,46 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}About Calendar{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css"></link>
+{% endblock %}
+				
+{% block content %}
+	<div id="thin_column">
+		<h3>Purpose</h3>
+			<p>
+			We want to make hanging out with friends as easy as possible. 
+			To do this we figure out what you and the people around you are up to, and then display that in an easy to read calendar.
+			No fluff, no hassle, just here's what's going on this week.
+			</p>
+			<p>
+			<a href="{% url feedback "tcal" %}">What do you think?</a> Could this
+			be useful to you or someone you know? Is there something else you're looking for?  
+			</p>
+			<p>
+			Our efforts are currently focused on extracting this information from <a href="http://twitter.com">twitter</a> updates.
+			If you're interesting in working with us as a developer or beta tester please <a href="mailto:diN0bot@bilumi.org">let us know</a>.
+			</p>
+		
+		<h3>Try it out</h3>
+			<p>
+			Step 1. Enter your twitter username: 
+			<form method="post" id="username_form">
+				<input type="text" name="username" id="username_input" size=15 />
+				<input type="submit" value="View calendar!" />
+				<script type="text/javascript">
+					$(document).ready( function() {
+						$("#username_input").focus();
+					});
+				</script>
+			</form>
+			</p>
+			<p>
+			Step 2. Read the calendar and be yourself.
+			Meet-up immediately, look forward to a planned event, or find mutually free time to make plans. 
+			<a href="{% url feedback "tcal" %}">What do you use it for?</a>
+			</p>
+			
+	</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Nastavení Pearl Crescent Page Saveru">
+<!ENTITY PageSaverGeneralTab.label "Obecné">
+<!ENTITY PageSaverCaptureTab.label "Popis obrázku">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Hlavička a zápatí">
+<!ENTITY PageSaverDestinationTab.label "Umístění">
+<!ENTITY PageSaverShortcuts.label "Klávesové zkratky:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "Klávesová zkratka či klepnutí na ikonu uloží obrázek:">
+<!ENTITY PageSaverSaveVisibleArea.label "viditelné části stránky">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Uloží obrázek viditelné části stránky">
+<!ENTITY PageSaverSaveEntireArea.label "celé stránky">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Uloží obrázek celé stránky">
+<!ENTITY PageSaverSaveSelectedRegion.label "vybraná část">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Uložit obrázek vybrané části">
+<!ENTITY PageSaverSaveEntireFrame.label "celý rámec">
+<!ENTITY PageSaverImageHeaderGroup.label "Hlavička">
+<!ENTITY PageSaverAddHeader.label "Přidat hlavičku ke každému obrázku">
+<!ENTITY PageSaverAddHeader.tooltip "Přidat vlastní hlavičku ke každému obrázku">
+<!ENTITY PageSaverImageHeaderPref.label "Vzor textu hlavičky:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Formátovací řetězec pro vlastní hlavičku">
+<!ENTITY PageSaverImageFooterGroup.label "Zápatí">
+<!ENTITY PageSaverAddFooter.label "Přidat zápatí ke každému obrázku">
+<!ENTITY PageSaverAddFooter.tooltip "Přidat vlastní zápatí ke každému obrázku">
+<!ENTITY PageSaverImageFooterPref.label "Vzor textu zápatí:">
+<!ENTITY PageSaverImageFooterPref.tooltip "Formátovací řetězec pro vlastní zápatí">
+<!ENTITY PageSaverPrefsDestination.label "Uložit obrázky do:">
+<!ENTITY PageSaverDestLocalFile.label "lokální soubor">
+<!ENTITY PageSaverDestLocalFile.tooltip "Uložit obrázky do lokálního souboru">
+<!ENTITY PageSaverDestClipboard.label "schránka">
+<!ENTITY PageSaverDestClipboard.tooltip "Nakopírujte obrázky do schránky, aby mohly být použity v jiných aplikacíh">
+<!ENTITY PageSaverDestServer.label "soubor na serveru">
+<!ENTITY PageSaverDestServer.tooltip "Uložit obrázky na server (často užitím FTP či HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Klávesová zkratka">
+<!ENTITY PageSaverShortCutInstruction.label "K nastavení klávesové zkratky klepněte do níže umístěného textového pole a pak stiskněte požadovanou kombinaci kláves. K odstranění stiskněte klávesu Delete či Backspace.">
+<!ENTITY PageSaverRegionShortCutKey.label "Klávesová zkratka výběru části obrázku">
+<!ENTITY PageSaverShortCut.tooltip "Klepněte sem a stiskněte požadovanou kombinaci kláves">
+<!ENTITY PageSaverShortCutReminder.label "Poznámka: změna klávesové zkratky se promítne v nových oknech.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Zobrazit položky místní nabídky prohlížeče pro uložení obrázku:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "Určete, které položky Page Saveru se zobrazí v místní nabídce prohlížeče">
+<!ENTITY PageSaverShowInStatusBar.label "Show Page Saver in the Firefox Status Bar">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Show Page Saver icon in the Firefox Status Bar">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "When loading web pages, arrange to capture Flash content">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "May cause some pages that contain Flash content to load incorrectly">
+<!ENTITY PageSaverPlaySound.label "Přehrát zvuk po uložení obrázku">
+<!ENTITY PageSaverPlaySound.tooltip "Přehrát zvuk po uložení obrázku">
+<!ENTITY PageSaverDestFile.label "Soubor obrázku:">
+<!ENTITY PageSaverFileNamePref.label "Vzor pojmenování obrázku:">
+<!ENTITY PageSaverFileNamePref.tooltip "Formátovací řetězec pro pojmenování souboru">
+<!ENTITY PageSaverExample.label "Příklad:">
+<!ENTITY PageSaverPromptBeforePref.label "Dotázat se před uložením do lokálního souboru">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Dotázat se na jméno a umístění souboru před uložením">
+<!ENTITY PageSaverOverwriteFilePref.label "Přepsat existující soubor">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Odškrtněte pro použití unikátního názvu souboru">
+<!ENTITY PageSaverImageSizePref.label "Velikost uloženého obrázku:">
+<!ENTITY PageSaverImageSizePref.tooltip "Velikost uloženého obrázku (procenta původní velikosti či maximální rozměr v pixelech)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; původní velikosti">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "pixelů (maximální rozměr)">
+<!ENTITY PageSaverImageFormatMenu.label "Formát obrázku">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Uložit ve formátu &quot;Portable Network Graphics&quot;">
+<!ENTITY PNGTransparencyPref.label "Zahrnout informace o průhlednosti">
+<!ENTITY PNGTransparencyPref.tooltip "Zahrnout informace o průhlednosti (větší velikost souboru)">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Uložit ve formátu JPEG">
+<!ENTITY PageSaverJPEGQualityPref.label "Kvalita:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Číslo mezi 0 a 100; větší číslo znamená lepší kvalitu">
+<!ENTITY PageSaverServerURI.label "Adresa serveru:">
+<!ENTITY PageSaverServerURIExample.label "např. ftp://ftp.priklad.cz/muj_adresar/">
+<!ENTITY PageSaverServerURI.tooltip "Adresa tohoto serveru ftp://, http://, nebo https://">
+<!ENTITY PageSaverServerID.label "Uživatelské jméno:">
+<!ENTITY PageSaverServerID.tooltip "Uživatelské jméno pro přihlášení k tomuto serveru">
+<!ENTITY PageSaverServerPassword.label "Heslo:">
+<!ENTITY PageSaverServerPassword.tooltip "Heslo pro přihlášení k tomuto serveru">
+<!ENTITY saveVisiblePageImageContextMenu.label "Uložit obrázek viditelné části jako ...">
+<!ENTITY saveEntirePageImageContextMenu.label "Uložit obrázek celé stránky jako...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Uložit obrázek vybrané části...">
+<!ENTITY saveFrameImageContextMenu.label "Uložit obrázek tohoto celého rámce...">
+<!ENTITY pageSaverFrameMenu.label "Uložit obrázek celého rámce">
+<!ENTITY pageSaverFeedbackContextMenu.label "Zaslat odezvu...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Arrange to Capture Flash Content">
+<!ENTITY pageSaverOptionsContextMenu.label "Nastavení Page Saveru...">
+<!ENTITY pageSaverSaveToFileMenu.label "Obrázek bude uložen do lokálního souboru">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Obrázek bude zkopírován do schránky">
+<!ENTITY pageSaverSaveToServerMenu.label "Obrázek bude uložen na server">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "Uložit obrázek zobrazené stránky">
+<!ENTITY regionCaptureButton.label "Capture">

@@ -1,0 +1,33 @@
+#thin_column { width: 50%; margin: auto; }
+
+#comments { text-align: left; margin-top: 2em; }
+.day { float: left; padding-right: 2.2em; margin-top: -1em; text-align: center; }
+.day .month_name { color:#156451; line-height:1.5em; position: relative; bottom: -.9em; }
+.day .day_number { font-size: 3em; font-weight: bold; color: #cccccc; padding: 0em; margin: 0em; }
+.day .day_name { color:#156451; line-height:1.5em; position: relative; top: -.9em; }
+
+.day { padding: 0em 1em 0em 0em; }
+.day img { text-align: center; margin: 0em; padding: 0em; }
+.time_ago { color: #999999; }
+.reply { margin: -.2em -.8em 0em 0em; float: right; }
+.message { background: #FAF3F4; border: 1px solid #DAD3D4; padding: .2em 1em .6em 1em; margin: .5em 0em 0em 0em; }
+.message p { margin: .4em 0em .4em 0em; }
+
+.comment { padding: 1.7em 0em 0em 2em; text-align: left; }
+.indent1 { margin-left: 0em; padding-left: 0em; }
+.indent2 { margin-left: 2em; border-left: 1px dotted #cccccc; }
+.indent3 { margin-left: 2em; border-left: 1px dotted #cccccc; }
+.indent4 { margin-left: 2em; border-left: 1px dotted #cccccc; }
+.indent5 { margin-left: 2em; margin-right: -4em; border-left: 1px dotted #cccccc; }
+.indent6 { margin-left: 2em; margin-right: -6em; border-left: 1px dotted #cccccc; }
+.indent8 { margin-left: 2em; margin-right: -8em; border-left: 1px dotted #cccccc; }
+.indent9 { margin-left: 2em; margin-right: -10em; border-left: 1px dotted #cccccc; }
+.indent10 { margin-left: 0em; margin-right: -12em; border-left: 1px dotted #cccccc; }
+
+#comment_twitter_username { margin-top: 1em; text-align: left; }
+#comment_submit { float: right; margin-top: 1.3em; }
+
+form, form p { text-align: center; }
+
+.paragraph_logo { width: 9em; float: left; }
+.paragraph_text { padding-top: 3em; }

@@ -1,0 +1,81 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Edit {{ theme.name }}{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jcarousellite_1.0.1.min.js"></script>
+{% endblock %}
+			
+{% block content %}
+	<div id="thick_column">
+	
+		<div id="theme_info">
+			<span class="theme_name pink">{{ theme.name}}</span>
+			<span class="created_by">created by </span>
+			<span class="theme_author pink">
+				{{ theme.author }}
+				<img src="{{ theme.author.profile_img_url }}">
+			</span>
+		</div>
+		
+		<h3>Required backgrounds <span style="padding-left:6em;">Optional backgrounds</span></h3>
+		<div id="current_images">
+			{% for image in theme.core_images %}
+				<div class="image core_image">
+					{% include 'imager/snippets/show_image_and_code.html' %}
+					{% include 'imager/snippets/show_upload_button.html' %}
+				</div>
+			{% endfor %}
+		</div>
+		
+		<div id="carousel_container">
+			<button style="float:left;" class="prev">&lt;</button>
+			<div style="float:left;" id="carousel_redirects">
+			    <ul>
+				{% for image in theme.extra_images %}
+					<li class="image extra_image">
+						{% include 'imager/snippets/show_image_and_code.html' %}
+						{% include 'imager/snippets/show_upload_button.html' %}
+						{% if image.image.name %}
+							{% include 'imager/snippets/show_delete_button.html' %}
+						{% else %}
+							{% include 'imager/snippets/show_delete_spacer.html' %}
+						{% endif %}
+					</li>
+				{% endfor %}
+			    </ul>
+			</div>
+			<button style="float:left;" class="next">&gt;</button>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready( function() {
+				$("#carousel_redirects").jCarouselLite({
+	        		btnNext: ".next",
+	        		btnPrev: ".prev",
+	        		visible: 3,
+	        		mouseWheel: true,
+	        		circular: false,
+	        		scroll: 3,
+	        		speed: 1000,
+	    		});
+			});
+		</script>
+	</div>
+	
+	<div id="thin_column">
+		<h3>Help</h3>
+		<p>
+		When weather conditions without background images occur, weatherizer
+		displays backgrounds from the closest matching condition.
+		</p>
+		<p>
+		Uploadimg images for additional weather conditions is optional. Doing so may make your
+		theme more precise and interesting. 
+		</p>
+		<p>
+		For more details see the <a href="{% url imager_help %}">help page</a>.
+		</p>
+	</div>
+{% endblock %}

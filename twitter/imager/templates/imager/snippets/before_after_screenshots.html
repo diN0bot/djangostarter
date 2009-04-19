@@ -1,0 +1,20 @@
+<div class="screen_shot_thumbnail">
+	{% if theme.before_screenshot %}
+		<a href="{% url screen_shot theme.slug "before" %}">
+			<span style="padding-bottom:3em;">Before</span><br >
+			<img alt="before screenshot" src="{{theme.before_screenshot.url }}" height=132 width=124 >
+		</a>
+	{% else %}
+		No before screen shot
+	{% endif %}
+</div>
+<div class="screen_shot_thumbnail">
+	{% if theme.after_screenshot %}
+		<a href="{% url screen_shot theme.slug "after" %}">
+			<span style="margin-bottom:3em;">After</span><br >
+			<img alt="after screenshot" src="{{ theme.after_screenshot.url }}" height=132 width=124 >
+		</a>
+	{% else %}
+		No after screen shot
+	{% endif %}
+</div>

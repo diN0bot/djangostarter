@@ -1,0 +1,20 @@
+@import url("chrome://global/skin/");
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* 2 */
+.tabbrowser-tab {
+  background-color: -moz-dialog;
+  color: -moz-dialogtext;
+}
+
+/* 3 */
+.tabbrowser-tab[selected="true"] {
+  background-color: -moz-dialog !important;
+  color: -moz-dialogtext !important;
+  outline-style: none;
+}
+
+/* 4 */
+.tabbrowser-tab[selected="true"]:focus > .tab-text {
+  border-color: -moz-dialogtext;
+}

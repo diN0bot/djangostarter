@@ -1,0 +1,50 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherize!{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+		
+{% block content %}
+	<div id="thin_column">
+		<h3 style="letter-spacing: .135em;">Weatherize your twitter background</h3>
+		<p>
+		Every hour we'll update an icon on your twitter background to reflect your local weather.
+		</p>
+		
+		<h3>Example</h3>
+		
+		{% include 'imager/snippets/before_after_screenshots.html' %}
+		
+		<h3>Weatherize</h3>
+		
+		<form id="authorize_form" method="post" enctype="multipart/form-data">
+			{{ form.as_p }}
+			<p>
+				<input type="submit" value="Weatherize!" /></td>
+			</p>
+		</form>
+
+		<h3>Password security guarantee</h3>
+		<div id="password_guarantee">
+			<p>
+			We only use your twitter password to update your
+			background image according to your local weather. 
+			</p>
+			<p>
+			You can stop weatherization at any time by clicking on
+			<a href="{% url weatherized %}">My Weatherizer</a>.
+			</p>
+			<p>
+			As soon as twitter provides OAuth, "an authentication protocol 
+			that allows users to approve application to act on their behalf 
+			without sharing their password", we will use that.
+			</p>
+			<p>
+			<a href="http://apiwiki.twitter.com/OAuth-FAQ">OAuth is currently in closed beta</a>.
+			</p>
+		</div>
+
+	</div>
+{% endblock %}

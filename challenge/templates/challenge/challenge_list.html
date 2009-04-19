@@ -1,0 +1,17 @@
+{% extends 'challenge/base.html' %}
+
+{% block window_title %}Challenges{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block title %}Challenges{% endblock %}
+
+{% block content %}
+	
+	{% for challenge in challenges %}
+		<div class="challenge">
+			{% include 'challenge/snippets/challenge_summary.html' %}
+		</div>
+	{% endfor %}
+	
+{% endblock %}

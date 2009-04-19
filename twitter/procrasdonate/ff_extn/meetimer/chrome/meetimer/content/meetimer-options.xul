@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window id="meetimer-options"
+	title="MeeTimer"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="window.meeOptions = new MeeOptions()">
+
+<script src="json.js" />
+<script src="DB.js" /> 
+<script src="StoredProcedures.js" /> 
+<script src="MTCOMMON.js" />
+<script src="options.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/ff_options.js" />
+
+
+
+<hbox id="meetimer-title" style="margin:auto;margin-top:2px;margin-bottom:0px;background-color:white;text-align:center;padding-bottom:2px;width:800px;">
+
+<spacer flex="1"/>
+
+<image src="chrome://meetimer/content/logo-banner.jpeg"  style="margin:auto;" />
+
+<spacer flex="1"/>
+</hbox>
+<hbox>
+<button label="Close" oncommand="window.close()" style="font-size:0.9em;height:20px;" />
+<label id="statusmsg" value="You are running MeeTimer 0.22." style="font-size:0.8em" />
+</hbox>
+
+<popupset>
+
+	<menupopup id="menu-change-group">
+		<menuitem label="Move Site to Another Group:" style="color:#666;font-size:0.8em;margin-left:-5px;" noaction="1" />
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="" style="display:none" isgroup="1"/>
+		<menuitem label="Other Actions:" style="color:#666;font-size:0.8em;margin-top:5px;margin-left:-5px;" noaction="1"/>
+		<menuitem label="Ungroup" ungroup="1"/>
+		<menuitem label="Remove Records" removerecords="1" />
+	</menupopup>
+
+</popupset>
+
+<tabbox id="tabboxMain" flex="1">
+	<tabs>
+		<tab id="tabGeneral" label="General" />
+		<tab id="tabGroups" label="Groups" />
+		<tab id="tabSiteLogging" label="Rename Sites" />
+		<tab id="tabMaintenance" label="Maintenance" />
+		<tab id="tabDeterrents" label="Deterrents" />
+		<tab id="tabStats" label="Stats" />
+	</tabs>
+	
+	<tabpanels flex="1">
+
+		<tabpanel id="general">
+			<vbox>
+			<label style="font-weight:bold" value="Info for Stats" />
+			<hbox style="margin-left:20px">
+				<label style="width:100px" value="Hours in Working Week:" />
+				<textbox sectionName="statInfo" optionName="workingWeek" value="" />
+			</hbox>
+			<label style="font-weight:bold" value="Display" />
+				<checkbox sectionName="display" optionName="mouseContext" style="margin-left:20px;display:none;" label="On Context Menu (Right Click Menu)"  />
+				<checkbox sectionName="display" optionName="trayIcon" style="margin-left:20px" label="Tray Icon" />
+				<checkbox sectionName="display" optionName="trayTimer" style="margin-left:20px" label="Tray Timer" />
+			<label style="font-weight:bold" value="Startup" />
+				<checkbox sectionName="startup" optionName="switchToDeterrent" style="margin-left:20px" label="Switch to Discourage-Me Mode (will warn/stop you on selected sites)" />
+			</vbox>
+		</tabpanel>
+		<tabpanel id="Groups">
+			<vbox flex="1">
+				<label value="Groups are used to get a better view of how you spend your time online." />
+				<label value="Create a group for each common activity you wish to monitor (e.g. procrastination, communication, search, etc.)" />
+				
+				<vbox>
+					<label value="Groups" style="font-weight:bold;margin-top:10px" />
+					<listbox id="groups-listbox" flex="1" style="height:120px" >
+						
+					</listbox>
+					<hbox>
+						<button id="groups-remove" label="Remove Group" style="margin-left:15px;width:150px;margin:auto;margin-right:0px" />
+						<spacer flex="1" />
+						<button id="groups-add" label="Add New Group" style="width:150px" />
+					</hbox>
+				</vbox>
+				
+				<vbox>
+					<label id="groups-sites-title" value="Sites in Chosen Group" style="font-weight:bold;margin-top:10px" />
+					<listbox id="groups-sites-listbox" flex="1" style="height:160px" context="menu-change-group" >
+						
+					</listbox>
+					<button id="groups-sites-remove" label="Remove Site from Group" style="width:150px;" />
+					<label value="To add a site, visit it, right click on MeeTimer in Firefox's status bar, and choose 'Add to Group'" />
+				</vbox>
+			</vbox>
+		</tabpanel>		
+		<tabpanel id="RenameSite">
+			<vbox flex="1">
+				<label value="MeeTimer only records the domain/sub-domain of a site (e.g. mail.google.com)." />
+				<label value="This means some sites, like Google Reader (google.com/reader), cannot be uniquely identified." />
+				<label value="" />
+				<label value="MeeTimer can be made to record certain site address differently." />
+				<label value="To do this, simply enter the address you wish to capture, and then what you wish it to be recorded as." />
+				<listbox id="alteration_list">
+					<listhead>
+						<listheader label="Find" />
+						<listheader label="Replace" />
+					</listhead>
+					<listcols>
+						<listcol flex="1" />
+						<listcol flex="1" />
+					</listcols>
+					
+				</listbox>
+				<button id="alteration_remove" label="Remove Alteration" />
+				<label value="" />
+				<groupbox>
+					<caption>
+						<label value="Add Alteration:" />
+					</caption>
+					<hbox>
+						<vbox>
+							<hbox>
+								<label value="Find:" style="width:100px"/>
+								<textbox id="alteration_find" />
+							</hbox>
+							<hbox>
+								<label value="Replace:" style="width:100px"/>
+								<textbox id="alteration_replace" />
+							</hbox>
+						</vbox>
+						<button id="alteration_add" label="Add Alteration" />
+					</hbox>
+					<label value="Use a wildcard (%) to capture a wider range of addresses." />
+					<label value="(e.g. %facebook.com% => facebook.com - this would record any Facebook site as 'facebook.com')" />
+				</groupbox>
+			</vbox>
+		</tabpanel>	
+		<tabpanel id="Maintenance">
+			<vbox flex="1">
+				<label value="Delete All Records of a Site" style="font-weight:bold;" />
+				<hbox>
+				<label value="Site Url:" />
+				<vbox>
+					<textbox id="delete_text" />
+					<label value="e.g. www.google.co.uk" />
+					<label value="(You can also use wildcards to remove many sites at once. E.g. %google% would remove all traces of Google sites.)" style="font-size:0.9em" />
+					<label value=" " />
+					<label value="If you consistently do not wish to monitor a site, you can permanently ignore it." style="font-size:0.9em;margin-top5px;" />
+					<label value="Simply visit the site, right click on MeeTimer in Firefox' status bar, and choose 'Ignore Site'." style="font-size:0.9em;margin-top5px;" />
+				</vbox>
+				<vbox>
+					<button id="delete_button" label="Remove Site Records" title="Remove all records of sites that match the pattern you enter." />
+				</vbox>
+				</hbox>
+
+			</vbox>
+		</tabpanel>
+		<tabpanel id="Deterrents">
+			<vbox >
+				<label value="Deterrents warn you when you load a site in a certain group (TabWarn), or move your mouse over a link (LinkWarn)." />
+				<label value="This decreases cases of the compulsive 'quick, load a news page' type behaviour that we all sometimes engage in." />
+				<label value="The warnings only happen when MeeTimer is in Discourage-Me mode. I.e. you can easily deactivate them when you want to browse freely." />
+				
+				
+				<label value="Deter by Group" style="font-weight:bold;margin-top:10px" />
+				<hbox flex="1">
+				<listbox id="deterrents-listbox"  flex="1" style="height:120px" >
+					<listhead>
+						<listheader label="Group" />
+						<listheader label="Use TabWarn" />
+						<listheader label="Use LinkWarn" />
+					</listhead>
+					<listcols>
+						<listcol flex="3" />
+						<listcol flex="1" />
+						<listcol flex="1" />
+					</listcols>
+				</listbox>
+				</hbox>
+				<checkbox sectionName="deterrent" optionName="incMisc" label="Use TabWarn on all Miscellaneous (ungrouped) Sites" />
+				<checkbox sectionName="deterrent" optionName="linkIncMisc" label="Use LinkWarn on all Miscellaneous (ungrouped) Links" />
+			</vbox>
+		</tabpanel>		
+		<tabpanel id="Stats">
+			<hbox flex="1">
+				<vbox id='timepane_popular'>
+					<label value="Today" timePane="today" style="color:blue;cursor:pointer;text-decoration:underline;font-weight:bold;"/>
+					<label value="This Week" timePane="thisweek" style="color:blue;cursor:pointer;text-decoration:underline;"/>
+					<label value=" " />
+					<label value="Yesterday" timePane="yesterday" style="color:blue;cursor:pointer;text-decoration:underline;" />
+					<label value="Previous Week" timePane="lastworkingweek" style="color:blue;cursor:pointer;text-decoration:underline;"/>
+					<label value=" " />
+					<label value="Last 7 Days" timePane="lastweek" style="color:blue;cursor:pointer;text-decoration:underline;" />
+					<label value="Last 31 Days" timePane="lastmonth" style="color:blue;cursor:pointer;text-decoration:underline;" />
+					<label value="Last 365 Days" timePane="lastyear" style="color:blue;cursor:pointer;text-decoration:underline;" />
+				</vbox>
+				<vbox id='maincontent_popular' flex="1">
+					<label value="Overview: Total Times" />
+					<listbox id="list-overview" style="height:130px;">
+						<listhead>
+							<listheader label="Section" />
+							<listheader label="Total Time" />
+							<listheader label="Daily Average" />
+						</listhead>
+						<listcols>
+							<listcol flex="1" />
+							<listcol flex="1" />
+							<listcol flex="1" />
+						</listcols>
+					</listbox>
+					
+					<label value="Popular Sites" />
+					<hbox flex="1">
+					<listbox id="list-popular" flex="1" style="width:400px" context="menu-change-group" >
+						<listhead>
+							<listheader label="" />
+							<listheader label="Site" />
+							<listheader label="Total Time" />
+							<listheader label="Daily Average" />
+						</listhead>
+						<listcols>
+							<listcol flex="1" />
+							<listcol flex="1" />
+							<listcol flex="1" />
+							<listcol flex="1" />
+						</listcols>
+					</listbox>
+					</hbox>
+					
+					<label value="Tip: Right click an address to change groups or remove records." style="font-size:0.8em;color:#444" />
+				</vbox>
+			</hbox>
+		</tabpanel>
+		<tabpanel id="donate">
+			<iframe id="iframeDonate" src="about:blank" flex="1" />
+		</tabpanel>
+	</tabpanels>
+
+</tabbox>
+
+<hbox style="text-align:center;width:100%" flex="1">
+	<spacer flex="1" />
+	<label id="promoteMeecard" value="From the makers of GTDInbox - Getting Things Done with Gmail" style="font-weight:bold;text-align:center;margin:auto;color:green;" />
+	<label id="promoteMeecard_Link" value="http://gtdinbox.com" style="font-weight:bold;color:blue;cursor: pointer;text-decoration: underline;" onclick="window.open('http://www.gtdinbox.com')" />	
+	<spacer flex="1" />
+</hbox>
+
+
+</window>

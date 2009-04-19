@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css" href="chrome://timetrack/content/style.css" ?>
+
+<!-- Copyright 2006 Juan Casares -->
+
+<!DOCTYPE dialog SYSTEM "chrome://timetrack/locale/overlay.dtd">
+
+
+
+<prefwindow id="timetrack-prefs" title="&pref.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	windowtype="prefwindow"
+	buttons="accept,cancel"
+>
+
+<prefpane id="timetrack-prefpane">
+	<preferences>
+		<preference id="timetrack-secTimeoutLength" name="extensions.timetrack.secTimeoutLength" type="int" />
+		<preference id="timetrack-workSites" name="extensions.timetrack.workSites" type="string" />
+		<preference id="timetrack-startPaused" name="extensions.timetrack.startPaused" type="bool" />
+		<preference id="timetrack-showSeconds" name="extensions.timetrack.showSeconds" type="bool" />
+		<preference id="timetrack-displayMode" name="extensions.timetrack.displayMode" type="int" />
+	</preferences>
+	
+	<spacer style="height: 6px"/>
+	
+
+	<groupbox flex="1">
+		<caption label="&pref.displaygroup;"/>
+		
+		<hbox align="start">
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<spacer style="height: 0px"/>
+				<image src="chrome://timetrack/content/clock24.png" height="24" width="24"/>
+			</vbox>
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<label value="&pref.displaymodelabel;" class=""/>
+				<hbox align="center">
+					<label value="" class="pref-label"/>
+					<radiogroup id="timetrack-displayMode-group" preference="timetrack-displayMode">
+						<radio id="timetrack-display-today" label="&pref.displayToday;" value="0"/>
+						<radio id="timetrack-display-reset" label="&pref.displayReset;" value="1"/>
+						<radio id="timetrack-display-life" label="&pref.displayInstall;" value="2"/>
+					</radiogroup>
+				</hbox>
+			
+				<hbox align="center">
+					<checkbox 
+							id="timetrack-showSecondsCheck" 
+							preference="timetrack-showSeconds" 
+							label="&pref.showsecondscheck;"/>
+				</hbox>
+
+				
+			</vbox>
+		</hbox>
+	</groupbox>
+	
+
+	<groupbox flex="1">
+		<caption label="&pref.idlegroup;"/>
+		
+		<hbox align="start">
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<spacer style="height: 6px"/>
+				<image src="chrome://timetrack/content/clock24-gray.png" height="24" width="24"/>
+			</vbox>
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<hbox align="center">
+					<label value="&pref.timeout;" control="timeout" class="pref-label"/>
+					<textbox id="timetrack-timeout" preference="timetrack-secTimeoutLength" class="textbox-seconds"/>
+					<label value="&pref.seconds;"/>
+				</hbox>
+				
+				<label value="&pref.timeoutdesc;" class="description"/>
+			</vbox>
+		</hbox>
+	</groupbox>
+	
+	
+	<groupbox flex="1">
+		<caption label="&pref.workgroup;"/>
+		
+		<hbox align="start">
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<spacer style="height: 6px"/>
+				<image src="chrome://timetrack/content/clock24-blue.png" height="24" width="24"/>
+			</vbox>
+			<spacer class="pref-hspacer"/>
+			<vbox class="wide">
+				<hbox align="center" class="wide">
+					<label value="&pref.filter;" control="filter" class="pref-label"/>
+					<textbox id="timetrack-filter" preference="timetrack-workSites" class="textbox-filter" mutliline="true"/>
+				</hbox>
+				
+				
+				<description class="description"> &pref.workdesc; </description>
+				<description class="description"> &pref.worksample; </description>
+			</vbox>
+		</hbox>
+	</groupbox>
+	
+	<groupbox flex="1">
+		<caption label="&pref.pausegroup;"/>
+		
+		<hbox align="start">
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<spacer style="height: 0px"/>
+				<image src="chrome://timetrack/content/pause.png" height="24" width="24"/>
+			</vbox>
+			<spacer class="pref-hspacer"/>
+			<vbox>
+				<hbox align="center">
+					<checkbox 
+							id="timetrack-startPausedCheck" 
+							preference="timetrack-startPaused" 
+							label="&pref.pausecheck;"/>
+				</hbox>
+				
+				<description class="description"> &pref.pausedesc;</description>
+			</vbox>
+		</hbox>
+	</groupbox>
+	
+</prefpane>
+
+</prefwindow>

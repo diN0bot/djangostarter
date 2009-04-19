@@ -1,0 +1,4 @@
+content	meetimer chrome/meetimer/content/
+overlay	chrome://browser/content/browser.xul	chrome://meetimer/content/meetimer-browser-overlay.xul
+
+locale	meetimer	en-US	chrome/meetimer/locale/en-US/

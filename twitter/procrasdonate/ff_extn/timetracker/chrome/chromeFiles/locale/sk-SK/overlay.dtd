@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "Nastavenia rozšírenia TimeTracker Options">
+<!ENTITY pref.displaygroup "Zobrazenie">
+<!ENTITY pref.displaymodelabel "Zobraziť čas presurfovaný od:">
+<!ENTITY pref.displayToday "Dnes">
+<!ENTITY pref.displayReset "Posledného vynulovania">
+<!ENTITY pref.displayInstall "Inštalácie rozšírenia TimeTracker">
+<!ENTITY pref.showsecondscheck "Zobraziť sekundy">
+<!ENTITY pref.idlegroup "Interval nečinnosti">
+<!ENTITY pref.timeout "Interval:">
+<!ENTITY pref.seconds "sekúnd">
+<!ENTITY pref.timeoutdesc "Po uplynutí zadaného času nečinnosti vo Firefoxe TimeTracker prestane odpočítavať čas.">
+<!ENTITY pref.workgroup "Filter stránok, ktoré nebudú zahrnuté do odpočítavania">
+<!ENTITY pref.filter "Zoznam filtrov:">
+<!ENTITY pref.workdesc "Tu zadané stránky (časti stránok) nebudú zahrnuté do odpočítavania. Toto je užitočné, ak nechcete počítať čas strávený na firemnom intranete, či fórach.">
+<!ENTITY pref.worksample "Zadajte filtre oddelené medzerami. Napríklad: &apos;www.usablehack.com  support  mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Pozastavenie">
+<!ENTITY pref.pausecheck "V nových oknách nespúšťať odpočítavanie">
+<!ENTITY pref.pausedesc "Kliknite na čas, ak chcete pozastaviť/spustiť odpočítavanie pre danú stránku.">
+<!ENTITY popup-resethours "od vynulovania">
+<!ENTITY popup-resetdate "dňa">
+<!ENTITY popup-noresetyet "(EŠTE NENULOVANÉ)">
+<!ENTITY popup-totalhours "hodín">
+<!ENTITY popup-startdate "od">
+<!ENTITY popup-today "ste doteraz dnes presurfovali">
+<!ENTITY context-options "Nastavenia">
+<!ENTITY context-options-key "N">
+<!ENTITY context-reset "Vynulovať">
+<!ENTITY context-reset-key "V">

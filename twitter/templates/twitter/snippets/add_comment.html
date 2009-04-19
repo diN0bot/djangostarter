@@ -1,0 +1,17 @@
+<form method="post" id="comment_form">
+	<textarea id="comment_textarea" name="comment" cols="67" rows="5"></textarea>
+	<input id="comment_submit" type="submit" value="submit" />
+	{% if not twitter_user %}
+		<div id="comment_twitter_username">
+			<label>twitter username (optional): </label>
+			<input type="text" name="comment_twitter_username" size=16 />
+		</div>
+	{% endif %}
+	<p class="error">{{ comment_error }}</p>
+		
+	<script type="text/javascript">
+		$(document).ready( function() {
+			$("#comment_textarea").focus();
+		});
+	</script>
+</form>

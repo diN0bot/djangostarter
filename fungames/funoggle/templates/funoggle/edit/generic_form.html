@@ -1,0 +1,41 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}{{ title }}{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+			
+{% block logo %}
+	<img alt=""  src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+		<form method="post" {% if multipart %}enctype="multipart/form-data"{% endif %}>
+			{% for random_error in form.errors.random %}
+				<p class="error">{{ random_error|safe }}</p>
+			{% endfor %}
+			{{ form.as_p }}
+			<p><input type="submit" value="{{ submit_value }}"></p>
+			<p><a href="{{ cancel_url }}">Cancel</a></p>
+		</form>
+		
+		{% if zipcode_tips or background_tips %}
+		<h3>Tips</h3>
+			<ul class="paragraph_list">
+			
+			{% if zipcode_tips %}
+				{% include 'imager/snippets/zipcode_tips.html' %}
+			{% endif %}
+			
+			{% if background_tips %}
+				{% include 'imager/snippets/background_tips.html' %}
+			{% endif %}
+			
+			<li><a href="{% url feedback "imager" %}">Get help with problems</a></li>
+			</ul>
+		{% endif %}
+	</div>
+	
+{% endblock %}

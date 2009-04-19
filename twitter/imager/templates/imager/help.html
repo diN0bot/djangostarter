@@ -1,0 +1,202 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherizer Help{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div class="page_menu">
+		<h3>On this page</h3>
+		<ul>
+			<li><a href="#what">Weatherize?</a></li>
+			<li><a href="#how">How does it work?</a></li>
+			<li><a href="#stop">How do I stop weatherizing?</a></li>
+			<li><a href="#zipcode">How do I change my zipcode?</a></li>
+			<li><a href="#foc">Fahrenheit or Celsius?</a></li>
+			<li><a href="#trust">Can I trust you?</a></li>
+			<li><a href="#follow">Is following @weatherizer useful?</a></li>
+			<li><a href="#feedback">I have a problem, question or request.</a></li>
+			<li><a href="#who">Who made this app?</a></li>
+			<li><a href="#why">Why?</a></li>
+			<li><a href="#tos">Terms of use.</a></li>
+		</ul>
+	</div>
+
+	<div id="thin_column">
+		<h3><a name="what"></a>Weatherize?</h3>
+			<p>
+			Weatherizer is a twitter application that updates twitter backgrounds and avatars
+			to reflect the local weather.
+			</p>
+			{% with icon_theme as theme %}
+				{% include 'imager/snippets/before_after_screenshots_table.html' %}
+			{% endwith %}
+			<p>
+			In the above screen shot, weather icons and forecast are added to an existing background.
+			</p>
+			<p>
+			Twitter-ers can also replace their twitter homepage backgrounds with weatherized themes,
+			as shown below.
+			</p>
+			{% with replace_theme as theme %}
+				{% include 'imager/snippets/before_after_screenshots_table.html' %}
+			{% endwith %}
+
+		<h3><a name="how"></a>How does it work?</h3>
+			<p>
+				<a href="{% url imager %}">Select a weather theme</a>.
+			</p>
+			<p>
+				Every hour, weatherizer checks the <a href="http://developer.yahoo.com/weather/">
+				Yahoo! Weather RSS Feed</a> for your local weather report.
+			</p>
+			<p>
+				Weatherizer then updates your twitter background or avatar with the image
+				or icon that best matches your local weather conditions.
+			</p>
+			
+		<h3><a name="stop"></a>How do I stop weatherizing?</h3>
+			{% if twitter_user %}
+				{% with twitter_user.weatherized_background as WB %}
+				{% with twitter_user.weatherized_avatar as WA %}
+				
+				{% if not WB and not WA %}
+					<p>
+					You are not currently weatherized, which means that weatherizer is not updating your
+					twitter background or avatar.
+					</p>
+					<p>
+					If you were weatherized, there would be buttons here for you to click.
+					</p>
+					
+				{% else %}
+					<p>
+					Help weatherizer become more fun and useful. Provide feedback
+					on your weatherized experience and wishlist:
+					</p>
+					<form method="post" action="{% url weatherized %}">
+						<textarea name="reason_why" rows=8 cols=70></textarea>
+						<br />
+						{% if WB %}
+						<input class="link" type="submit" name="stop_background" value="Stop weatherizing my BACKGROUND" />
+						{% endif %}
+						{% if WA and WB %}
+						<span style="padding-left: 2.5em;"></span>
+						{% endif %}
+						{% if WA %}
+						<input class="link" type="submit" name="stop_avatar" value="Stop weatherizing my AVATAR" />
+						{% endif %}
+					</form>
+					<p>Stopping means that weatherizer will no longer update your background or avatar. 
+					You may still need to change your background or avatar via your Twitter 
+					<a href="http://twitter.com/account/settings">Settings</a>.</p>
+				{% endif %}
+				
+				{% endwith %}
+				{% endwith %}
+				
+			{% else %}
+				<p>
+				Go to you <a href="{% url weatherized %}">My Weatherizer</a> page.
+				</p>
+				<p>Sign in with your twitter credentials if necessary.
+				</p>
+				<p>Click one of the "Stop weatherizing" buttons. 
+				</p>
+			{% endif %}
+			<p>
+				If something is not right, <a href="{% url feedback "imager" %}">let me know</a>.
+			</p>
+		
+		<h3<a name="foc"></a>Fahrenheit or Celsius?</h3>
+			<p>If you enter a US zipcode (5 letters), you get Fahrenheit. If you enter 
+			a non-US zipcode (<a href="http://whynoti.org/twitter/twitter.imager/authorize_background_changes/yahoo_rss_weather/">
+			the Location Id mentioned under Tips</a>, eg FRXX0024), you get Celsius.</p>
+			<p>Being able to select a preference is on my todo list.</p>
+		
+		<h3<a name="zipcode"></a>How do I change my zipcode?</h3>
+			{% if twitter_user %}
+				<p>
+					<a href="{% url change_zipcode_background %}">change zipcode</a>
+				</p>
+			{% else %}
+				<p>
+				Go to you <a href="{% url weatherized %}">My Weatherizer</a> page.
+				</p>
+				<p>Sign in with your twitter credentials if necessary.
+				</p>
+				<p>Click the "change zipcode" link.
+				</p>
+			{% endif %}
+			
+		<h3<a name="trust"></a>Can I trust you?</h3>
+			<p>
+			You can trust my integrity 100%.
+			</p>
+			<p>
+			I only store passwords for weatherizing users. I only use passwords to update
+			a user's background and initiate mutual twitter following between <a href="http://twitter.com/weatherizer">
+			@weatherizer</a> and that user. 
+			</p>
+			<p>
+			Twitter recently opened support for OAuth, "an authentication protocol 
+			that allows users to approve application to act on their behalf 
+			without sharing their password". Integrating OAuth into Weatherizer is 
+			at the top of my todo list.
+			</p>
+		
+		<h3<a name="follow"></a>Is following @weatherizer useful?</h3>
+			<p>
+			I was initially opposed to automatic following between <a href="http://twitter.com/weatherizer">
+			@weatherizer</a> and the weatherized, but the benefits of easy, two-way 
+			communication outweigh what I would otherwise see as an imposition on users.
+			</p>
+			<p>
+			Weatherizer stores your password and changes your background regularly!
+			If you have questions 
+			or problems, I want to know so that I can fix problems and provide answers as soon 
+			as possible. I also love receiving feedback and feature requests.
+			</p>
+			<p>
+			In return, I promise that weatherizer tweets rarely.
+			</p>
+			<p>
+			You can un-follow at any time.
+			</p>
+			<p>
+			Sometimes I need to talk to people who have stopped following weatherizer. In order to keep 
+			weatherizer low-traffic, I use <a href="http://twitter.com/weatherizertalk">weatherizertalk</a>
+			to publicly reply to users.
+			</p>
+			
+		<h3><a name="feedback"></a>I have a problem, question, request.</h3>
+			<p>
+				Awesome! I want to help.
+			</p>
+			<p>
+				Please get in touch with me via the <a href="{% url feedback "imager" %}">feedback</a> page.
+			</p>
+		
+		<h3><a name="who"></a>Who made this app?</h3>
+			<p>
+				<a href="http://twitter.com/diN0bot"><img src="{{ diN0bot.profile_img_url }}"> diN0bot</a>,
+				in collaboration with cwallardo, telGGit and rockbiter.
+			</p>
+		
+		<h3><a name="why"></a>Why did you make this app?</h3>
+			<p>
+				Making things is fun. You can learn more on the <a href="{% url imager_about %}">about</a> page.
+			</p>
+			
+		<h3><a name="tos"></a>Terms of Service</a></h3>
+			<p>
+				<a href="{% url imager_tos %}">Terms of Service</a>
+			</p>
+	</div>
+{% endblock %}

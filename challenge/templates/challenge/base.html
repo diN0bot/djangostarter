@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block window_title %}{% endblock %}</title>
+		<link rel="shortcut icon" href=""{{ MEDIA_URL }}challenge/img/fav.gif type="image/x-icon" />	
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}challenge/css/challenge.css"></link>
+		<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}challenge/js/main.js"></script>
+		{% block head %}{% endblock %}
+
+	</head>
+
+	<body>
+		<div id="top">
+			<div id="about"><a href="{% url about %}">About</a></div>
+			<div id="feedback"><a href="{% url feedback %}">Feedback</a></div>
+		</div>
+		
+		<h2 id="title">
+			{% block title %}{% endblock %}
+		</h2>
+		
+		<div id="wrapper">
+			<div id='user_messages'>
+			{% for msg in user_messages %}
+				{% autoescape off %}
+					<p>{{ msg.read }}</p>
+				{% endautoescape %}
+			{% endfor %}
+			</div>
+		
+			<div id="content">{% block content %}{% endblock %}</div>
+		</div>
+		
+		<div id="footer"></div>
+	</body>
+
+</html>

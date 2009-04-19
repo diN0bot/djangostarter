@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<overlay id="meetimer-browser-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+<script type="application/x-javascript" src="chrome://meetimer/content/json.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/MeeTimer.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/MeeTimerPage.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/MTCommon.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/ff_options.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/DB.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/StoredProcedures.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/WebsitesIgnored.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/MeeGroups.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/UrlMaps.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/Deterrents.js" />
+<script type="application/x-javascript" src="chrome://meetimer/content/DeterLinks.js" />
+
+<script type="application/x-javascript">
+<![CDATA[
+
+
+
+var meeTimer = null;
+function initMeeTimer(){
+		meeTimer = new MeeTimer();
+};
+
+function openOptions(name){
+	if( window.meeTimerOptions && !window.meeTimerOptions.closed ){	// already open
+		window.meeTimerOptions.changeTab(name);
+		window.meeTimerOptions.focus();
+	}else{
+		window.meeTimerOptions = window.open('chrome://meetimer/content/meetimer-options.xul',name,'chrome,dialog,centerscreen');
+	}
+};
+
+window.addEventListener("load", function(){initMeeTimer()}, false);
+
+]]></script>
+
+<menupopup id="menu_ToolsPopup">
+	<menu id="meetimer-tools" insertafter="devToolsSeparator"/>
+</menupopup>
+
+<menu id="meetimer-tools" label="MeeTimer">
+	<menupopup>
+		<menuitem label="Options" oncommand="openOptions()"/>
+		<menuitem label="MeeTimer Help" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://meetimer.productivefirefox.com/help.htm');"/>
+		<menuitem label="How to Reduce Online Procrastination" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://meetimer.productivefirefox.com/how_to_reduce_online_procrastination.htm');"/>
+		<menuitem label="ProductiveFirefox.com Blog" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://blog.productivefirefox.com');"/>
+	</menupopup>
+</menu>
+
+
+<popup id="contentAreaContextMenu">
+	<menu id="meetimer-rmb-context" label="MeeTimer" insertafter="context-viewinfo" ></menu>		
+</popup>
+
+
+
+<window id="main-window">
+	<tooltip id="meetimer-panel-tooltip" noautohide="true" orient="vertical" style="padding:2px;">
+		<vbox id="meetimer-panel-tooltip-vbox">
+			<label id="meetimer-tooltip-title" value="MeeTimer - Today" style="margin:2px;font-weight:bold;"/>
+			<label id="meetimer-tooltip-url" value="" style="margin:2px;margin-top:20px;"/>
+			<label id="meetimer-tooltip-today" value="" style="margin:2px;margin-left:10px;font-size:0.97em;"/>
+			<label id="meetimer-tooltip-week" value="" style="margin:2px;margin-left:10px;font-size:0.95em;color:#444;"/>
+			<label id="meetimer-tooltip-grouptitle" value="Groups" style="margin:2px;margin-top:20px;font-size:0.97em;display:none"/>
+			<label value="" style="color:#777;margin-top:20px;" />
+			
+			
+			<label id="meetimer-tooltip-after-groups" value="" style="color:#777;margin-top:15px;" />
+			<label id="meetimer-tooltip-webusetitle" value="Total Time on Web" style="margin:2px;font-size:0.97em;"/>
+			<label id="meetimer-tooltip-webuse-today" value="" style="margin:2px;margin-left:10px;font-size:0.97em;"/>
+			<label id="meetimer-tooltip-webuse-week" value="" style="margin:2px;margin-left:10px;font-size:0.95em;color:#444;"/>
+		</vbox>
+	</tooltip>
+</window>
+
+<statusbar id="status-bar">
+	<statusbarpanel id="meetimer-panel" context="meetimer-popup-context" tooltip="meetimer-panel-tooltip">
+		<image id="meetimer-image" src="chrome://meetimer/content/logo16a.png"  />
+		<label id="meetimer-label" value=""  />
+	</statusbarpanel>
+	<popup id="meetimer-popup-context">
+			<menu id="meetimer-popup-site" label="" style="font-size:1.1.em;font-weight:bold;" >
+				<menupopup id="meetimer-popup-site-menupopup">
+					<menuitem id="meetimer-popup-group-new" label="Create New Group" />
+					<menuseparator  />
+					
+					<menuseparator id="meetimer-popup-site-after-groups" />
+					<menuseparator  />
+					<menuitem id="meetimer-popup-ignore-add" label="" tooltiptext="Hide the timer on this site, and do not store accumulated time." style="font-size:0.9em"/>
+					<menuitem id="meetimer-popup-ignore-remove" label="Stop ignoring this site" style="display:none;font-size:0.9em"/>
+					<menuitem id="meetimer-popup-map-add" visibleWhenIgnored="1" label="Alter this site's address in logs" tooltiptext="Change how this site is recorded (e.g. 'google.com' instead of 'x.google.com')" style="font-size:0.9em"/>
+					<menuitem id="meetimer-popup-map-remove" visibleWhenIgnored="1" label="Stop altering this site's address" style="display:none;font-size:0.9em"/>
+					<menuitem id="meetimer-popup-remove-records" visibleWhenIgnored="1" label="Remove All Records of this Site" style="font-size:0.9em"/>
+				</menupopup>
+			</menu>
+			<menuseparator  />
+			<menu label="More" >
+				<menupopup id="arm101">
+					<menuitem id="meetimer-popup-advancedstats" label="View Advanced Stats" oncommand="openOptions('meetimer_stats')" />
+					<menuseparator/>
+					<menuitem id="meetimer-popup-options" label="Options" oncommand="openOptions('meetimer_general')" />
+					<menuseparator/>
+					<menuitem label="MeeTimer Help" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://meetimer.productivefirefox.com/help.htm');"/>
+					<menuitem label="How to Reduce Online Procrastination" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://meetimer.productivefirefox.com/how_to_reduce_online_procrastination.htm');"/>
+					<menuseparator/>
+					<menuitem label="ProductiveFirefox.com Blog" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://blog.productivefirefox.com');"/>
+					<menuitem id="meetimer-popup-donate" label="Try GTDInbox for Free" oncommand="gBrowser.selectedTab = gBrowser.addTab('http://gtdinbox.com');" />
+				</menupopup>
+			</menu>
+			<menuseparator />
+			<menuitem id="meetimer-popup-mode-normal" label="Just Log (log where you spend time)" mode="normal" />
+			<menuitem id="meetimer-popup-mode-deterrent" label="Discourage Me (log sites and show warnings)" mode="deterrent" />
+			<menuitem id="meetimer-popup-mode-free" label="Suspend MeeTimer (no logging or warnings)" mode="free" />
+	</popup>
+</statusbar>
+
+
+
+
+
+
+
+
+
+</overlay>

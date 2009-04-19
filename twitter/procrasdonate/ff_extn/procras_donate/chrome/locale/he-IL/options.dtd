@@ -1,0 +1,22 @@
+<!ENTITY options_window_title "העדפות Aging Tabs">
+<!ENTITY tab_background.label "צבע לשונית מותאם">
+<!ENTITY tab_background.accesskey "C">
+<!ENTITY tab_text.label "צבע טקסט הלשונית מותאם">
+<!ENTITY tab_text.accesskey "e">
+<!ENTITY tab_background_target.label "צבע מטרת &quot;הזדקנות&quot; מותאם">
+<!ENTITY tab_background_target.accesskey "a">
+<!ENTITY highlight.label "הדגש את הלשונית הנבחרת">
+<!ENTITY highlight.accesskey "H">
+<!ENTITY highlight_background.label "צבע הדגשה מותאם">
+<!ENTITY highlight_background.accesskey "o">
+<!ENTITY highlight_text.label "צבע טקסט ההדגשה מותאם">
+<!ENTITY highlight_text.accesskey "x">
+<!ENTITY trigger_choice.label "הזדקנות...">
+<!ENTITY trigger_tab_switch.label "כאשר מחליפים לשוניות">
+<!ENTITY trigger_tab_switch.accesskey "s">
+<!ENTITY trigger_url_change.label "כאשר ערך סרגל הכתובות משתנה">
+<!ENTITY trigger_url_change.accesskey "U">
+<!ENTITY trigger_interval_seconds.label "לפי שניות:">
+<!ENTITY trigger_interval_seconds.accesskey "s">
+<!ENTITY amount_per_step.label "כמות הזדקנות לפי צעד:">
+<!ENTITY amount_per_step.accesskey "m">

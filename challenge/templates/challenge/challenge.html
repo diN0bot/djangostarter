@@ -1,0 +1,14 @@
+{% extends 'challenge/base.html' %}
+
+{% block window_title %}Challenge: {% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block title %}Challenge: {{ challenge.title }} {% endblock %}
+
+{% block content %}
+	<div><h3 class="description">normal:</h3> {{ challenge.description }}</div>
+	<div><h3 class="description">textile:</h3> {{ challenge.description|textile }}</div>
+	<div><h3 class="description">markdown:</h3> {{ challenge.description|markdown }}</div>
+	<div><h3 class="description">restructuredtext:</h3> {{ challenge.description|restructuredtext }}</div>
+{% endblock %}

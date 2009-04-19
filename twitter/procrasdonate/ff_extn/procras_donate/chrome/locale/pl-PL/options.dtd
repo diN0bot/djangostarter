@@ -1,0 +1,22 @@
+<!ENTITY options_window_title "Preferencje Aging Tabs">
+<!ENTITY tab_background.label "Kolor zakładki">
+<!ENTITY tab_background.accesskey "z">
+<!ENTITY tab_text.label "Kolor tekstu">
+<!ENTITY tab_text.accesskey "t">
+<!ENTITY tab_background_target.label "Kolor docelowy">
+<!ENTITY tab_background_target.accesskey "d">
+<!ENTITY highlight.label "Wyróżnij bieżącą zakładkę">
+<!ENTITY highlight.accesskey "W">
+<!ENTITY highlight_background.label "Kolor zakładki">
+<!ENTITY highlight_background.accesskey "a">
+<!ENTITY highlight_text.label "Kolor tekstu">
+<!ENTITY highlight_text.accesskey "e">
+<!ENTITY trigger_choice.label "Wiek...">
+<!ENTITY trigger_tab_switch.label "Podczas zmiany zakładki">
+<!ENTITY trigger_tab_switch.accesskey "m">
+<!ENTITY trigger_url_change.label "Gdy zmieni się adres URL">
+<!ENTITY trigger_url_change.accesskey "U">
+<!ENTITY trigger_interval_seconds.label "Po sekundach:">
+<!ENTITY trigger_interval_seconds.accesskey "s">
+<!ENTITY amount_per_step.label "Stopień starzenia (krok):">
+<!ENTITY amount_per_step.accesskey "t">

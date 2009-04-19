@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Možnosti zajemalca strani Pearl Crescent">
+<!ENTITY PageSaverGeneralTab.label "Splošno">
+<!ENTITY PageSaverCaptureTab.label "Zajem slike">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Glava in noga">
+<!ENTITY PageSaverDestinationTab.label "Cilj">
+<!ENTITY PageSaverShortcuts.label "Tipke za bližnjice:">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "Tipke za bližnjico ali klik na izbiro orodne vrstice shrani sliko:">
+<!ENTITY PageSaverSaveVisibleArea.label "vidnega dela strani">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Shrani sliko vidnega dela strani">
+<!ENTITY PageSaverSaveEntireArea.label "cele strani">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Shrani sliko celotne strani">
+<!ENTITY PageSaverSaveSelectedRegion.label "izbranega dela">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Shrani sliko izbranega dela">
+<!ENTITY PageSaverSaveEntireFrame.label "cel okvir">
+<!ENTITY PageSaverImageHeaderGroup.label "Glava">
+<!ENTITY PageSaverAddHeader.label "Dodaj glavo vsaki zajeti sliki">
+<!ENTITY PageSaverAddHeader.tooltip "Dodaj glavo po meri vsaki zajeti sliki">
+<!ENTITY PageSaverImageHeaderPref.label "Vzorec besedila glave:">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Oblikuj niz za glavo po meri">
+<!ENTITY PageSaverImageFooterGroup.label "Noga">
+<!ENTITY PageSaverAddFooter.label "Dodaj nogo za vsako zajeto sliko">
+<!ENTITY PageSaverAddFooter.tooltip "Dodaj nogo po meri za vsako zajeto sliko">
+<!ENTITY PageSaverImageFooterPref.label "Vzorec besedila noge:">
+<!ENTITY PageSaverImageFooterPref.tooltip "Oblikuj niz za nogo po meri">
+<!ENTITY PageSaverPrefsDestination.label "Shrani sliko:">
+<!ENTITY PageSaverDestLocalFile.label "kv rajevno datoteko">
+<!ENTITY PageSaverDestLocalFile.tooltip "Shrani slike v krajevno datoteko">
+<!ENTITY PageSaverDestClipboard.label "na odložišče">
+<!ENTITY PageSaverDestClipboard.tooltip "Kopiraj slike na odložišče, tako da jih je možno prilepiti v druge aplikacije">
+<!ENTITY PageSaverDestServer.label "v datoteko na strežniku">
+<!ENTITY PageSaverDestServer.tooltip "Shrani slike na strežnik (ponavadi z uporabo FTP ali HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Tipke za bližnjico">
+<!ENTITY PageSaverShortCutInstruction.label "Za nastavitev tipk za bližnjico kliknite v spodnje polje, nato pritisnite kombinacijo tipk, npr. Ctrl+F12. Za odstranitev pritisnite tipko Delete ali Backspace.">
+<!ENTITY PageSaverRegionShortCutKey.label "Tipke za bližnjico do izbora dela">
+<!ENTITY PageSaverShortCut.tooltip "Kliknite sem in pritisnite želeno kombinacijo tipk, npr. Ctrl+F12.">
+<!ENTITY PageSaverShortCutReminder.label "Opomba: tipke za bližnjice veljajo le v novo odprtih oknih.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Pokaži izbire kontekstnega menija brskalnika za shranjevanje slike:">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "Nadzor nad elementi Page Saver-ja, ki se pojavijo v kontekstnem meniju brskalnika">
+<!ENTITY PageSaverShowInStatusBar.label "Pokaži Page Saver v vrstici stanja Firefox">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Pokaži ikono Page Saver-ja v vrstici stanja Firefoxa">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "Pri nalaganju spletnih strani razporedite za zajem vsebine Flash">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "Lahko povzroči, da se nekatere strani, ki vsebujejo Flash, ne naložijo pravilno">
+<!ENTITY PageSaverPlaySound.label "Predvajaj zvok po zajemu slike">
+<!ENTITY PageSaverPlaySound.tooltip "Predvajaj zvok po zajemu slike">
+<!ENTITY PageSaverDestFile.label "Datoteka slike:">
+<!ENTITY PageSaverFileNamePref.label "Vzorec imena datoteke:">
+<!ENTITY PageSaverFileNamePref.tooltip "Oblikujte niz za ime datoteke">
+<!ENTITY PageSaverExample.label "Primer:">
+<!ENTITY PageSaverPromptBeforePref.label "Povprašaj pred shranjevanjem v krajevno datoteko">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Povprašaj za ime datoteke in mesto shranjevanja pred shranjevanjem">
+<!ENTITY PageSaverOverwriteFilePref.label "Prepiši obstoječo krajevno datoteko">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Počistite to polje za uporabo unikatnega imena datoteke">
+<!ENTITY PageSaverImageSizePref.label "Velikost shranjene slike:">
+<!ENTITY PageSaverImageSizePref.tooltip "Velikost shranjene podobe (odstotek izvirne velikosti ali največje mere v pikslih)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; izvirnika">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "pikslov (največja mera)">
+<!ENTITY PageSaverImageFormatMenu.label "Vrsta slike:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Shrani v zapisu Portable Network Graphics">
+<!ENTITY PNGTransparencyPref.label "Vključi podatke o prosojnosti">
+<!ENTITY PNGTransparencyPref.tooltip "Vključi podatke o prosojnosti (večja datoteka)">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Shrani v zapisu JPEG">
+<!ENTITY PageSaverJPEGQualityPref.label "Kakovost:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Število med 0 in 100; uporabite večje število za boljšo kakovost">
+<!ENTITY PageSaverServerURI.label "Mesto strežnika:">
+<!ENTITY PageSaverServerURIExample.label "npr. ftp://ftp.primer.si/mojamapa/">
+<!ENTITY PageSaverServerURI.tooltip "Naslov ftp://, http:// ali https:// tega strežnika">
+<!ENTITY PageSaverServerID.label "Uporabniško ime:">
+<!ENTITY PageSaverServerID.tooltip "Uporabniško ime, uporabljeno za prijavo na ta strežnik">
+<!ENTITY PageSaverServerPassword.label "Geslo:">
+<!ENTITY PageSaverServerPassword.tooltip "Geslo, potrebno za prijavo na ta strežnik">
+<!ENTITY saveVisiblePageImageContextMenu.label "Shrani sliko vidnega dela kot ...">
+<!ENTITY saveEntirePageImageContextMenu.label "Shrani sliko cele strani kot ...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Shrani sliko izbranega dela ...">
+<!ENTITY saveFrameImageContextMenu.label "Shrani sliko tega celega okvira ...">
+<!ENTITY pageSaverFrameMenu.label "Shrani sliko celega okvira">
+<!ENTITY pageSaverFeedbackContextMenu.label "Pošlji svoje mnenje ...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Razporedi za zajem vsebine Flash">
+<!ENTITY pageSaverOptionsContextMenu.label "Možnosti shranjevalca strani ...">
+<!ENTITY pageSaverSaveToFileMenu.label "Slika bo shranjena v krajevno datoteko">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Slika bo kopirana na odložišče">
+<!ENTITY pageSaverSaveToServerMenu.label "Slika bo shranjena na strežnik">
+<!ENTITY savePageImageIcon.label "Page Saver">
+<!ENTITY savePageImageIcon.tooltiptext "Shrani podobo trenutne strani">
+<!ENTITY regionCaptureButton.label "Zajemi">

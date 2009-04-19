@@ -1,0 +1,14 @@
+<div class="select_theme">
+	
+		{% include 'imager/snippets/theme_meta.html' %}
+		{% include 'imager/snippets/before_after_screenshots.html' %}
+		
+		<div class="images">
+			<a href="{% url theme theme.slug %}">
+				{% for image in theme.weather_images %}
+					<img class="weather_image" title="{{ image.code.name }}" alt="{{ image.code.name }}" width="{{ image.thumbnail_width }}" height="{{ image.thumbnail_height }}" src="{{ image.thumbnail_url }}" >
+				{% endfor %}
+			</a>
+		</div>
+
+</div>

@@ -1,0 +1,95 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}{{ theme.name }}{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="theme_nav_bar">
+		{% if prev_theme %}
+			<a class="pnav" href="{% url theme prev_theme.slug %}">previous theme</a>
+		{% else %}
+			<span class="pnav" style="color: 777777;">previous theme</span>
+		{% endif %}
+		
+		<span class="weatherize">
+			<a href="{% url authorize_background_changes theme.slug %}">
+				<button>Weatherize!</button>
+			</a>	
+		</span>
+		
+		{% if next_theme %}
+			<a class="nnav" href="{% url theme next_theme.slug %}">next theme</a>
+		{% else %}
+			<span class="nnav" style="color: 777777;">next theme</span>
+		{% endif %}
+	</div>
+
+	<div id="thin_column">
+		<div id="theme_info">
+			<span class="theme_name soft_pink">{{ theme.name}}</span>
+			<span class="created_by">created by </span>
+			<span class="theme_author soft_pink">
+				{{ theme.author }}
+				<img alt="" src="{{ theme.author.profile_img_url }}">
+			</span>
+		</div>
+		
+		<div style="margin: -2em 0em 2em 0em; text-align: center;" class="description">{{ theme.author_comments }}</div>
+		
+		<div style="clear: both; font-size: .9em; margin-bottom: 2em;">
+			<table class="theme_type_matrix">
+			<tbody>
+				<tr><th class="left"><span class="smallheader">THEME TYPE</span></th><th>replace</th><th>overlay</th></tr>
+				<tr><th class="left">background</th>
+					{% if theme.background_not_avatar and theme.replace_not_cover %}
+						<td class="selected">images replace user's background<span class="change_theme_info"></span></td>
+					{% else %}
+						<td></td>
+					{% endif %}
+					{% if theme.background_not_avatar and not theme.replace_not_cover %}
+						<td class="selected">images overlay user's background<span class="change_theme_info"></span></td>
+					{% else %}
+						<td></td>
+					{% endif %}
+				</tr>
+				<tr><th class="bottom left">avatar</th>
+					{% if not theme.background_not_avatar and theme.replace_not_cover %}
+						<td class="bottom selected">images replace user's avatar
+						<span class="change_theme_info"></span></td>
+					{% else %}
+						<td class="bottom"></td>
+					{% endif %}
+					{% if not theme.background_not_avatar and not theme.replace_not_cover %}
+						<td class="bottom selected">images overlay user's avatar
+						<span class="change_theme_info"></span></td>
+					{% else %}
+						<td class="bottom"></td>
+					{% endif %}
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		
+		<div style="margin-bottom: 2em;">
+			<p style="padding:0em 0em .5em 2.5em; margin: 0em;" class="smallheader">Screenshots</p>
+			{% include 'imager/snippets/before_after_screenshots_table.html' %}
+		</div>
+		
+		<div class="images">
+			{% for image in theme.weather_images %}
+				<div style="margin: 0em 2em 2em 0em; {# background: #E5E5E5; #} float: left;">
+					<span class="smallheader">{{ image.code.name }}</span><br>
+					<img class="weather_image" title="{{ image.code.name }}" width="{{ image.palm_width }}" alt="{{ image.code.name }}" src="{{ image.image.url }}" >
+				</div>
+			{% endfor %}
+		</div>
+	
+	</div>
+{% endblock %}

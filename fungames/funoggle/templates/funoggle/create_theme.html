@@ -1,0 +1,67 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Create New Weather Theme{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+			
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+	
+{% block content %}
+	<div id="thin_column">
+		<h3>Create new theme</h3>
+		<form method="post">
+			<table>
+			<tbody>
+				<tr><td class="error" colspan=2>{{ errors.theme_name }}</td></tr>
+				<tr>
+					<td><label>new theme name: </label></td>
+					<td><input type="input" name="create_theme_name" class="theme_name_input" value="{{theme_name}}"/></td>
+				</tr>
+				{% if not twitter_user %}
+					<tr><td class="error" colspan=2>{{ errors.username }}</td></tr>
+					<tr>
+						<td><label>username: </label><small></small></td>
+						<td><input type="text" name="username" class="imager_username_input" value="{{username}}"/></td>
+					</tr>
+				{% endif %}
+				{% if not twitter_user.password %}
+					<tr><td class="error" colspan=2>{{ errors.password }}</td></tr>
+					<tr>
+						<td><label>password: </label></td>
+						<td><input type="password" name="password" /></td>
+					</tr>
+				{% endif %}
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Create" /></td>
+				</tr>
+			</tbody>
+			</table>
+		</form>
+		
+		<h3>Edit existing theme</h3>
+		{% if not twitter_user or twitter_user.themes_created %}
+			<p><a href="{% url edit_some_theme %}">Edit a theme you previously created</a></p>
+		{% else %}
+			<p>You have not previously created any themes.</p>
+		{% endif %}
+	
+		{% if not twitter_user.password %}
+		<h3>Password security guarantee</h3>
+		<div id="password_guarantee">
+			<p>
+			We do not store passwords of theme creators or editors. We require crendentials 
+			so that a single twitter user is accountable for theme content. 
+			</p>
+			<p>
+			Should you want to edit this theme later, you will be able to enter your
+			password again to gain edit privileges.
+			</p>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}

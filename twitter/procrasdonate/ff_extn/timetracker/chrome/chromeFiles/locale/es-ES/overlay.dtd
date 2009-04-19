@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "Opciones de TimeTracker">
+<!ENTITY pref.displaygroup "Despliege">
+<!ENTITY pref.displaymodelabel "Mostrar tiempo desde que:">
+<!ENTITY pref.displayToday "Comenzó el día de hoy.">
+<!ENTITY pref.displayReset "Se reinició el contador.">
+<!ENTITY pref.displayInstall "Se instaló TimeTracker.">
+<!ENTITY pref.showsecondscheck "Mostrar segundos.">
+<!ENTITY pref.idlegroup "Tiempo para dormir">
+<!ENTITY pref.timeout "Dormir:">
+<!ENTITY pref.seconds "segundos">
+<!ENTITY pref.timeoutdesc "Cuando pase este tiempo sin usar Firefox, TimeTracker dejará de contar.">
+<!ENTITY pref.workgroup "Filtro de sitios de trabajo">
+<!ENTITY pref.filter "Lista de filtros:">
+<!ENTITY pref.workdesc "Sitios que contengan un filtro no sern contados. Usa esto para no contar el tiempo en sitios de trabajo, como una intranet o foros técnicos.">
+<!ENTITY pref.worksample "Ingresa los filtros separados con espacios. Por ejemplo: &apos;www.usablehack.com  support  mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Pausa">
+<!ENTITY pref.pausecheck "Empezar en pausa al abrir una nueva ventana.">
+<!ENTITY pref.pausedesc "Haz clic en el reloj o tiempo para detener/continuar contando.">
+<!ENTITY popup-resethours "desde reinicio">
+<!ENTITY popup-resetdate "el">
+<!ENTITY popup-noresetyet "(NUNCA REINICIADO)">
+<!ENTITY popup-totalhours "horas">
+<!ENTITY popup-startdate "desde">
+<!ENTITY popup-today "navegado hoy (por ahora)">
+<!ENTITY context-options "Opciones">
+<!ENTITY context-options-key "O">
+<!ENTITY context-reset "Reiniciar">
+<!ENTITY context-reset-key "R">

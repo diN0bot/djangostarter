@@ -1,0 +1,22 @@
+﻿<!ENTITY options_window_title			"Aging Tabs Preferences">
+<!ENTITY tab_background.label			"Custom tab color">
+<!ENTITY tab_background.accesskey		"C">
+<!ENTITY tab_text.label				"Custom tab text color">
+<!ENTITY tab_text.accesskey			"e">
+<!ENTITY tab_background_target.label		"Custom aging target color">
+<!ENTITY tab_background_target.accesskey	"a">
+<!ENTITY highlight.label			"Highlight selected tab">
+<!ENTITY highlight.accesskey			"H">
+<!ENTITY highlight_background.label		"Custom highlight color">
+<!ENTITY highlight_background.accesskey		"o">
+<!ENTITY highlight_text.label			"Custom highlight text color">
+<!ENTITY highlight_text.accesskey		"x">
+<!ENTITY trigger_choice.label			"Age ...">
+<!ENTITY trigger_tab_switch.label		"When switching tabs">
+<!ENTITY trigger_tab_switch.accesskey		"s">
+<!ENTITY trigger_url_change.label		"When the URL bar value changes">
+<!ENTITY trigger_url_change.accesskey		"U">
+<!ENTITY trigger_interval_seconds.label		"Per seconds: ">
+<!ENTITY trigger_interval_seconds.accesskey	"s">
+<!ENTITY amount_per_step.label			"Aging amount per step:">
+<!ENTITY amount_per_step.accesskey		"m">

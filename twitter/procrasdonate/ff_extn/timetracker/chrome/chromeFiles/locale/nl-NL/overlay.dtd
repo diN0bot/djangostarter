@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "TimeTracker opties">
+<!ENTITY pref.displaygroup "Weergave">
+<!ENTITY pref.displaymodelabel "Tijd weergeven die is gevolgd sinds:">
+<!ENTITY pref.displayToday "Vandaag.">
+<!ENTITY pref.displayReset "De laatste reset.">
+<!ENTITY pref.displayInstall "Het installeren van TimeTracker.">
+<!ENTITY pref.showsecondscheck "Seconden weergeven.">
+<!ENTITY pref.idlegroup "Timeout bij geen activiteit">
+<!ENTITY pref.timeout "Timeout:">
+<!ENTITY pref.seconds "seconden.">
+<!ENTITY pref.timeoutdesc "Als Firefox gedurende deze tijd niet wordt gebruikt, stopt TimeTracker met tellen.">
+<!ENTITY pref.workgroup "Filter niet volgen">
+<!ENTITY pref.filter "Filterlijst:">
+<!ENTITY pref.workdesc "Webadressen die een filter bevatten worden niet op tijd gevolgd. Dit kan worden gebruikt om te voorkomen dat de tijd van ondersteuningsfora of bedrijfsintranet wordt meegeteld.">
+<!ENTITY pref.worksample "Voer filters in, gescheiden door spaties. Bijvoorbeeld: &apos;www.usablehack.com support mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Pauze">
+<!ENTITY pref.pausecheck "Nieuwe venster beginnen in pauzestand.">
+<!ENTITY pref.pausedesc "Klik in de klok of de tijdsaanduiding om het volgen van dat venster te pauzeren / voort te zetten.">
+<!ENTITY popup-resethours "sinds de reset">
+<!ENTITY popup-resetdate "op">
+<!ENTITY popup-noresetyet "(NOOIT GERESET)">
+<!ENTITY popup-totalhours "uur">
+<!ENTITY popup-startdate "sinds de installatie op">
+<!ENTITY popup-today "vandaag tot dusver gesurft">
+<!ENTITY context-options "Opties">
+<!ENTITY context-options-key "O">
+<!ENTITY context-reset "Reset">
+<!ENTITY context-reset-key "R">

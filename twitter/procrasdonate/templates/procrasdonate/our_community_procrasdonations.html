@@ -1,0 +1,54 @@
+{% extends 'procrasdonate/base.html' %}
+
+{% block head %}
+	{{ block.super }}
+	<script language="javascript" type="text/javascript" src="{{ MEDIA_URL }}js/flot/jquery.flot.js"></script>
+	<!--[if IE]>
+		<script language="javascript" type="text/javascript" src="{{ MEDIA_URL }}js/flot/excanvas.min.js"></script>
+	<![endif]--> 
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+		<h3>Total ProcrasDonations</h3>
+		<ul>
+			<li>Recipients</li>
+			<li>Sites</li>
+			<li>ProcrasDonations</li>
+		</ul>
+		
+		Order by <input type="radio" name="order_by" checked="true">time <input type="radio" name="order_by">money
+		
+		<div id="procrasdonation_chart" style="width:100%;height:300px"></div>
+		<script language="javascript">
+			$(document).ready( function() {
+				var rawdata = [{% for pd in procrasdonations %}[{{forloop.counter}},{{pd.time_spent}}]{% if not forloop.last %},{% endif %}{% endfor %}];
+				var data = [
+					{
+					    //color: color or number
+					    data: rawdata,
+					    label: "ProcrasDonations",
+					    //lines: specific lines options
+					    //bars: specific bars options
+					    //points: specific points options
+					    //threshold: specific threshold options
+					    //xaxis: 1 or 2
+					    //yaxis: 1 or 2
+					    xaxis: 1,
+					    clickable: true,
+					    hoverable: true,
+					    //shadowSize: number
+					}
+				];
+				var options = {
+					lines: { show: true },
+					points: { show: true },
+					selection: { mode: "x", },
+					//crosshair: { mode: "xy", },
+				};
+				$.plot($("#procrasdonation_chart"), data, options);
+				
+			});
+		</script>
+	</div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Edit {{ theme.name }}{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+			
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+
+{% block content %}
+	<div id="thin_column">
+
+		<div id="theme_info">
+			<span class="theme_name soft_pink">{{ theme.name}}</span>
+			<span class="created_by">created by </span>
+			<span class="theme_author soft_pink">
+				{{ theme.author }}
+				<img alt="" src="{{ theme.author.profile_img_url }}">
+			</span>
+		</div>
+		{% if theme.published %}
+			<p>Theme is successfully published.
+			{{ theme.number_theme_users }} twitter-er{{ theme.number_theme_users|pluralize }} use this theme.
+			</p>
+		{% else %}
+			<p>Your theme will not be published until all <a href="#required">required information</a> is filled in.</p>
+		{% endif %}
+		
+		<h3>Required images</h3>
+		<p>Please only use images that you have the right to use.</p>
+		<div id="current_images">
+			{% for image in theme.core_images %}
+				<div class="image core_image">
+					{% include 'imager/snippets/show_image_and_code.html' %}
+					{% include 'imager/snippets/show_upload_button.html' %}
+				</div>
+			{% endfor %}
+		</div>
+		
+		<h3>Optional images</h3>
+			<p>
+			Weatherizer selects images that best match current weather conditions.
+			</p>
+			<p>
+			Uploading images for additional weather conditions is optional. Doing so may make your
+			theme more precise and interesting. 
+			</p>
+		
+		<div id="redirects">
+			{% for image in theme.extra_images %}
+				<div class="image extra_image">
+					{% include 'imager/snippets/show_image_and_code.html' %}
+					{% include 'imager/snippets/show_upload_button.html' %}
+					{% if image.image.name %}
+						{% include 'imager/snippets/show_delete_button.html' %}
+					{% else %}
+						{% include 'imager/snippets/show_delete_spacer.html' %}
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+
+		<h3><a name="required"></a>Required information</h3>
+			<h4>Will theme images replace or partially cover a user's existing background or avatar?</h4>
+			<table class="theme_type_matrix">
+			<tbody>
+				<tr><th class="left"><span class="smallheader">THEME TYPE</span></th><th>replace</th><th>overlay</th></tr>
+				<tr><th class="left">background</th>
+					{% if theme.background_not_avatar and theme.replace_not_cover %}
+						<td class="selected">images replace user's background<span class="change_theme_info">
+						(<a href="{% url edit_replace_background theme.slug %}">edit</a>)
+						</span></td>
+					{% else %}
+						<td></td>
+					{% endif %}
+					{% if theme.background_not_avatar and not theme.replace_not_cover %}
+						<td class="selected">images overlay user's background<span class="change_theme_info">
+						(<a href="{% url edit_replace_background theme.slug %}">edit</a>)
+						</span></td>
+					{% else %}
+						<td></td>
+					{% endif %}
+				</tr>
+				<tr><th class="bottom left">avatar</th>
+					{% if not theme.background_not_avatar and theme.replace_not_cover %}
+						<td class="bottom selected">images replace user's avatar
+						<span class="change_theme_info">
+						(<a href="{% url edit_replace_background theme.slug %}">edit</a>)
+						</span></td>
+					{% else %}
+						<td class="bottom"></td>
+					{% endif %}
+					{% if not theme.background_not_avatar and not theme.replace_not_cover %}
+						<td class="bottom selected">images overlay user's avatar
+						<span class="change_theme_info">
+						(<a href="{% url edit_replace_background theme.slug %}">edit</a>)
+						</span></td>
+					{% else %}
+						<td class="bottom"></td>
+					{% endif %}
+				</tr>
+			</tbody>
+			</table>
+			
+			<h4 {% if not theme.before_screenshot %}class="needs_info"{% endif %}>Screen shot of twitter homepage <em>before</em> weatherization</h4>
+				{% if theme.before_screenshot %}
+					<a href="{% url screen_shot theme.slug "before" %}">
+						Before<br />
+						<img alt="before screenshot" src="{{ theme.before_screenshot.url }}" height=132 width=124 >
+					</a>
+				{% else %}
+					no screen shot uploaded
+				{% endif %}
+				<span class="change_theme_info">(<a href="{% url edit_screen_shot theme.slug "before" %}">edit</a>)</span>
+
+			<h4 {% if not theme.after_screenshot %}class="needs_info"{% endif %}>Screen shot of twitter homepage <em>after</em> weatherization</h4>
+				{% if theme.after_screenshot %}
+					<a href="{% url screen_shot theme.slug "after" %}">
+						After<br />
+						<img alt="after screenshot" src="{{ theme.after_screenshot.url }}" height=132 width=124 >
+					</a>
+				{% else %}
+					no screen shot uploaded
+				{% endif %}
+				<span class="change_theme_info">(<a href="{% url edit_screen_shot theme.slug "after" %}">edit</a>)</span>
+
+			<h4 {% if not theme.author_comments %}class="needs_info"{% endif %}>Theme description</h4>
+				<p>{{ theme.author_comments|default:"no description" }}</p>
+				<span class="change_theme_info">(<a href="{% url edit_author_comments theme.slug %}">edit</a>)</span>				
+	</div>
+{% endblock %}

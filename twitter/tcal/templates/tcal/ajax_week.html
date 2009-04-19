@@ -1,0 +1,164 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}~~~~{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/tcal/css/week.css"></link>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/datejs/date-en-US.js"></script>
+	<script type="text/javascript">
+		function get_and_insert_tweets(username, is_original_user, start_date, end_date, last_updated, tz_offset) {
+			$.getJSON(
+				"http://twitter.com/statuses/user_timeline/"+username+".json?callback=?",
+				function(data, textStatus) {
+					var friend_names = []
+					$.each(data, function() {
+						// date tweet was created
+						var tweet_date = Date.parse(this.created_at);
+						if ( !tweet_date ) {
+							$("#tweets").append("<p>failed to parse tweet date: "+this.id+": "+this.text+" ::: "+this.created_at+"</p>");
+							return;
+						}
+						// changes timezone, but not hours and day
+						// tweet_date = tweet_date.setTimezone(viewers_timezone);
+						tweet_date.addHours(tz_offset.slice(0,3));
+						
+						// date tweet activity occurs
+						var smart_date = tweet_date;
+						if ( smart_date.between(start_date, end_date) && tweet_date.isAfter(last_updated) ) {
+							// div tag with classes
+							var tweet_html = '<div class="meeting ';
+							if ( is_original_user ) tweet_html += 'user_meeting';
+							else tweet_html += 'friend_meeting';
+							tweet_html += '">';
+
+							// time
+							var time = Date.parse(smart_date).toString("h:mm");
+							var ampm = Date.parse(smart_date).toString("tt").toLowerCase();
+							tweet_html +=  time+' '+ampm.charAt(0)+'.'+ampm.charAt(1)+'. ';
+
+							// link to user if not original user
+							if ( !is_original_user ) tweet_html += '<a href="">'+username+'</a>';
+
+							// text
+							tweet_html += this.text+' ';
+
+							// twitter icon with link
+							tweet_html += '<a class="twitter_icon" href="http://twitter.com/'+username+'/status/'+this.id+'"><img class="twitter_icon" src="{{MEDIA_URL}}twitter/img/twitter_icon.jpg"></a>';
+
+							// for debug
+							//tweet_html += ' '+tz_offset+' ---- '+tweet_date+' ---- '+this.created_at+' ';
+
+							// end div
+							tweet_html += '</div>';
+	
+							// find appropriate table cell to insert into.
+							// day: Monday=1, Tuesday=2, ...
+							// hour: 0, 1, ..., 23, 24  (midnight tonight (24) is different than 0:00 hrs (0)) 
+							var day = Date.getDayNumberFromName(tweet_date.toString("dddd"));
+							var hour = tweet_date.toString("H");
+							$("#day_"+day+"_hour_"+hour).append(tweet_html);
+	
+							friend_names.push(this.in_reply_to_screen_name);
+							// TODO add tweet to a list to send back to server to put into db
+						}
+					});
+					// get tweets from friends. only do this for original user.
+					// we don't want tweets from friends of friends.
+					if ( is_original_user ) {
+						$.each(friend_names, function() {
+							// TODO last_updated is for original user not friend !!!
+							get_and_insert_tweets(this, false, start_date, end_date, last_updated, tz_offset);
+						});
+					}
+				}
+			);
+		}
+		$(document).ready( function() {
+			var start_date = Date.parse($("#start_date").text());
+			var end_date = Date.parse($("#end_date").text());
+			var last_updated = Date.parse($("#last_updated").text());
+			var format = 'dd HH:mm';
+			var username = $("#username").text()
+			var viewers_timezone = Date.today().getTimezone();
+			var viewers_offset = Date.today().getUTCOffset();
+			get_and_insert_tweets(username, true, start_date, end_date, last_updated, viewers_offset);
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	{% if twitter_user %}
+		<form method="post" id="activity_form">
+			<label>Add activity: </label>
+			<input type="text" name="new_activity" id="activity_input" size=80 />
+			<script type="text/javascript">
+				$(document).ready( function() {
+					$("#activity_input").focus();
+				});
+			</script>
+		</form>
+	{% else %}
+		<form method="post" id="username_form">
+			<label>Enter a twitter username: </label>
+			<input type="text" name="username" id="username_input" size=15 />
+			<script type="text/javascript">
+				$(document).ready( function() {
+					$("#username_input").focus();
+				});
+			</script>
+		</form>
+	{% endif %}
+	
+	<div id="username" class="hidden">{{ twitter_user.twitter_username }}</div>
+	<div id="start_date" class="hidden">{{ start_date }}</div>
+	<div id="end_date" class="hidden">{{ end_date }}</div>
+	<div id="last_updated" class="hidden">{{ twitter_user.last_tweet_poll }}</div>
+	<div id="tweets"></div>
+	<table class="week">
+	<tbody>
+		<tr>
+		{% for weekday in week %}
+			<td class="day">
+				<div class="month_name">{{ month_name|slice:":3" }}</div>
+				<div class="day_number">{{ weekday|date:"j" }}</div>
+				<div class="day_name">{{ weekday|date:"l" }}</div>
+			</td>
+		{% endfor %}
+		</tr>
+		{% for hour_row in grouped_meetings_across_dates %}
+			{% with forloop.counter as hour %}
+			<tr>
+				{% for meeting_group in hour_row %}
+					{% with forloop.counter as day %}
+					<td id="day_{{ day }}_hour_{{ hour }}" 
+						{% if meeting_group %}
+							class="has_meetings"
+						{% endif %}
+					>
+						{% for meeting in meeting_group %}
+							<div class="meeting 
+								{% ifequal meeting.twitter_user twitter_user %}
+									user_meeting
+								{% else %}
+									friend_meeting
+								{% endifequal %}
+							">
+								{{ meeting.when|date:"P" }}
+									{% ifnotequal meeting.twitter_user twitter_user %}
+										<a href="{% url week meeting.twitter_user.twitter_username day month_name year %}">{{ meeting.twitter_user.twitter_username }}</a>
+									{% endifnotequal %}
+								{{ meeting.message }}
+								{% if meeting.tweet_link %}
+									<a class="twitter_icon" href="{{ meeting.tweet_link }}"><img class="twitter_icon" src="{{MEDIA_URL}}twitter/img/twitter_icon.jpg"></a>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</td>
+					{% endwith %}
+				{% endfor %}
+			</tr>
+			{% endwith %}
+		{% endfor %}
+	</tbody>
+	</table>
+{% endblock %}

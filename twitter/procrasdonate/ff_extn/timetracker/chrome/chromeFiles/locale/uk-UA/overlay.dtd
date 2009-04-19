@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "Опції TimeTracker">
+<!ENTITY pref.displaygroup "Відображення">
+<!ENTITY pref.displaymodelabel "Show time tracked since:">
+<!ENTITY pref.displayToday "Today.">
+<!ENTITY pref.displayReset "Last reset.">
+<!ENTITY pref.displayInstall "Installing TimeTracker.">
+<!ENTITY pref.showsecondscheck "Показувати секунди.">
+<!ENTITY pref.idlegroup "Час очікування">
+<!ENTITY pref.timeout "Час:">
+<!ENTITY pref.seconds "секунд.">
+<!ENTITY pref.timeoutdesc "Якщо Firefox не використовувати довше цього часу, TimeTracker зупиниться і не буде підраховувати час.">
+<!ENTITY pref.workgroup "Фільтр">
+<!ENTITY pref.filter "Список фільтру:">
+<!ENTITY pref.workdesc "Веб адреси, які містять в собі фільтр, не будуть відслідковуватися. Це може бути використано, щоб запобігти підрахунку часу в корпоративному інтранеті.">
+<!ENTITY pref.worksample "Фільтри відокремлюються пробілами. Наприклад: &apos;www.usablehack.com  support  mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Пауза">
+<!ENTITY pref.pausecheck "Нові вікна з паузою.">
+<!ENTITY pref.pausedesc "Клацніть на годиннику, щоб зупинити/продовжити підрахунок в цьому вікні.">
+<!ENTITY popup-resethours "since reset">
+<!ENTITY popup-resetdate "on">
+<!ENTITY popup-noresetyet "(NEVER RESET)">
+<!ENTITY popup-totalhours "год.">
+<!ENTITY popup-startdate "з">
+<!ENTITY popup-today "витрачено сьогодні (досі)">
+<!ENTITY context-options "Опції">
+<!ENTITY context-options-key "О">
+<!ENTITY context-reset "Reset">
+<!ENTITY context-reset-key "R">

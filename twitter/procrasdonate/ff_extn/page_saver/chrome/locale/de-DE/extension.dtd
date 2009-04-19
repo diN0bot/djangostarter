@@ -1,0 +1,87 @@
+<!ENTITY PageSaverPrefWindow.style "width: 38em;">
+<!ENTITY PearlCrescentPageSaver.label "Pearl Crescent Page Saver - Einstellungen">
+<!ENTITY PageSaverGeneralTab.label "Allgemein">
+<!ENTITY PageSaverCaptureTab.label "Grafik-Einstellungen">
+<!ENTITY PageSaverHeaderAndFooterTab.label "Kopf- und Fußzeile">
+<!ENTITY PageSaverDestinationTab.label "Speicherort">
+<!ENTITY PageSaverShortcuts.label "Tastaturkürzel">
+<!ENTITY PageSaverPrefsSavedPortionGroup.label "Vorrangiges Tastaturkürzel oder Klick auf die Symbolleisten-Schaltfläche speichert ein Abbild">
+<!ENTITY PageSaverSaveVisibleArea.label "des sichtbaren Bereichs der Seite">
+<!ENTITY PageSaverSaveVisibleArea.tooltip "Speichert ein Abbild des im Fenster sichtbaren Bereichs einer Seite">
+<!ENTITY PageSaverSaveEntireArea.label "der gesamten Seite">
+<!ENTITY PageSaverSaveEntireArea.tooltip "Speichert ein Abbild der gesamten Seite inklusive der nicht sichtbaren Bereiche">
+<!ENTITY PageSaverSaveSelectedRegion.label "eines auswählbaren Bereichs">
+<!ENTITY PageSaverSaveSelectedRegion.tooltip "Speichert das Abbild eines auswählbaren Bereichs">
+<!ENTITY PageSaverSaveEntireFrame.label "des aktuellen Frames">
+<!ENTITY PageSaverImageHeaderGroup.label "Kopfzeile">
+<!ENTITY PageSaverAddHeader.label "Kopfzeile in jedes erstellte Abbild einfügen">
+<!ENTITY PageSaverAddHeader.tooltip "Benutzerdefinierte Kopfzeile in jedes erstellte Abbild einfügen">
+<!ENTITY PageSaverImageHeaderPref.label "Benennungsschema der Kopfzeile">
+<!ENTITY PageSaverImageHeaderPref.tooltip "Formatvorlage für die benutzerdefinierte Kopfzeile">
+<!ENTITY PageSaverImageFooterGroup.label "Fußzeile">
+<!ENTITY PageSaverAddFooter.label "Fußzeile in jedes erstellte Abbild einfügen">
+<!ENTITY PageSaverAddFooter.tooltip "Benutzerdefinierte Fußzeile in jedes erstellte Abbild einfügen">
+<!ENTITY PageSaverImageFooterPref.label "Benennungsschema der Fußzeile">
+<!ENTITY PageSaverImageFooterPref.tooltip "Formatvorlage für die benutzerdefinierte Fußzeile">
+<!ENTITY PageSaverPrefsDestination.label "Abbild speichern...">
+<!ENTITY PageSaverDestLocalFile.label "als lokale Datei">
+<!ENTITY PageSaverDestLocalFile.tooltip "Speichert das Abbild auf einen lokalen Datenträger">
+<!ENTITY PageSaverDestClipboard.label "in die Zwischenablage">
+<!ENTITY PageSaverDestClipboard.tooltip "Kopiert das Abbild in die Zwischenablage (zur Übergabe in andere Anwendungen)">
+<!ENTITY PageSaverDestServer.label "als Datei auf einen Server">
+<!ENTITY PageSaverDestServer.tooltip "Speichert das Abbild auf einen Server (üblicherweise bei Benutzung von FTP oder HTTP)">
+<!ENTITY PageSaverShortCutKey.label "Vorrangiges Tastaturkürzel">
+<!ENTITY PageSaverShortCutInstruction.label "Um ein Tastaturkürzel festzulegen klicken Sie in das untere Feld und wählen eine Tastenkombination (z. B. Strg+F12). Um sie zu löschen verwenden Sie die Entfernen- oder Rücktaste.">
+<!ENTITY PageSaverRegionShortCutKey.label "Tastaturkürzel für das Speichern eines auswählbaren Bereichs">
+<!ENTITY PageSaverShortCut.tooltip "Hier klicken um eine Tastenkombination festzulegen (z. B. Strg+F12)">
+<!ENTITY PageSaverShortCutReminder.label "Hinweis: Änderungen des Tastaturkürzels werden erst nach einem Neustart des Browser wirksam.">
+<!ENTITY PageSaverShowContextMenuItemsFor.label "Browser-Kontextmenü-Eintrag anzeigen für das Speichern eines Abbildes...">
+<!ENTITY PageSaverShowContextMenuItemsFor.tooltip "Einstellung welche &quot;Page Saver&quot;-Kontextmenü-Einträge angezeigt werden sollen">
+<!ENTITY PageSaverShowInStatusBar.label "Page Saver in der Statusleiste von Firefox anzeigen">
+<!ENTITY PageSaverShowInStatusBar.tooltip "Zeigt ein Schaltflächensymbol in der Statusleiste von Firefox">
+<!ENTITY PageSaverArrangeToCaptureFlash.label "Das Erfassen von Flash-Inhalten beim Laden von Webseiten ermöglichen">
+<!ENTITY PageSaverArrangeToCaptureFlash.tooltip "Einige Seiten mit Flash-Inhalten könnten dadurch aber fehlerhaft geladen werden">
+<!ENTITY PageSaverPlaySound.label "Einen Klang nach Erstellung des Abbildes abspielen">
+<!ENTITY PageSaverPlaySound.tooltip "Einen Klang nach Erstellung des Abbildes abspielen">
+<!ENTITY PageSaverDestFile.label "Dateiname:">
+<!ENTITY PageSaverFileNamePref.label "Benennungsschema:">
+<!ENTITY PageSaverFileNamePref.tooltip "Zeichenfolge zur Erzeugung des Dateinamens aus den eingestellten Parametern">
+<!ENTITY PageSaverExample.label "Vorschau:">
+<!ENTITY PageSaverPromptBeforePref.label "Beim Speichern als lokale Datei nach einer Bestätigung fragen">
+<!ENTITY PageSaverPromptBeforePref.tooltip "Vor dem Speichern nach Dateinamen und Speicherort fragen">
+<!ENTITY PageSaverOverwriteFilePref.label "Lokal vorhandene Datei überschreiben">
+<!ENTITY PageSaverOverwriteFilePref.tooltip "Deaktiviert vergibt Page Saver selbst einen eindeutigen Dateinamen">
+<!ENTITY PageSaverImageSizePref.label "Abmessung der Bilddatei:">
+<!ENTITY PageSaverImageSizePref.tooltip "Größe des zu speichernden Abbilds (&#37; der Originalgröße oder max. Abmessung in Pixel)">
+<!ENTITY PageSaverImageSizeUnitsPercent.label "&#37; des Originals">
+<!ENTITY PageSaverImageSizeUnitsPixels.label "Pixel (max. Abmessung)">
+<!ENTITY PageSaverImageFormatMenu.label "Dateiformat:">
+<!ENTITY PageSaverImageFormatPNG.label "PNG">
+<!ENTITY PageSaverImageFormatPNG.tooltip "Im &quot;Portable Network Graphics&quot;-Format abspeichern">
+<!ENTITY PNGTransparencyPref.label "einschließlich der Alphatransparenz">
+<!ENTITY PNGTransparencyPref.tooltip "Das Speichern der Alphatransparenz wird die Dateigröße erhöhen">
+<!ENTITY PageSaverImageFormatJPEG.label "JPEG">
+<!ENTITY PageSaverImageFormatJPEG.tooltip "Im JPEG-Format abspeichern">
+<!ENTITY PageSaverJPEGQualityPref.label "Qualität:">
+<!ENTITY PageSaverJPEGQualityPref.tooltip "Eine Zahl zwischen 0 und 100 (eine höhere Zahl für bessere Qualität verwenden)">
+<!ENTITY PageSaverServerURI.label "Server-Adresse:">
+<!ENTITY PageSaverServerURIExample.label "z. B. ftp://ftp.beispiel.de/meinordner/">
+<!ENTITY PageSaverServerURI.tooltip "Die ftp://, http://, oder https:// Adresse dieses Servers">
+<!ENTITY PageSaverServerID.label "Benutzername:">
+<!ENTITY PageSaverServerID.tooltip "Der Benutzername um sich an diesem Server anzumelden">
+<!ENTITY PageSaverServerPassword.label "Passwort:">
+<!ENTITY PageSaverServerPassword.tooltip "Das Passwort um sich an diesem Server anzumelden">
+<!ENTITY saveVisiblePageImageContextMenu.label "Abbild des sichtbaren Bereichs speichern...">
+<!ENTITY saveEntirePageImageContextMenu.label "Abbild der gesamten Seite speichern...">
+<!ENTITY saveSelectedRegionImageContextMenu.label "Speichert ein Abbild eines ausgewählbaren Bereichs...">
+<!ENTITY saveFrameImageContextMenu.label "Abbild dieses Frames speichern...">
+<!ENTITY pageSaverFrameMenu.label "Abbild eines Frames dieser Seite speichern...">
+<!ENTITY pageSaverFeedbackContextMenu.label "Feedback senden...">
+<!ENTITY pageSaverArrangeToCaptureFlashContextMenu.label "Erfassung von Flash-Inhalten ermöglichen">
+<!ENTITY pageSaverOptionsContextMenu.label "Einstellungen...">
+<!ENTITY pageSaverSaveToFileMenu.label "Das Abbild wird auf einem lokalen Datenträger gespeichert">
+<!ENTITY pageSaverSaveToClipboardMenu.label "Das Abbild wird in die Zwischenablage kopiert">
+<!ENTITY pageSaverSaveToServerMenu.label "Das Abbild wird auf dem Server gespeichert">
+<!ENTITY savePageImageIcon.label "Abbild speichern">
+<!ENTITY savePageImageIcon.tooltiptext "Ein Abbild der aktuellen Seite speichern">
+<!ENTITY regionCaptureButton.label "Erfassen">

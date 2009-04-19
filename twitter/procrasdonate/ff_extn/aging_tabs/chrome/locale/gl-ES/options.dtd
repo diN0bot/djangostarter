@@ -1,0 +1,22 @@
+<!ENTITY options_window_title "Preferencias do Aging Tabs">
+<!ENTITY tab_background.label "Cor personalizado do separador">
+<!ENTITY tab_background.accesskey "C">
+<!ENTITY tab_text.label "Cor personalizado do texto">
+<!ENTITY tab_text.accesskey "e">
+<!ENTITY tab_background_target.label "Cor personalizado da maior antigüidade">
+<!ENTITY tab_background_target.accesskey "a">
+<!ENTITY highlight.label "Remarcar o separador seleccionado">
+<!ENTITY highlight.accesskey "R">
+<!ENTITY highlight_background.label "Cor con que se remarcará">
+<!ENTITY highlight_background.accesskey "o">
+<!ENTITY highlight_text.label "Cor personalizado do texto remarcado">
+<!ENTITY highlight_text.accesskey "p">
+<!ENTITY trigger_choice.label "Antigüidade...">
+<!ENTITY trigger_tab_switch.label "Cando se combinan separadores">
+<!ENTITY trigger_tab_switch.accesskey "s">
+<!ENTITY trigger_url_change.label "Cando muda o valor da barra de enderezo">
+<!ENTITY trigger_url_change.accesskey "e">
+<!ENTITY trigger_interval_seconds.label "Por segundos:">
+<!ENTITY trigger_interval_seconds.accesskey "s">
+<!ENTITY amount_per_step.label "Grao de antigüidade:">
+<!ENTITY amount_per_step.accesskey "a">

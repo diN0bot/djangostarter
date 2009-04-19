@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "Opções TimeTracker">
+<!ENTITY pref.displaygroup "Mostrar">
+<!ENTITY pref.displaymodelabel "Mostrar tempo rastreado desde:">
+<!ENTITY pref.displayToday "Hoje.">
+<!ENTITY pref.displayReset "Último reset.">
+<!ENTITY pref.displayInstall "Instalando TimeTracker.">
+<!ENTITY pref.showsecondscheck "Mostrar segundos.">
+<!ENTITY pref.idlegroup "Tempo sem utilização">
+<!ENTITY pref.timeout "Sem utilização:">
+<!ENTITY pref.seconds "segundos.">
+<!ENTITY pref.timeoutdesc "Depois desse tempo sem utilização do Firefox, o TimeTracker irá parar de contabilizar">
+<!ENTITY pref.workgroup "Filtro para não rastreamento">
+<!ENTITY pref.filter "Lista de filtros:">
+<!ENTITY pref.workdesc "Endereços web que contém filtro não serão rastreados. Pode ser usado para determinar o tempo gasto em fóruns de suporte ou intranets corporativas.">
+<!ENTITY pref.worksample "Adicione filtros separados por espaços. Por exemplo: &apos;www.usablehack.com support mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Pausar">
+<!ENTITY pref.pausecheck "Novas janelas iniciaram pausadas.">
+<!ENTITY pref.pausedesc "Clique no relógio para pausar/continuar o rastreamento dessa janela.">
+<!ENTITY popup-resethours "reiniciado desde">
+<!ENTITY popup-resetdate "ligado">
+<!ENTITY popup-noresetyet "(NUNCA REINICIADO)">
+<!ENTITY popup-totalhours "horas">
+<!ENTITY popup-startdate "Instalado desde">
+<!ENTITY popup-today "browsed today so far">
+<!ENTITY context-options "Opções">
+<!ENTITY context-options-key "O">
+<!ENTITY context-reset "Reiniciar">
+<!ENTITY context-reset-key "R">

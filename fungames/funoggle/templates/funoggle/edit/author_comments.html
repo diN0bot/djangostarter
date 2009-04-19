@@ -1,0 +1,22 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Edit Theme Info - Author's comments{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+
+{% block logo %}
+	<img alt="" src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+{% endblock %}
+			
+{% block content %}
+	<div id="thin_column">
+		<h4>{{ theme.name }}'s description</h4>
+		<form method="post">
+			{{ form.as_p }}
+			<p><input type="submit" value="Save"></p>
+			<p><a href="{% url edit_theme theme.slug %}">Cancel</a></p>
+		</form>
+	</div>
+{% endblock %}

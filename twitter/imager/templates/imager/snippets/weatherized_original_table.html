@@ -1,0 +1,39 @@
+h<table>
+<tbody>
+	<tr>
+		<td>before			
+			{% if W and W.original_background %}
+			<span style="color: #156451;">Before Background Weatherization</span>
+			{% endif %}
+		</td>
+		<td>after
+			{% if W and W.weatherized_background %}
+			<span style="color: #156451;">After Background Weatherization </span>
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>bp			
+			{% if W and W.original_background %}
+			{% thumbnail W.original_background.width W.original_background.height True %}
+			<a href="{{ W.original_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ W.original_background.url }}"></a><br />
+			{% endif %}
+		</td>
+		<td>ba
+			{% if  and W.weatherized_background %}
+			{% thumbnail W.weatherized_background.width W.weatherized_background.height True %}
+			<a href="{{ W.weatherized_background.url }}"><img width="{{ thumbnail_width }}" height="{{ thumbnail_height }}" src="{{ W.weatherized_background.url }}"></a><br />
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>change
+			{% if W and W.original_background %}
+			<a href="{% url change_background_background %}">change</a>
+			{% endif %}
+		</td>
+		<td>
+		</td>
+	</tr>
+</tbody>
+</table>		

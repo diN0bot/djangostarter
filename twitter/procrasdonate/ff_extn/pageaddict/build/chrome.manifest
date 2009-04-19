@@ -1,0 +1,2 @@
+content pageaddict jar:chrome/pageaddict.jar!/content/
+overlay	chrome://browser/content/browser.xul	chrome://pageaddict/content/script-compiler-overlay.xul

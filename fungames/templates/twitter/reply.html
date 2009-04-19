@@ -1,0 +1,26 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Reply to {{comment.message|striptags|truncatewords:"10"}}{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css"></link>
+{% endblock %}
+
+
+{% block title %}
+	<h2>Reply</h2>
+{% endblock %}
+					
+{% block content %}
+	<div id="thin_column">
+		<div class='comment'>
+			{% with comment.id as close_last_p %}
+				{% include 'twitter/snippets/comment.html' %}
+			{% endwith %}
+		</div>
+		
+		<p>
+			{% include 'twitter/snippets/add_comment.html' %}
+		</p>
+	</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'twitter/base.html' %}
+
+{% block window_title %}Weatherize!{% endblock %}
+
+{% block head %}
+	{% include 'imager/snippets/imager_head.html' %}
+{% endblock %}
+		
+{% block content %}
+	<div id="thin_column">
+	
+		<h3>Weatherize!</h3>
+		<form id="authorize_form" method="post">
+			<table>
+			<tbody>
+				<tr>
+					<td><label>username: </label></td>
+					<td><input type="text" name="username" /></td>
+				</tr>
+				<tr>
+					<td><label>password: </label></td>
+					<td><input type="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td><label>zip code: </label></td>
+					<td><input type="text" name="zipcode" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Weatherize!" /></td>
+				</tr>
+			</tbody>
+			</table>
+		</form>
+		
+		<h3>Current selection</h3>
+		<div class="select_theme">
+			{% include 'imager/snippets/theme_summary.html' %}
+		</div>
+
+		<h3>Password security guarantee</h3>
+		<div id="password_guarantee">
+			<p>
+			We only use your twitter password to update your
+			background image according to your local weather. 
+			</p>
+			<p>
+			As soon as twitter provides OAuth, "an authentication protocol 
+			that allows users to approve application to act on their behalf 
+			without sharing their password", we will use that.
+			</p>
+			<p>
+			<a href="http://apiwiki.twitter.com/OAuth-FAQ">OAuth is currently in closed beta</a>.
+			</p>
+		</div>
+		
+	</div>
+{% endblock %}

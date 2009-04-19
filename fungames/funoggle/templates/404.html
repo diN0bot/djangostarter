@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Weatherizer Error</title>
+		
+		<link rel="shortcut icon" href="{{ MEDIA_URL }}twitter/img/twitter_icon.jpg" type="image/x-icon" />	
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/general.css"></link>
+		<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}twitter/js/main.js"></script>
+		<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery.mouse_wheel.js"></script>
+		{% include 'imager/snippets/imager_head.html' %}
+		
+	</head>
+
+	<body>
+		<div id="wrapper">
+
+			{% twitter_apps_menu "imager" %}
+			<div id="apps_menu">
+				{% for non_a_item, aitem,url,selected in apps_menu %}
+					<div {% if selected %}class="here_we_are"{% endif %}>
+						{{ non_a_item|safe }}<a href="{{ url }}">{{ aitem|safe }}</a>
+					</div>
+				{% endfor %}
+			</div> 
+			
+			<div id="logo">
+				<img src="{{ MEDIA_URL }}twitter/imager/img/WeatherizerLogoText.png">
+			</div>
+		
+			{% if twitter_user %}
+				<div id="account">
+					Hello, {{ twitter_user.twitter_username }}.
+					<a href="{% url log_out %}?redirect_to={{ request.path }}">log out</a>
+				</div>
+			{% endif %}
+			
+			<div id="app_menu">
+				<div class="here_we_are">
+					<a href="">Weather Error</a>
+				</div>
+			</div> 
+			
+			<div id="content">
+				<div id="thin_column">
+					<h3>Oops</h3>
+					<p>
+						Go back and try again?
+					</p>
+					<p>
+						<a href="{% url imager %}">Start over</a> 
+					</p>
+					<p>
+						<a href="{% url imager_help %}">Visit the help page</a>
+					</p>
+					<p>
+						<a href="{% url feedback "imager" %}">Let's talk!</a>
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div id="footer"></div>
+	</body>
+
+</html>

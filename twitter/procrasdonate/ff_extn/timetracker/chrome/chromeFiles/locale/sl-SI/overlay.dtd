@@ -1,0 +1,29 @@
+<!ENTITY title "TimeTracker">
+<!ENTITY pref.title "Možnosti za TimeTracker">
+<!ENTITY pref.displaygroup "Prikaz">
+<!ENTITY pref.displaymodelabel "Prikaži čas sledenja od:">
+<!ENTITY pref.displayToday "danes.">
+<!ENTITY pref.displayReset "zadnje ponastavitve.">
+<!ENTITY pref.displayInstall "namestitve TimeTrackerja.">
+<!ENTITY pref.showsecondscheck "Prikaži sekunde.">
+<!ENTITY pref.idlegroup "Čas mirovanja">
+<!ENTITY pref.timeout "Čas:">
+<!ENTITY pref.seconds "sekund.">
+<!ENTITY pref.timeoutdesc "Po tem času neuporabe Firefoxa TimeTracker preneha s štetjem.">
+<!ENTITY pref.workgroup "Ne beleži filtrov">
+<!ENTITY pref.filter "Seznam filtrov:">
+<!ENTITY pref.workdesc "Spletna mesta, ki vsebujejo filter, ne bodo časovno merjena. S tem se izognete merjenju časa na forumih za podporo ali korporativnim intranetom.">
+<!ENTITY pref.worksample "Vnesite filtre, ločene s presledki. Primer: &apos;www.usablehack.com support mozilla.org&apos;.">
+<!ENTITY pref.pausegroup "Premor">
+<!ENTITY pref.pausecheck "Nova okna se odprejo s premorom.">
+<!ENTITY pref.pausedesc "Kliknite v uro ali čas, da ustavite/nadaljujete sledenje temu oknu.">
+<!ENTITY popup-resethours "od ponastavitve">
+<!ENTITY popup-resetdate "dne">
+<!ENTITY popup-noresetyet "(NIKOLI NE PONASTAVI)">
+<!ENTITY popup-totalhours "ur">
+<!ENTITY popup-startdate "od namestitve dne">
+<!ENTITY popup-today "danes prebrskanega">
+<!ENTITY context-options "Možnosti">
+<!ENTITY context-options-key "M">
+<!ENTITY context-reset "Ponastavi">
+<!ENTITY context-reset-key "P">

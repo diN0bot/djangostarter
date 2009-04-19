@@ -1,0 +1,13 @@
+
+<div class="theme_meta">
+	<a href="{% url authorize_background_changes theme.slug %}">
+		<span class="theme_name">{{ theme.name }}</span>
+		<span class="created_by"> by </span>
+		<span class="theme_author">{{ theme.author }} <img src="{{ theme.author.profile_img_url }}"></span>
+	</a>
+</div>
+<div class="images">
+	{% for image in theme.weather_images %}
+		<img width={{ image.thumbnail_width }} height={{ image.thumbnail_height }} src="{{ image.image.url }}" >
+	{% endfor %}
+</div>
