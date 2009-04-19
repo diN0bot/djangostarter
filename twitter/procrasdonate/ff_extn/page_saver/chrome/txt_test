@@ -1,7 +1,0 @@
-;; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
-
-ps - it's easier to include jquery directly in overlay.xul. you know, where the rest of the <script> tags are...
-
-before i build something myself, that thing seems so confusing and magical. afterwards, building it seems like the most obvious thing in the world.
