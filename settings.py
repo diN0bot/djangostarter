@@ -40,7 +40,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-APPS = ('twitter', 'twitter.imager', 'twitter.procrasdonate') #'user_profile', 'challenge', 'textful', 'vote')
+APPS = ('twitter',  'twitter.imager', 'twitter.procrasdonate')
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE

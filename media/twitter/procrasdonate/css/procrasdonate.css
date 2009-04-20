@@ -36,3 +36,6 @@ ul li input { display: block; text-align: center; }
 .step { display: inline; padding: 0em 2em; }
 #page_steps .selected { background: yellow; }
 
+#tabs {}
+.tab { display: inline; }
+#tabs .selected { background: yellow; }

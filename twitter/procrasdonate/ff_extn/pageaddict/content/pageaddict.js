@@ -14,19 +14,23 @@
                           __VARIABLES IN GM STORE__
                           
 href = something like 'bilumi_org' or 'www_google_com__search'
+tag = user generated string like 'work' or 'games'
 
 'first_visit' = 
 'last_visit' -> int = absolute time of last visit in seconds (glocal)
 
 href+'_last' -> int = absolute time of last visit in seconds (per ref)
-href+'_count' -> int = number of visits
+href+'_count' -> int = number of visits. wrong? it's number of seconds visited.
 
 'page_addict_start' AND window.page_addict_start = True if timing
 
 'visited' = list of href's visited for < 1 second. ';' separated
+'tagmatch_list' = list of "pattern=tag" pairs, ';' separated
+'tag_list' = 
 
 tag+'_times'
 tag+'_spent'
+tag+'_restricted' = use of tag is restricted
 tag+'_max_time' = max time in minutes before content is blocked
 
 'total_times'
@@ -52,7 +56,9 @@ tag+'_max_time' = max time in minutes before content is blocked
 page_addict_start = why here and mirror GM STORE
   'page_addict_start'? synch issues?
 
+total = 
 tag_counts = 
+unsort_arr = 
 
 idle_time = seconds idle as counted by monitor_activity(), which
   is called every second (see start_recording)
@@ -645,11 +651,40 @@ function insert_site_classifications() {
 	/*
 	 * Inserts site classification html into page 
 	 */
-	var cell_text =
-		settings_tab_snippet() +
-		""
+	var cell_text = settings_tab_snippet();
+	var procrastinate_text = "<div class='site_column'>";
+	var undefined_text = "<div class='site_column'>";
+	var work_text = "<div class='site_column'>";
 	
-	document.getElementById("thin_column").innerHTML = cell_text;
+	//var unsort_arr = [];
+	//unsort_arr = window.unsort_arr;
+	//var sort_arr = unsort_arr.sort(sortf);
+	var sort_arr = [];
+	
+	for (i = 0; i < sort_arr.length; i += 1) {
+		var tag = get_tag_for_site(sort_arr[i][0])
+		if ( tag == 'work' ) {
+			work_text += "<div class='site'>" + 
+			sort_arr[i][0].replace(/__/g, '/').replace(/_/g,'.') +
+			" " +
+			pretty_time(sort_arr[i][1]) +
+			"</div>"
+		} else {
+			undefined_text += "<div class='site'>" + 
+			sort_arr[i][0].replace(/__/g, '/').replace(/_/g,'.') + 
+			" " +
+			pretty_time(sort_arr[i][1]) +
+			"</div>"
+		}
+	}
+	
+	document.getElementById("thin_column").innerHTML = cell_text +
+	procrastinate_text +
+	"</div>" +
+	undefined_text +
+	"</div>" +
+	work_text +
+	"</div>";
 	activate_settings_tab_events();
 }
 
@@ -824,11 +859,27 @@ function process_account_form() {
 }
 
 function settings_tab_snippet() {
+	var selected = GM_getValue('settings_state', '');
+	var account_tab_selected = '';
+	var site_classifications_tab_selected = '';
+	var balance_tab_selected = '';
+	if ( selected == 'account' )
+		account_tab_selected = 'selected';
+	if ( selected == 'site_classifications' )
+		site_classifications_tab_selected = 'selected';
+	if ( selected == 'balance' )
+		balance_tab_selected = 'selected';
+	
 	var tab_text = 
 		"<div id='tabs'>" +
-			"<div id='account_tab' class='tab'>Account</div>" +
-			"<div id='site_classifications_tab' class='tab'>Site Classifications</div>" +
-			"<div id='balance_tab' class='tab'>Balance</div>" +
+			"<div id='account_tab' class='tab " + account_tab_selected +
+			"'>Account</div>" +
+			
+			"<div id='site_classifications_tab' class='tab " + site_classifications_tab_selected +
+			"'>Site Classifications</div>" +
+			
+			"<div id='balance_tab' class='tab " + balance_tab_selected +
+			"'>Balance</div>" +
 		"</div>"
 	return tab_text
 }
