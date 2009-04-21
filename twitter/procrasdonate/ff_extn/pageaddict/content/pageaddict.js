@@ -49,7 +49,8 @@ tag+'_max_time' = max time in minutes before content is blocked
 'settings_state' = enumeration of settings page state 
     'account', 'edit_account', 'site_classifications', 'balance'
     
-'impact_state' = 'today', 'history'
+'impact_state' = enumeration of impact page state
+	'site_rank', 'visits', 'historic_summary'
 
                               __WINDOW STORE__
 
@@ -530,7 +531,7 @@ function initialize_state_if_necessary() {
 	 * Initialize settings and impact state enumerations. Other inits?
 	 */
 	if (!GM_getValue('settings_state', '')) { GM_setValue('settings_state', 'edit_account'); }
-	if (!GM_getValue('impact_state', '')) { GM_setValue('impact_state', 'today'); }
+	if (!GM_getValue('impact_state', '')) { GM_setValue('impact_state', 'visits'); }
 }
 
 function set_account_defaults_if_necessary() {
@@ -634,8 +635,14 @@ function check_page_inserts() {
 			}
 
 		}
-		else if ( href.match(/\/my_impact\//)) {
-			insert_my_impact();
+		else if ( href.match(/\/my_impact\//) ) {
+			if ( GM_getValue('impact_state','') == 'site_rank' ) {
+				insert_site_ranks();
+			} else if ( GM_getValue('impact_state','') == 'visits' ) {
+				insert_visits();
+			} else if ( GM_getValue('impact_state','') == 'historic_summary' ) {
+				insert_historic_summary();
+			}
 		}
 		else if ( href.match(/\/feedback\//)) {
 			reset_account_to_defaults();
@@ -647,45 +654,89 @@ function check_page_inserts() {
 	}
 }
 
+function undefined_wrap(inner) {
+	return "<span class='move_to_left move_to_procrasdonate'>proc</span>" + 
+		inner + "<span class='move_to_right move_to_work'>work</span>";
+}
+function procrasdonate_wrap(inner) {
+	return inner + "<span class='move_to_right move_to_undefined'>und</span>";
+}
+function work_wrap(inner) {
+	return "<span class='move_to_left move_to_undefined'>und</span>" + inner; 
+}
+
+function make_site_box(name, url, tag) {
+	var text = "<div class='site'>";
+	var site_text = "<span class='name'>" + name.replace(/__/g, '/').replace(/_/g,'.') + "</span>";
+	if ( tag == 'undefined') text += undefined_wrap(site_text);
+	else if ( tag == 'work') text += work_wrap(site_text);
+	else if ( tag == 'procrasdonate') text += procrasdonate_wrap(site_text);
+	text += "</div>";
+	return text;
+}
+
+function activate_site_box_events() {
+	var f = function(elem, tag) {
+		var site_name = elem.siblings(".name").text();
+		//if ( elem.hasClass("move_to_left") ) { }
+		elem.parent().fadeOut("slow");
+		$("#"+tag+"_column h3").after(make_site_box(site_name, site_name, tag))
+		.next().hide().fadeIn("slow");
+	}
+	$(".move_to_work").live("click", function() {
+		f($(this), "work");
+	});
+	$(".move_to_undefined").live("click", function() {
+		f($(this), "undefined");
+	});
+	$(".move_to_procrasdonate").live("click", function() {
+		f($(this), "procrasdonate");
+	});
+}
+
 function insert_site_classifications() {
 	/*
 	 * Inserts site classification html into page 
 	 */
-	var cell_text = settings_tab_snippet();
-	var procrastinate_text = "<div class='site_column'>";
-	var undefined_text = "<div class='site_column'>";
-	var work_text = "<div class='site_column'>";
+	var cell_text = "<div id='thick_column'>" + settings_tab_snippet();
+	var procrasdonate_text = "<div id='procrasdonate_column' class='site_column'><h3>ProcrasDonate</h3>";
+	var undefined_text = "<div id='undefined_column' class='site_column'><h3>Undefined</h3>";
+	var work_text = "<div id='work_column' class='site_column'><h3>Work</h3>";
 	
 	//var unsort_arr = [];
 	//unsort_arr = window.unsort_arr;
 	//var sort_arr = unsort_arr.sort(sortf);
-	var sort_arr = [];
+	var sort_arr = [
+	                ['www.javascriptkit.com', 'procrasdonate'],
+	                ['bilumi.org', 'undefined'],
+	                ['www.slashdot.com', 'procrasdonate'],
+	                ['news.ycombinator.com', 'procrasdonate'],
+	                ['www.ycombinator.com', 'work'],
+	                ['gmail.com', 'work']
+	                 ];
 	
 	for (i = 0; i < sort_arr.length; i += 1) {
-		var tag = get_tag_for_site(sort_arr[i][0])
+		var tag = sort_arr[i][1];
 		if ( tag == 'work' ) {
-			work_text += "<div class='site'>" + 
-			sort_arr[i][0].replace(/__/g, '/').replace(/_/g,'.') +
-			" " +
-			pretty_time(sort_arr[i][1]) +
-			"</div>"
+			work_text += make_site_box(sort_arr[i][0], sort_arr[i][0], tag);
+		} else if ( tag == 'procrasdonate' ) {
+			procrasdonate_text += make_site_box(sort_arr[i][0], sort_arr[i][0], tag);
 		} else {
-			undefined_text += "<div class='site'>" + 
-			sort_arr[i][0].replace(/__/g, '/').replace(/_/g,'.') + 
-			" " +
-			pretty_time(sort_arr[i][1]) +
-			"</div>"
+			undefined_text += make_site_box(sort_arr[i][0], sort_arr[i][0], tag);
 		}
 	}
 	
-	document.getElementById("thin_column").innerHTML = cell_text +
-	procrastinate_text +
-	"</div>" +
-	undefined_text +
-	"</div>" +
-	work_text +
-	"</div>";
+	$("#content").html(cell_text +
+	"<div id='site_classifications'>" +
+		procrasdonate_text + 
+		"</div>" +
+		undefined_text +
+		"</div>" +
+		work_text +
+		"</div>" +
+	"</div></div>");
 	activate_settings_tab_events();
+	activate_site_box_events();
 }
 
 function insert_balance() {
@@ -693,10 +744,11 @@ function insert_balance() {
 	 * Inserts TipJoy balance html into page
 	 */
 	var cell_text =
+		"<div id='thin_column'" +
 		settings_tab_snippet() +
-		""
+		"</div>";
 	
-	document.getElementById("thin_column").innerHTML = cell_text;
+	$("#content").html(cell_text);
 	activate_settings_tab_events();
 }
 
@@ -914,6 +966,7 @@ function insert_account_form() {
 	//$(".step").removeClass("selected");
 	//$("#step2").addClass("selected");
 	var cell_text =
+		"<div id='thin_column'" +
 		settings_tab_snippet() +
 		"<div id='errors'></div>" +
 		"<div id='success'></div>" +
@@ -949,9 +1002,10 @@ function insert_account_form() {
 			"</table>" +
 			"<p><input id='process_account_form' type='button' name='save' value='save'>" +
 			"<span id='cancel_account_form' href='" + SETTINGS_URL + "'>cancel</a></p>" +
-		"</form>";
-			
-	document.getElementById("thin_column").innerHTML = cell_text;
+		"</form>" +
+		"</div>";
+
+	$("#content").html(cell_text);
 	document.getElementById("process_account_form").addEventListener('click', process_account_form, true);
 	document.getElementById("hr_per_day_goal").addEventListener('keydown', update_cents_per_day_goal, true);
 	document.getElementById("hr_per_day_max").addEventListener('keydown', update_cents_per_day_max, true);
@@ -972,6 +1026,7 @@ function insert_account_summary() {
 	 *   hr_per_day_max (defaults to 2)
 	 */
 	var cell_text =
+		"<div id='thin_column'" +
 		settings_tab_snippet() +
 		
 		"<table>" +
@@ -1005,9 +1060,9 @@ function insert_account_summary() {
 		"</table>" +
 
 		"<p id='edit_account_info'>Edit</p>" +
-		"";
+		"</div>";
 			
-	document.getElementById("thin_column").innerHTML = cell_text;
+	$("#content").html(cell_text);
 	$("#edit_account_info").click(function() {
 		GM_setValue('settings_state', 'edit_account');
 		insert_account_form();
@@ -1015,10 +1070,151 @@ function insert_account_summary() {
 	activate_settings_tab_events();
 }
 
-function insert_my_impact() {
 
+function impact_tab_snippet() {
+	var selected = GM_getValue('impact_state', '');
+	var site_rank_tab_selected = '';
+	var visits_tab_selected = '';
+	var historic_summary_tab_selected = '';
+	if ( selected == 'site_rank' )
+		site_rank_tab_selected = 'selected';
+	if ( selected == 'visits' )
+		visits_tab_selected = 'selected';
+	if ( selected == 'historic_summary' )
+		historic_summary_tab_selected = 'selected';
+	
+	var tab_text = 
+		"<div id='tabs'>" +
+			"<div id='site_rank_tab' class='tab " + site_rank_tab_selected +
+			"'>Site Rankings</div>" +
+			
+			"<div id='visits_tab' class='tab " + visits_tab_selected +
+			"'>Visits</div>" +
+			
+			"<div id='historic_summary_tab' class='tab " + historic_summary_tab_selected +
+			"'>History</div>" +
+		"</div>"
+	return tab_text
 }
 
+function activate_impact_tab_events() {
+	$("#site_rank_tab").click(function() {
+		GM_setValue('impact_state', 'site_rank')
+		insert_site_ranks();
+	});
+	$("#visits_tab").click(function() {
+		GM_setValue('impact_state', 'visits')
+		insert_visits();
+	});
+	$("#historic_summary_tab").click(function() {
+		GM_setValue('impact_state', 'historic_summary')
+		insert_historic_summary();
+	});
+}
+
+function rank_width(amt, max) {
+	return parseInt( (amt/max)*100.0 );
+}
+
+function insert_site_ranks() {
+	var sort_arr = [
+	                ['www.ycombinator.com', 120, 200],
+	                ['bilumi.org', 100, 100],
+	                ['gmail.com', 45, 75],
+	                ['www.slashdot.com', 30, 50],
+	                ['www.javascriptkit.com', 30, 50],
+	                ['news.ycombinator.com', 2, 2],
+	                ['hulu.com', 1, 1],
+	                 ];
+	
+	var cell_text = "<div id='thin_column'>" + impact_tab_snippet();
+	cell_text += "<div id='ranks'>";
+	cell_text += "<table><tbody>";
+	
+	var max = null;
+	for (i = 0; i < sort_arr.length; i += 1) {
+		if ( i == 0 ) max = sort_arr[i][1];
+		cell_text += "<tr class='site_rank'>";
+		cell_text += "<td class='site_name'>" + sort_arr[i][0] + "</td>";
+		cell_text += "<td class='rank'><div class='bar' style='width:" + rank_width(sort_arr[i][1], max) + "%'></div></td>";
+		cell_text += "<td class='rank_text'>" + sort_arr[i][1] + " min</td>";
+		cell_text += "</tr>";
+	}
+	cell_text += "</tbody></table>";
+	
+	cell_text += "</div>";
+	
+	$("#content").html(cell_text);
+	activate_impact_tab_events();
+}
+
+function insert_visits() {
+	var cell_text = "<div id='thin_column'>" + impact_tab_snippet();
+	cell_text += "<div id='procrasdonation_chart' style='width:100%;height:300px'></div>";
+	cell_text += "</div>";
+	$("#content").html(cell_text);
+	activate_impact_tab_events();
+	
+	var rawdata = [ [10, 1], [17, -14], [30, 5] ];
+	var data = [
+		{
+		    //color: color or number
+		    data: rawdata,
+		    label: "Games",
+		    //lines: specific lines options
+		    //bars: specific bars options
+		    //points: specific points options
+		    //threshold: specific threshold options
+		    //xaxis: 1 or 2
+		    //yaxis: 1 or 2
+		    xaxis: 1,
+		    clickable: true,
+		    hoverable: true,
+		    //shadowSize: number
+		}
+	];
+	var options = {
+		lines: { show: true },
+		points: { show: true },
+		selection: { mode: "x", },
+		//crosshair: { mode: "xy", },
+	};
+	$.plot($("#procrasdonation_chart"), data, options);
+}
+
+function insert_historic_summary() {
+	var cell_text = "<div id='thin_column'>" + impact_tab_snippet();
+	cell_text += "<div id='procrasdonation_chart' style='width:100%;height:300px'></div>";
+	cell_text += "</div>";
+	$("#content").html(cell_text);
+	activate_impact_tab_events();
+	
+	var rawdata_procrasdonate = [ [1, 1], [2, 2], [3, 3] ];
+	var rawdata_undefined = [ [1, 4], [2, 6], [3, 4] ];
+	var rawdata_work = [ [1, 7], [2, 5], [3, 3] ];
+	var data = [
+		{
+		    data: rawdata_procrasdonate,
+		    label: "Procrasdonation",
+		},
+		{
+		    data: rawdata_undefined,
+		    label: "Undefined",
+		},
+		{
+		    data: rawdata_work,
+		    label: "rawdata_work",
+		},
+	];
+	var options = {
+		lines: { show: true },
+		points: { show: true },
+		bars: { show: true, align: "center" },
+		selection: { mode: "x", },
+		//crosshair: { mode: "xy", },
+	};
+	$.plot($("#procrasdonation_chart"), data, options);
+}
 
 function make_settings() {
 	var cell_text = '<table><tr><td width="300">';

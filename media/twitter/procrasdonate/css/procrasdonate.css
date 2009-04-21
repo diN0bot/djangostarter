@@ -39,3 +39,19 @@ ul li input { display: block; text-align: center; }
 #tabs {}
 .tab { display: inline; }
 #tabs .selected { background: yellow; }
+
+#site_classifications { }
+.site { }
+.site_column { float: left; width: 30%; }
+.site_column h3 { text-align: center; }
+.move_to_left { padding-right: 1em; }
+
+#ranks { text-align: left; }
+.site_rank {}
+.site_rank span {}
+.site_rank .site_name {}
+.site_rank .rank { width: 200px; }
+.site_rank .bar { height: 10px; background: red; }
+.site_rank .rank_text {}
+.move_to_right { padding-left: 1em; }
+
