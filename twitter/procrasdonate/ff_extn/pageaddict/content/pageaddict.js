@@ -47,7 +47,7 @@ tag+'_max_time' = max time in minutes before content is blocked
 'hr_per_day_max' = max number of hours from which to donate each day
 
 'settings_state' = enumeration of settings page state 
-    'account', 'edit_account', 'site_classifications', 'balance'
+    'account', 'site_classifications', 'balance'
     
 'impact_state' = enumeration of impact page state
 	'site_rank', 'visits', 'historic_summary'
@@ -439,24 +439,51 @@ function make_payment(amt) {
 	});
 }
 
-function check_status() {
-	var send_to_url = 'http://tipjoy.com/api/user/exists/';
-	var params = 'twitter_username=weatherizer';
+function check_balance(onload, onerror) {
+	var username = GM_getValue('twitter_username', '')
+	var password = GM_getValue('twitter_password', '')
+	if ( !username || !password ) {
+		return false;
+	}
+	make_request(
+		'http://tipjoy.com/api/user/balance/',
+		"twitter_username=" + username + "&twitter_password=" + password,
+		'POST',
+		onload,
+		onerror
+	);
+}
+
+function make_request(url, params, method, onload, onerror) {
+	var headers = {
+		"User-agent" :"Mozilla/4.0 (compatible) ProcrasDonate",
+		"Content-length" :params.length
+	}
+	if ( method == 'POST' ) headers["Content-type"] = "application/x-www-form-urlencoded";
+	//alert(url + " " +params + " "+method+ "  "+headers["User-agent"]+" "+headers["Content-length"]+" "+headers["Content-type"]);
 	GM_xmlhttpRequest( {
-		method :'GET',
-		url :send_to_url,
-		data :params,
-		headers : {
-			"User-agent" :"Mozilla/4.0 (compatible) ProcrasDonate",
-			"Content-length" :params.length
-		},
-		onload : function(r) {
-			GM_log('STATUS worked ' + r.status + ' ' + r.responseText);
-		},
-		onerror : function(r) {
-			GM_log('STATUS failed');
-		}
+		method : method,
+		url : url,
+		data : params,
+		headers : headers, 
+		onload : onload,
+		onerror : onerror
 	});
+}
+
+function check_status() {
+	alert("status");
+	make_request(
+		'http://tipjoy.com/api/user/exists/',
+		'twitter_username=' + GM_getValue('twitter_username', ''),
+		'GET',
+		function(r) {
+			alert('STATUS worked ' + r.result + ' ' + r.reason + ' ' + r.exists + ' ' + r.user + ' ' + r.is_private);
+		},
+		function(r) {
+			alert('STATUS failed');
+		}
+	);
 }
 
 function create_account() {
@@ -530,7 +557,7 @@ function initialize_state_if_necessary() {
 	/*
 	 * Initialize settings and impact state enumerations. Other inits?
 	 */
-	if (!GM_getValue('settings_state', '')) { GM_setValue('settings_state', 'edit_account'); }
+	if (!GM_getValue('settings_state', '')) { GM_setValue('settings_state', 'account'); }
 	if (!GM_getValue('impact_state', '')) { GM_setValue('impact_state', 'visits'); }
 }
 
@@ -625,8 +652,6 @@ function check_page_inserts() {
 		
 		if ( href.match(/\/settings\//) ) {
 			if ( GM_getValue('settings_state','') == 'account' ) {
-				insert_account_summary();
-			} else if ( GM_getValue('settings_state','') == 'edit_account' ) {
 				insert_account_form();
 			} else if ( GM_getValue('settings_state','') == 'site_classifications' ) {
 				insert_site_classifications();
@@ -750,6 +775,13 @@ function insert_balance() {
 	
 	$("#content").html(cell_text);
 	activate_settings_tab_events();
+	
+	/*check_balance(
+		function(r) { alert("WORKS "+r.result+" "+r.reason+" "+r.balance+" "+r.currency); },
+		function(r) { alert("FAILS "+r.result+" "+r.reason+" "+r.balance+" "+r.currency); }
+	);*/
+	
+	check_status();
 }
 
 function change_start_now_to_my_account() {
@@ -858,7 +890,8 @@ function clean_cents_input(v) {
 function clean_hours_input(v) {
 	var hours = parseFloat(v);
 	if ( hours > 24 ) { hours = 24; }
-	return hours.toFixed(2);
+	if ( parseInt(hours) != hours ) { hours = hours.toFixed(2); }
+	return hours
 }
 
 function validate_twitter_username_and_password(username, password) {
@@ -902,10 +935,16 @@ function process_account_form() {
 		GM_setValue('cents_per_hour', clean_cents_input(cents_per_hour));
 		GM_setValue('hr_per_day_goal', clean_hours_input(hr_per_day_goal));
 		GM_setValue('hr_per_day_max', clean_hours_input(hr_per_day_max));
+		
+		$("input[name='cents_per_hour']").attr("value", clean_cents_input(cents_per_hour));
+		$("input[name='hr_per_day_goal']").attr("value", clean_hours_input(hr_per_day_goal));
+		$("input[name='hr_per_day_max']").attr("value", clean_hours_input(hr_per_day_max));
 		$("#success").append("<p>Account information successfully updated.</p>");
 		
-		GM_setValue('settings_state', 'account');
-		insert_account_summary();
+		// deprecated. user stays on account page with form.
+		// GM_setValue('settings_state', 'account');
+		// insert_account_summary();
+		return true;
 	}
 	return false;
 }
@@ -924,13 +963,13 @@ function settings_tab_snippet() {
 	
 	var tab_text = 
 		"<div id='tabs'>" +
-			"<div id='account_tab' class='tab " + account_tab_selected +
+			"<div id='account_tab' class='tab link " + account_tab_selected +
 			"'>Account</div>" +
 			
-			"<div id='site_classifications_tab' class='tab " + site_classifications_tab_selected +
+			"<div id='site_classifications_tab' class='tab link " + site_classifications_tab_selected +
 			"'>Site Classifications</div>" +
 			
-			"<div id='balance_tab' class='tab " + balance_tab_selected +
+			"<div id='balance_tab' class='tab link " + balance_tab_selected +
 			"'>Balance</div>" +
 		"</div>"
 	return tab_text
@@ -968,9 +1007,13 @@ function insert_account_form() {
 	var cell_text =
 		"<div id='thin_column'" +
 		settings_tab_snippet() +
-		"<div id='errors'></div>" +
-		"<div id='success'></div>" +
 		"<form name=\"account_form\" onSubmit=\"return false\">" +
+			"<p><input id='process_account_form' class='link' type='button' name='save' value='save'>" +
+			"<span id='cancel_account_form' class='link'>cancel</p>" +
+
+			"<div id='errors'></div>" +
+			"<div id='success'></div>" +
+			
 			"<table>" +
 			"<tbody>" +
 				"<tr><td><label class='right'>Twitter username </label></td>" +
@@ -1000,8 +1043,6 @@ function insert_account_form() {
 				//"<tr><td></td><td><span>Additional procrastination will not accumulate donations :-( </span><span id='cents_per_day_goal'></span></td></tr>" +
 			"</tbody>" +
 			"</table>" +
-			"<p><input id='process_account_form' type='button' name='save' value='save'>" +
-			"<span id='cancel_account_form' href='" + SETTINGS_URL + "'>cancel</a></p>" +
 		"</form>" +
 		"</div>";
 
@@ -1010,62 +1051,9 @@ function insert_account_form() {
 	document.getElementById("hr_per_day_goal").addEventListener('keydown', update_cents_per_day_goal, true);
 	document.getElementById("hr_per_day_max").addEventListener('keydown', update_cents_per_day_max, true);
 	$("#cancel_account_form").click(function() {
-		GM_setValue('settings_state', 'account');
-	});
-	activate_settings_tab_events();
-}
-
-function insert_account_summary() {
-	/*
-	 * Inserts account information, plus link to edit info
-	 *   twitter_username
-	 *   twitter_password
-	 *   recipient (defaults to bilumi)
-	 *   cents_per_hour (defaults to 1)
-	 *   hr_per_day_goal (defaults to 1)
-	 *   hr_per_day_max (defaults to 2)
-	 */
-	var cell_text =
-		"<div id='thin_column'" +
-		settings_tab_snippet() +
-		
-		"<table>" +
-		"<tbody>" +
-			"<tr><td><label class='right'>Twitter username </label></td>" +
-			"<td><span class='left'>"+GM_getValue('twitter_username','')+"</span></td></tr>" +
-			
-			"<tr class='above_helprow'><td><label class='right'>Twitter password</label></td>" +
-			"<td><span class='left'>shhhh!!</span>" +
-			"<div class='help'><a href='" + PRIVACY_URL + "'>Privacy Guarantee</a></div></td></tr>" +
-		
-			"<tr><td colspan='2'><div id='account_form_spacer'> </div></td></tr>" +
-		
-			"<tr class='above_helprow'><td><label class='right'>ProcrasDonation rate</label></td>" +
-			"<td><span class='left'>"+GM_getValue('cents_per_hour','')+"</span>" +
-			"<div class='summaryhelp'>&cent; per hour</div></td></tr>" +
-			
-			"<tr class='above_helprow'><td><label class='right'>Recipient's Twitter name</label></td>" +
-			"<td><span class='left'>"+GM_getValue('recipient','')+"</span></td></tr>" +
-
-			
-			"<tr class='above_helprow'><td><label class='right'>Desired ProcrasDonation amount</label></td>" +
-			"<td><span class='left' id='hr_per_day_goal'>"+GM_getValue('hr_per_day_goal','')+"</span>" +
-			"<div class='summaryhelp'>hours per day</span><span id='cents_per_day_goal'></div></td></tr>" +
-			
-			"<tr class='above_helprow'><td><label class='right'>ProcrasDonation limit</label></td>" +
-			"<td><span class='left' id='hr_per_day_max'>"+GM_getValue('hr_per_day_max','')+"</span>" +
-			"<div class='summaryhelp'>hours per day</div></td></tr>" +
-			//"<tr><td></td><td><span>Additional procrastination will not accumulate donations :-( </span><span id='cents_per_day_goal'></span></td></tr>" +
-		"</tbody>" +
-		"</table>" +
-
-		"<p id='edit_account_info'>Edit</p>" +
-		"</div>";
-			
-	$("#content").html(cell_text);
-	$("#edit_account_info").click(function() {
-		GM_setValue('settings_state', 'edit_account');
+		$("#success").append("<p>Reverting account information...</p>");
 		insert_account_form();
+		//$("#success").append("<p>Account information reverted to last save.</p>");
 	});
 	activate_settings_tab_events();
 }
@@ -1085,13 +1073,13 @@ function impact_tab_snippet() {
 	
 	var tab_text = 
 		"<div id='tabs'>" +
-			"<div id='site_rank_tab' class='tab " + site_rank_tab_selected +
+			"<div id='site_rank_tab' class='tab link " + site_rank_tab_selected +
 			"'>Site Rankings</div>" +
 			
-			"<div id='visits_tab' class='tab " + visits_tab_selected +
+			"<div id='visits_tab' class='tab link " + visits_tab_selected +
 			"'>Visits</div>" +
 			
-			"<div id='historic_summary_tab' class='tab " + historic_summary_tab_selected +
+			"<div id='historic_summary_tab' class='tab link " + historic_summary_tab_selected +
 			"'>History</div>" +
 		"</div>"
 	return tab_text
