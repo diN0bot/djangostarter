@@ -10,18 +10,8 @@ from django.core.urlresolvers import reverse
 def main(request):
     return HttpResponseRedirect(reverse('learn_more'))
 
-def MENU(page):
-    return [('1. Download Browser Add-on', page==1),
-            ('2. Setup Your Account', page==2),
-            ('3. ProcrasDonate!', page==3),
-            ]
-
 def start_now(request):
-    app_name = 'procrasdonate'
-    app_page = 'Settings'
-    page_name = 'Start Now'
-    menu = MENU(1) 
-    return render_response(request, 'procrasdonate/start_now.html', locals())
+    return settings(request)
 
 def learn_more(request):
     app_name = 'procrasdonate'
