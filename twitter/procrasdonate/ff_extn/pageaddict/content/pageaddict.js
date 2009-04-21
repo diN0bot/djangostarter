@@ -1138,6 +1138,7 @@ function insert_site_ranks() {
 		cell_text += "<td class='site_name'>" + sort_arr[i][0] + "</td>";
 		cell_text += "<td class='rank'><div class='bar' style='width:" + rank_width(sort_arr[i][1], max) + "%'></div></td>";
 		cell_text += "<td class='rank_text'>" + sort_arr[i][1] + " min</td>";
+		cell_text += "<td class='rank_text'>$" + sort_arr[i][2] + "</td>";
 		cell_text += "</tr>";
 	}
 	cell_text += "</tbody></table>";

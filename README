@@ -1,12 +1,38 @@
+h2. INSTALLATION
 
+# clone or fork from git http://github.com/diN0bot/djangostarter/tree/master
+# cd to django project root and type
+## ./manage syncdb
+## ./manage runserver
+# install dependencies, listed below, if necessary
+# set up personal working environment in env
+## env/CURRENT should contain name of personal folder
+## specified personal folder should contain settings.py, which is imported at the bottom of the global settings.py
+# specify which apps to install and run in the APP variable in the global settings.py file
 
-Dependencies
- * Git
-   * http://metastatic.org/source/git-osx.html
+h3. Dependencies
+
+h4. Git
+
+* http://metastatic.org/source/git-osx.html
+* http://github.com/guides/git-cheat-sheet
    
- * Imager (Weatherizer) depends on PIL
-   * http://code.google.com/appengine/docs/python/images/installingPIL.html
+h4. Python Image Library (PIL) used by Imager (Weatherizer)
 
+* http://code.google.com/appengine/docs/python/images/installingPIL.html
 
-Format this document using Textile
- * http://github.com/guides/textile-formatting
+h4. Django Evolution (optional)
+
+h2. APPS
+
+h3. twitter
+
+'twitter' provides a general framework (models, views, templates, lib) for twitter app development. It hierarchically contains specific twitter applications
+
+h3. twitter.imager (Weatherizer)
+
+h3. twitter.procrasdonate (ProcrasDonate)
+
+h2. THIS DOCUMENT
+
+Formatted with Textile http://github.com/guides/textile-formatting
