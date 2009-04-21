@@ -1,0 +1,12 @@
+
+
+Dependencies
+ * Git
+   * http://metastatic.org/source/git-osx.html
+   
+ * Imager (Weatherizer) depends on PIL
+   * http://code.google.com/appengine/docs/python/images/installingPIL.html
+
+
+Format this document using Textile
+ * http://github.com/guides/textile-formatting

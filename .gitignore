@@ -1,4 +1,8 @@
 *.pyc
 *.db
+*.*~
 media/twitter/imager/img/uploads/*
 media/twitter/imager/img/old_uploads/*
+.settings
+.pydevproject
+django_evolution

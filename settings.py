@@ -127,7 +127,6 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.admindocs',
     'django.contrib.admin',
-    'django_evolution',
 )
 
 for app in APPS:

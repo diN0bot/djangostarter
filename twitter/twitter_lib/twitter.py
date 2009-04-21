@@ -23,7 +23,7 @@ __version__ = '0.6-devel'
 import base64
 import md5
 import os
-import simplejson
+from django.utils import simplejson
 import sys
 import tempfile
 import time

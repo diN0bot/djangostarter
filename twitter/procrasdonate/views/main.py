@@ -1,4 +1,4 @@
-from lib.view_utils import render_response
+from lib.view_utils import render_response, HttpResponseRedirect
 from lib.json_utils import json_response
 from twitter.procrasdonate.models import *
 

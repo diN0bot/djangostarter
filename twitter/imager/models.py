@@ -68,8 +68,8 @@ class Theme(models.Model):
     published = models.BooleanField(default=False)
 
     # null = True for postgresql/django_evolution hack
-    background_not_avatar = models.BooleanField(default=True, null=True)
-    replace_not_cover = models.BooleanField(default=True, null=True)
+    background_not_avatar = models.BooleanField(default=True)
+    replace_not_cover = models.BooleanField(default=True)
 
     before_screenshot = models.ImageField(upload_to=get_image_path, blank=True, null=True)
     after_screenshot = models.ImageField(upload_to=get_image_path, blank=True, null=True)
