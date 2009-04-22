@@ -550,16 +550,15 @@ function check_status() {
 	 * Checks whether user's twitter credentials match a user account on TipJoy.
 	 * If so, returns TipJoy user information.
 	 */
-	alert("status");
 	make_request(
 		'http://tipjoy.com/api/user/exists/',
 		'twitter_username=' + GM_getValue('twitter_username', ''),
 		'GET',
 		function(r) {
-			alert('STATUS worked ' + r.result + ' ' + r.reason + ' ' + r.exists + ' ' + r.user + ' ' + r.is_private);
+			GM_log('STATUS worked ' + r.result + ' ' + r.reason + ' ' + r.exists + ' ' + r.user + ' ' + r.is_private);
 		},
 		function(r) {
-			alert('STATUS failed');
+			GM_log('STATUS failed');
 		}
 	);
 }
