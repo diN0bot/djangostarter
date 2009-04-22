@@ -1,15 +1,60 @@
-// PageAddict is free software; you can redistribute it and/or modify
+// ProcrasDonate is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2, or (at your option)
 // any later version.
-
-// PageAddict is distributed in the hope that it will be useful,
+// 
+// ProcrasDonate is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details
 
+// ProcrasDonate is built on top of PageAddict, which is likewise GPL 
+// licensed. Some aspects of PageAddict are used directly, enhanced, 
+// rewritten or completely new.
+
 /******************************************************************************
 								DOCUMENTATION
+
+                                __OVERVIEW__
+
+ProcrasDonate keeps track of how long users spend on different sites. Time
+spent on procrastination sites is summed, and then a proportional donation is
+made to user-selected recipients.
+
+In addition to setting the donation rate (cents per hour procrastinated), users
+can set a procrasdonation goal and limit. Currently, procrastination may 
+continue after the time limit is reached, but donations are halted.
+
+Payment is currently performed entirely through TipJoy, a social micro-payment
+service that integrates with twitter. 
+
+For more details visit http://ProcrasDonate.com
+
+                               __DETAILS__
+
+    __HTML INSERTION__
+This extension stores user information locally on the user's browser. The 
+ProcrasDonate.com server serves the general website, but certain user-specific
+pages are necessarily overwritten by the extension.
+
+In particular, the settings and my impact pages are overwritten by the plugin.
+In fact, both pages have a multiple states, or tabs, that may be viewed.
+
+    __POSTS SCHEDULING__
+Every day (or every week?), the previous day's donation amounts are donated.
+That is, a POST is made to TipJoy's API for the aggregated donation per recipient.
+
+Information is also sent to the ProcrasDonation.com server for updating the
+sites and recipients leader boards.
+
+                             __KNOWN PROBLEMS__
+
+Almost every page loads gives the following error:
+    Error: start_recording is not defined
+Time recording appears to work fine, so not sure if this yields any actual bugs.
+Would be nice to keep this from happening so as not to pollute the error list.
+
+
 
                           __VARIABLES IN GM STORE__
                           
@@ -82,17 +127,23 @@ function GM_wait() {
 }
 GM_wait(); 
 
+/************************* GLOBAL VARIABLES **********************************/
+
 PD_DOMAIN = 'http://localhost:8000'
+
 PROCRASDONATE_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/';
 START_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/start_now/';
 LEARN_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/learn_more/';
 IMPACT_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/my_impact/';
 SETTINGS_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/settings/';
+FEEDBACK_URL = PD_DOMAIN+'/twitter/feedback/procrasdonate/';
 
 COMMUNITY_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/our_community';
 PRIVACY_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/privacy_guarantee/';
 RECIPIENTS_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/recipients';
 POST_DATA_URL = PD_DOMAIN+'/twitter/twitter.procrasdonate/data/';
+
+/******************************************************************************/
 
 window.addEventListener('unload', stop_recording, true);
 window.addEventListener('focus', start_recording, true);
@@ -103,12 +154,17 @@ window.addEventListener('keydown', validate_mouse, true);
 window.addEventListener('load', house_keeping, true);
 // window.addEventListener('load',check_page_inserts, true);
 check_restriction();
+
 function register_observers() {
+	/*
+	 * These observers are used to determine whether a user is idle or active.
+	 */
 	document.addEventListener('click', record_activity, true);
 
 	document.addEventListener('scroll', record_activity, true);
 	document.addEventListener('keydown', record_activity, true);
 	window.addEventListener('keydown', record_activity, true);
+	// Is mousemove commented out because don't want or doesn't work?
 	// speculation: mousemove does not trigger activity because movement on other windows
 	// still triggers call? would be good to test sometime, since mousemove might 
 	// help with game or reading detection
@@ -228,6 +284,9 @@ function check_latest_version() {
 }
 
 function start_recording(no_retry) {
+	/*
+	 * Start recording user time spent on a particular page.
+	 */
 	if (window.page_addict_start) {
 		// GM_log('cant start recording: local');
 		// return;
@@ -269,6 +328,14 @@ function start_recording(no_retry) {
 }
 
 function validate_mouse() {
+	/*
+	 * Mousemove and keydown are added as EventListeners at the top of this file
+	 * Rather than immediately calling start_recording, those listeners call this method,
+	 * which removes those same EventListeners.
+	 * 
+	 * Does that mean that only the first mouse movement or key presses resumes recording after
+	 * idle time. Subsequent idles cannot be resumed from mouse movement or key presses?
+	 */
 	start_recording();
 	// window.page_addict_valid=1;
 	window.removeEventListener('mousemove', validate_mouse, true);
@@ -280,8 +347,6 @@ function stop_recording() {
 	/*
 	 * Called everytime user becomes idle (if idle timeout is True)
 	 * switches tabs or clicks a link (i think).
-	 * 
-	 * This is where we make calls to ProcrasDonate server if necessary.
 	 */
 	if (window.page_addict_start == null) {
 		// GM_log('cant stop recording: local');
@@ -347,7 +412,8 @@ function stop_recording() {
 		var recipient = GM_getValue('recipient', '');
 		GM_log("amt "+amt+" counts "+counts);
 		if ( amt > 0.0 && counts > 0 ) {
-			post_anonymous_info_to_procrasdonate(get_decoded_url(), counts, amt, recipient);
+			//post_anonymous_info_to_procrasdonate(get_decoded_url(), counts, amt, recipient);
+			//@DAN we probably want to summarize this instead and do posts elsewhere less frequently
 		}
 	}
 	window.page_addict_start = null;
@@ -379,8 +445,6 @@ function post_anonymous_info_to_procrasdonate(site, time_spent, amt, recipient, 
 		params += "&time=" + time;
 	}
 
-	GM_log("PARAMSSSS   "+params);
-	GM_log("URLLLLLLL   "+POST_DATA_URL);
 	GM_xmlhttpRequest( {
 		method : 'POST',
 		url : POST_DATA_URL,
@@ -400,7 +464,9 @@ function post_anonymous_info_to_procrasdonate(site, time_spent, amt, recipient, 
 }
 
 function make_payment(amt) {
-	// var send_to_url = 'http://localhost:8000/Main/test/xmlhttprequest/';
+	/*
+	 * Makes payment via TipJoy
+	 */
 	var send_to_url = 'http://tipjoy.com/api/tweetpayment/';
 
 	var reason = "ProcrasDonating for a good cause";
@@ -440,6 +506,9 @@ function make_payment(amt) {
 }
 
 function check_balance(onload, onerror) {
+	/*
+	 * Determines user's current TipJoy balance
+	 */
 	var username = GM_getValue('twitter_username', '')
 	var password = GM_getValue('twitter_password', '')
 	if ( !username || !password ) {
@@ -455,6 +524,11 @@ function check_balance(onload, onerror) {
 }
 
 function make_request(url, params, method, onload, onerror) {
+	/*
+	 * Helper method for making XmlHttpRequests
+	 * @param params: string eg, a=3&b=4
+	 * @param method: string, either 'GET' or 'POST'
+	 */
 	var headers = {
 		"User-agent" :"Mozilla/4.0 (compatible) ProcrasDonate",
 		"Content-length" :params.length
@@ -472,6 +546,10 @@ function make_request(url, params, method, onload, onerror) {
 }
 
 function check_status() {
+	/*
+	 * Checks whether user's twitter credentials match a user account on TipJoy.
+	 * If so, returns TipJoy user information.
+	 */
 	alert("status");
 	make_request(
 		'http://tipjoy.com/api/user/exists/',
@@ -487,6 +565,9 @@ function check_status() {
 }
 
 function create_account() {
+	/*
+	 * Creates TipJoy account. Not sure what happens if user already exists.
+	 */
 	var send_to_url = 'http://tipjoy.com/api/createTwitterAccount/';
 	var params = 'twitter_username=weatherizer&twitter_password=pea15nut';
 	GM_xmlhttpRequest( {
@@ -508,10 +589,19 @@ function create_account() {
 }
 
 function add_to_list(item, list) {
+	/*
+	 * Adds item to a GM_store variable called list.
+	 * Specifically, list is ';' separated list of items. Item is appended.
+	 * @param item: boolean, int or string (GM_store requirement)
+	 * @param list: string -- name of GM_store variable.
+	 */
 	GM_setValue(list, GM_getValue(list, '') + item + ';');
 }
 
 function delete_all_data() {
+	/*
+	 * Resets plugin state.
+	 */
 	if (!confirm('Do you really want to permenantly delete all the data from pageaddict?'))
 		return;
 	GM_setValue('first_visit', -1);
@@ -645,12 +735,26 @@ function check_page_inserts() {
 			make_settings();
 		}
 	}
+	function is_required_account_info_missing() {
+		/*
+		 * Returns True if required account information is missing.
+		 * Required:
+		 *   twitter_username
+		 *   twitter_password
+		 */
+		return !GM_getValue('twitter_username', false) || 
+			!GM_getValue('twitter_password', false) ||
+			!GM_getValue('recipient', false) ||
+			!GM_getValue('cents_per_hour', false) || 
+			!GM_getValue('hr_per_day_goal', false) || 
+			!GM_getValue('hr_per_day_max', false)
+	}
 	
-	if (host.match(/localhost:8000/) || host.match(/procrasdonate_com/)) {
+	if (host.match(/localhost:8000/) || host.match(/procrasdonate\.com/)) {
 		
 		alter_page_for_users();
 		
-		if ( href.match(/\/settings\//) ) {
+		if ( href == SETTINGS_URL ) {
 			if ( GM_getValue('settings_state','') == 'account' ) {
 				insert_account_form();
 			} else if ( GM_getValue('settings_state','') == 'site_classifications' ) {
@@ -660,7 +764,7 @@ function check_page_inserts() {
 			}
 
 		}
-		else if ( href.match(/\/my_impact\//) ) {
+		else if ( href == IMPACT_URL ) {
 			if ( GM_getValue('impact_state','') == 'site_rank' ) {
 				insert_site_ranks();
 			} else if ( GM_getValue('impact_state','') == 'visits' ) {
@@ -669,7 +773,7 @@ function check_page_inserts() {
 				insert_historic_summary();
 			}
 		}
-		else if ( href.match(/\/feedback\//)) {
+		else if ( href == FEEDBACK_URL ) {
 			reset_account_to_defaults();
 		}
 		
@@ -679,18 +783,23 @@ function check_page_inserts() {
 	}
 }
 
-function undefined_wrap(inner) {
-	return "<span class='move_to_left move_to_procrasdonate'>proc</span>" + 
-		inner + "<span class='move_to_right move_to_work'>work</span>";
-}
-function procrasdonate_wrap(inner) {
-	return inner + "<span class='move_to_right move_to_undefined'>und</span>";
-}
-function work_wrap(inner) {
-	return "<span class='move_to_left move_to_undefined'>und</span>" + inner; 
-}
+/************************* HTML INSERTION FUNCTIONS AND HELPERS **********************************/
 
 function make_site_box(name, url, tag) {
+	/*
+	 * 
+	 */
+	function undefined_wrap(inner) {
+		return "<span class='move_to_left move_to_procrasdonate'>proc</span>" + 
+			inner + "<span class='move_to_right move_to_work'>work</span>";
+	}
+	function procrasdonate_wrap(inner) {
+		return inner + "<span class='move_to_right move_to_undefined'>und</span>";
+	}
+	function work_wrap(inner) {
+		return "<span class='move_to_left move_to_undefined'>und</span>" + inner; 
+	}
+	
 	var text = "<div class='site'>";
 	var site_text = "<span class='name'>" + name.replace(/__/g, '/').replace(/_/g,'.') + "</span>";
 	if ( tag == 'undefined') text += undefined_wrap(site_text);
@@ -725,7 +834,7 @@ function insert_site_classifications() {
 	 */
 	var cell_text = "<div id='thick_column'>" + settings_tab_snippet();
 	var procrasdonate_text = "<div id='procrasdonate_column' class='site_column'><h3>ProcrasDonate</h3>";
-	var undefined_text = "<div id='undefined_column' class='site_column'><h3>Undefined</h3>";
+	var undefined_text = "<div id='undefined_column' class='site_column'><h3>To Be Sorted</h3>";
 	var work_text = "<div id='work_column' class='site_column'><h3>Work</h3>";
 	
 	//var unsort_arr = [];
@@ -803,111 +912,90 @@ function alter_page_for_users() {
 	change_start_now_to_my_account();
 }
 
-function is_required_account_info_missing() {
-	/*
-	 * Returns True if required account information is missing.
-	 * Required:
-	 *   twitter_username
-	 *   twitter_password
-	 */
-	return !GM_getValue('twitter_username', false) || 
-		!GM_getValue('twitter_password', false) ||
-		!GM_getValue('recipient', false) ||
-		!GM_getValue('cents_per_hour', false) || 
-		!GM_getValue('hr_per_day_goal', false) || 
-		!GM_getValue('hr_per_day_max', false)
-}
-
-function update_cents_per_day_goal() {
-	$("#cents_per_day_goal").text(calculate_cents_per_day_goal());
-}
-
-function calculate_cents_per_day_goal() {
-	/*
-	 * Grabs donation amount and hourly goal from account form and returns
-	 * goal in cents (eg, 234).
-	 * Validates and cleans input.
-	 */
-	var cents_per_hour = parseInt($("input[name='cents_per_hour']").attr("value"));
-	var hr_per_day_goal = parseFloat($("input[name='hr_per_day_goal']").attr("value"));
-	
-	if ( validate_cents_input(cents_per_hour) && validate_hours_input(hr_per_day_goal) ) {
-		return (clean_cents_input(cents_per_hour) * clean_hours_input(hr_per_day_goal)).toFixed(2)
-	} else {
-		return '--'
-	}
-}
-
-function update_cents_per_day_max() {
-	$("#cents_per_day_max").text(calculate_cents_per_day_max());
-}
-
-function calculate_cents_per_day_max() {
-	/*
-	 * Grabs donation amount and hourly max from account form and returns
-	 * max in cents (eg, 234).
-	 * Validates and cleans input.
-	 */
-	var cents_per_hour = parseInt($("input[name='cents_per_hour']").attr("value"));
-	var hr_per_day_max = parseFloat($("input[name='hr_per_day_max']").attr("value"));
-	
-	if ( validate_cents_input(cents_per_hour) && validate_hours_input(hr_per_day_max) ) {
-		return (clean_cents_input(cents_per_hour) * clean_hours_input(hr_per_day_max)).toFixed(2)
-	} else {
-		return '--'
-	}
-}
-
-function validate_cents_input(v) {
-	var cents = parseInt(v);
-	var hr_per_day_goal = parseFloat($("input[name='hr_per_day_goal']").attr("value"));
-	var max = 2000;
-	if ( cents > 0 && cents < max ) {
-		return true
-	}
-	if ( cents >= max ) {
-		var confirm_results = confirm("Do you really want to donate " + cents + "&cent; every hour you spend procrastinating up to your daily limit of " + hr_per_day_goal + "?");
-		if ( confirm_results ) {
-			return true
-		} else {
-			return false
-		}
-	}
-	return false
-}
-
-function validate_hours_input(v) {
-	var hours = parseFloat(v);
-	if ( hours > 0 ) { return true }
-	else { return false }
-}
-
-function clean_cents_input(v) {
-	var cents = parseInt(v);
-	return cents
-}
-
-function clean_hours_input(v) {
-	var hours = parseFloat(v);
-	if ( hours > 24 ) { hours = 24; }
-	if ( parseInt(hours) != hours ) { hours = hours.toFixed(2); }
-	return hours
-}
-
-function validate_twitter_username_and_password(username, password) {
-	return validate_string(username) && validate_string(password)
-}
-
-function validate_string(v) {
-	return v && v != ''
-}
-
 function process_account_form() {
 	/*
 	 * Validate account form and save.
 	 * @TODO twitter credentials and recipient twitter name should be verified.
 	 * @TODO all fields should be validated as soon as user tabs to next field.
+	 * 
+	 * Contains helpers
 	 */
+
+	function calculate_cents_per_day_goal() {
+		/*
+		 * Grabs donation amount and hourly goal from account form and returns
+		 * goal in cents (eg, 234).
+		 * Validates and cleans input.
+		 */
+		var cents_per_hour = parseInt($("input[name='cents_per_hour']").attr("value"));
+		var hr_per_day_goal = parseFloat($("input[name='hr_per_day_goal']").attr("value"));
+		
+		if ( validate_cents_input(cents_per_hour) && validate_hours_input(hr_per_day_goal) ) {
+			return (clean_cents_input(cents_per_hour) * clean_hours_input(hr_per_day_goal)).toFixed(2)
+		} else {
+			return '--'
+		}
+	}
+
+	function calculate_cents_per_day_max() {
+		/*
+		 * Grabs donation amount and hourly max from account form and returns
+		 * max in cents (eg, 234).
+		 * Validates and cleans input.
+		 */
+		var cents_per_hour = parseInt($("input[name='cents_per_hour']").attr("value"));
+		var hr_per_day_max = parseFloat($("input[name='hr_per_day_max']").attr("value"));
+		
+		if ( validate_cents_input(cents_per_hour) && validate_hours_input(hr_per_day_max) ) {
+			return (clean_cents_input(cents_per_hour) * clean_hours_input(hr_per_day_max)).toFixed(2)
+		} else {
+			return '--'
+		}
+	}
+
+	function validate_cents_input(v) {
+		var cents = parseInt(v);
+		var hr_per_day_goal = parseFloat($("input[name='hr_per_day_goal']").attr("value"));
+		var max = 2000;
+		if ( cents > 0 && cents < max ) {
+			return true
+		}
+		if ( cents >= max ) {
+			var confirm_results = confirm("Do you really want to donate " + cents + "&cent; every hour you spend procrastinating up to your daily limit of " + hr_per_day_goal + "?");
+			if ( confirm_results ) {
+				return true
+			} else {
+				return false
+			}
+		}
+		return false
+	}
+
+	function validate_hours_input(v) {
+		var hours = parseFloat(v);
+		if ( hours > 0 ) { return true }
+		else { return false }
+	}
+
+	function clean_cents_input(v) {
+		var cents = parseInt(v);
+		return cents
+	}
+
+	function clean_hours_input(v) {
+		var hours = parseFloat(v);
+		if ( hours > 24 ) { hours = 24; }
+		if ( parseInt(hours) != hours ) { hours = hours.toFixed(2); }
+		return hours
+	}
+
+	function validate_twitter_username_and_password(username, password) {
+		return validate_string(username) && validate_string(password)
+	}
+
+	function validate_string(v) {
+		return v && v != ''
+	}
 	$("#errors").html("");
 	$("#success").html("");
 	
@@ -941,15 +1029,21 @@ function process_account_form() {
 		$("input[name='hr_per_day_max']").attr("value", clean_hours_input(hr_per_day_max));
 		$("#success").append("<p>Account information successfully updated.</p>");
 		
-		// deprecated. user stays on account page with form.
-		// GM_setValue('settings_state', 'account');
-		// insert_account_summary();
 		return true;
 	}
 	return false;
 }
 
 function settings_tab_snippet() {
+	/*
+	 * Returns html for the settings page tab menu.
+	 * This menu corresponds to the settings_state GM_store variable.
+	 * 
+	 * This function could attach live click events to the tabs.
+	 * @DAN Is it a good idea?
+	 * Currently, developers must instead call activate_settings_tab_events()
+	 * whenever the settings_tab_snippet is inserted into the DOM.
+	 */
 	var selected = GM_getValue('settings_state', '');
 	var account_tab_selected = '';
 	var site_classifications_tab_selected = '';
@@ -972,13 +1066,18 @@ function settings_tab_snippet() {
 			"<div id='balance_tab' class='tab link " + balance_tab_selected +
 			"'>Balance</div>" +
 		"</div>"
+	
+	activate_settings_tab_events();
 	return tab_text
 }
 
 function activate_settings_tab_events() {
+	/*
+	 * Attaches EventListeners to settings tabs
+	 */
 	$("#account_tab").click(function() {
 		GM_setValue('settings_state', 'account')
-		insert_account_summary();
+		insert_account_form();
 	});
 	$("#site_classifications_tab").click(function() {
 		GM_setValue('settings_state', 'site_classifications')
@@ -997,13 +1096,17 @@ function insert_account_form() {
 	 *   twitter_username
 	 *   twitter_password
 	 * Optional:
-	 *   recipient (defaults to bilumi)
-	 *   cents_per_hour (defaults to 1)
-	 *   hr_per_day_goal (defaults to 1)
-	 *   hr_per_day_max (defaults to 2)
+	 *   recipient
+	 *   cents_per_hour
+	 *   hr_per_day_goal
+	 *   hr_per_day_max
 	 */
-	//$(".step").removeClass("selected");
-	//$("#step2").addClass("selected");
+	function update_cents_per_day_goal() {
+		$("#cents_per_day_goal").text(calculate_cents_per_day_goal());
+	}
+	function update_cents_per_day_max() {
+		$("#cents_per_day_max").text(calculate_cents_per_day_max());
+	}
 	var cell_text =
 		"<div id='thin_column'" +
 		settings_tab_snippet() +
@@ -1031,7 +1134,7 @@ function insert_account_form() {
 				
 				"<tr class='above_helprow'><td><label class='right'>Recipient's Twitter name</label></td>" +
 				"<td><input class='left' type='text' name='recipient' value='"+GM_getValue('recipient','')+"'></td></tr>" +
-				"<tr class='helprow'><td></td><td><div class='help'><a href='" + RECIPIENTS_URL + "'>Browse charities list</a></div></td></tr>" +
+				"<tr class='helprow'><td></td><td><div class='help'><a href='" + RECIPIENTS_URL + "'>Browse recipient list</a></div></td></tr>" +
 				
 				"<tr class='above_helprow'><td><label class='right'>ProcrasDonation goal</label></td>" +
 				"<td><input class='left' id='hr_per_day_goal' type='text' name='hr_per_day_goal' value='"+GM_getValue('hr_per_day_goal','')+"'></td></tr>" +
@@ -1060,6 +1163,13 @@ function insert_account_form() {
 
 
 function impact_tab_snippet() {
+	/*
+	 * Returns html for the impact page tab menu.
+	 * This menu corresponds to the impact_state GM_store variable.
+	 * 
+	 * Currently, developers must call activate_impact_tab_events()
+	 * whenever the impact_tab_snippet is inserted into the DOM.
+	 */
 	var selected = GM_getValue('impact_state', '');
 	var site_rank_tab_selected = '';
 	var visits_tab_selected = '';
@@ -1086,6 +1196,9 @@ function impact_tab_snippet() {
 }
 
 function activate_impact_tab_events() {
+	/*
+	 * Attaches EventListeners to impact tabs
+	 */
 	$("#site_rank_tab").click(function() {
 		GM_setValue('impact_state', 'site_rank')
 		insert_site_ranks();
@@ -1100,11 +1213,10 @@ function activate_impact_tab_events() {
 	});
 }
 
-function rank_width(amt, max) {
-	return parseInt( (amt/max)*100.0 );
-}
-
 function insert_site_ranks() {
+	/*
+	 * Inserts site ranks information into impact.site_rank page
+	 */
 	var sort_arr = [
 	                ['www.ycombinator.com', 120, 200],
 	                ['bilumi.org', 100, 100],
@@ -1124,7 +1236,7 @@ function insert_site_ranks() {
 		if ( i == 0 ) max = sort_arr[i][1];
 		cell_text += "<tr class='site_rank'>";
 		cell_text += "<td class='site_name'>" + sort_arr[i][0] + "</td>";
-		cell_text += "<td class='rank'><div class='bar' style='width:" + rank_width(sort_arr[i][1], max) + "%'></div></td>";
+		cell_text += "<td class='rank'><div class='bar' style='width:" + parseInt( (sort_arr[i][1]/max)*100.0 ) + "%'></div></td>";
 		cell_text += "<td class='rank_text'>" + sort_arr[i][1] + " min</td>";
 		cell_text += "<td class='rank_text'>$" + sort_arr[i][2] + "</td>";
 		cell_text += "</tr>";
@@ -1138,6 +1250,9 @@ function insert_site_ranks() {
 }
 
 function insert_visits() {
+	/*
+	 * Inserts visits information into impact.visits page
+	 */
 	var cell_text = "<div id='thin_column'>" + impact_tab_snippet();
 	cell_text += "<div id='procrasdonation_chart' style='width:100%;height:300px'></div>";
 	cell_text += "</div>";
@@ -1172,6 +1287,9 @@ function insert_visits() {
 }
 
 function insert_historic_summary() {
+	/*
+	 * Inserts historic information into impact.historic page
+	 */
 	var cell_text = "<div id='thin_column'>" + impact_tab_snippet();
 	cell_text += "<div id='procrasdonation_chart' style='width:100%;height:300px'></div>";
 	cell_text += "</div>";
@@ -1204,6 +1322,8 @@ function insert_historic_summary() {
 	};
 	$.plot($("#procrasdonation_chart"), data, options);
 }
+
+/************************* PAGE ADDICT HTML INSERTIONS **********************************/
 
 function make_settings() {
 	var cell_text = '<table><tr><td width="300">';

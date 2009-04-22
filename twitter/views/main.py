@@ -26,7 +26,7 @@ def feedback(request, key):
     
     twit_name = {'imager':'weatherizer',
                  'tcal':'5309',
-                 'procrasdonate':'procrasdonate',
+                 'procrasdonate':'ProcrasDonate',
                  'overview':'y0i'}[app_name]
     
     if request.POST:

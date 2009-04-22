@@ -13,6 +13,21 @@ def main(request):
 def start_now(request):
     return settings(request)
 
+"""
+As long as templates extend 'twitter/base.html', then views must define three variables:
+    app_name = 'procrasdonate'
+    app_page = 'LearnMore'
+    page_name = 'Learn More'
+
+app_name should always be 'procrasdonate'
+
+app_page defines the menu item under which the page falls. It should be one of:
+   [LearnMore, Settings, MyImpact, OurCommunity]
+(feedback gets added automatically by the twitter templatetag)
+
+page_name is what gets displayed in the menu and can be anything
+"""
+
 def learn_more(request):
     app_name = 'procrasdonate'
     app_page = 'LearnMore'
