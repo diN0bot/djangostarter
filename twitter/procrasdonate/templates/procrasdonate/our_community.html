@@ -6,6 +6,18 @@
 
 {% block content %}
 	<div id="thin_column">
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#example").slider();
+			});
+		</script>
+		
+		<div id="example" class="ui-slider-1" style="margin:10px;">
+			<div class="ui-slider-handle"></div>
+		</div>
+		<input type="text" class="slider-input" id="slider-input" />
+		
+		
 		<h3>Total ProcrasDonations</h3>
 		* tabs for recipients and sites
 		* each tab will allow ordering by $$ or time

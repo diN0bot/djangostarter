@@ -73,11 +73,11 @@ class TwitterAppMenu(template.Node):
         else:
             ret.append( ('Learn More', reverse('learn_more'), False) )
         
-        if app_page == 'Settings':
-            ret.append( (page_name, reverse('settings'), True) )
+        if app_page == 'StartNow':
+            ret.append( (page_name, reverse('start_now'), True) )
         else:
             ret.append( ('Start Now', reverse('start_now'), False) )
-            
+    
         if app_page == 'MyImpact':
             ret.append( (page_name, reverse('my_impact'), True) )
         else:

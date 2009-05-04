@@ -15,9 +15,13 @@
 		
 		<link rel="shortcut icon" href="{{ MEDIA_URL }}twitter/img/twitter_icon.jpg" type="image/x-icon" >
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/general.css">
-		<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+		
+		<script type="text/javascript" charset="utf-8" src="http://jqueryui.com/latest/jquery-1.3.2.js"></script>
 		<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}twitter/js/main.js"></script>
-		<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery.mouse_wheel.js"></script>
+		
+		{# <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> #}
+		{# nothing needs this anymore, right? <script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery.mouse_wheel.js"></script> #}
+
 		{% block head %}{% endblock %}
 
 	</head>
