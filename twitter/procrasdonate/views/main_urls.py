@@ -12,7 +12,10 @@ urlpatterns = patterns('',
     # plugin alters page 
     url(r'^my_impact/$', main.my_impact, name='my_impact'),
     
-    # displays account info, site classifications and balance
+    # displays registration track
+    # plugin alters page 
+    url(r'^start_now/$', main.start_now, name='start_now'),
+    # displays settings pages
     # plugin alters page 
     url(r'^settings/$', main.settings, name='settings'),
     # lists all recipients. selecting a recipient will fill info into settings account page
@@ -20,9 +23,7 @@ urlpatterns = patterns('',
     # clarifies what information stays safe on server, and what is divulged publicly
     url(r'^privacy_guarantee/$', main.privacy_guarantee, name='privacy_guarantee'),
         
-    # developer page. displays settings page as though extension is not installed
-    url(r'^start_now/$', main.start_now, name='start_now'),
-
+    
     # displays total site and recipient ranks
     url(r'^our_community/$', main.our_community, name='our_community'),
     url(r'^our_community/recipients', main.our_community_recipients, name='our_community_recipients'),

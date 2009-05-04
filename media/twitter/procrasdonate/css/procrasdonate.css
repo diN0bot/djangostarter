@@ -1,3 +1,11 @@
+#apps_menu { display: none; }
+
+#app_menu { border: none; position: absolute; left: 0em; top: 10em; }
+#app_menu div { display: block; }
+#app_menu .here_we_are a { font-size: 2em; }
+
+#logo { position: absolute; left: 0em; top: 1em; }
+#logo img { background: none; width: 14em; }
 
 h5 {
   font-family:Georgia, "Times New Roman", Times, serif;
@@ -11,9 +19,6 @@ h5 {
 .link { cursor: pointer; }
 .right { float: right; }
 .left { float: left; font-size: 1.5em; padding: 2px; }
-
-#logo { position: absolute; left: 2em; top: 1em; }
-#logo img { background: none; width: 14em; }
 
 .annotated_url { float: right; margin-right: -10em; }
 
@@ -37,7 +42,7 @@ ul li input { display: block; text-align: center; }
 .step { display: inline; padding: 0em 2em; }
 #page_steps .selected { background: yellow; }
 
-#tabs { border-bottom: 1px solid #BBBBBB; }
+.tabs { border-bottom: 1px solid #BBBBBB; margin-top: 3em; }
 .tab {
   text-decoration: none; 
   display: inline;
@@ -49,12 +54,13 @@ ul li input { display: block; text-align: center; }
   margin: 0em .2em 0em .2em;
 }
 .tab:hover { text-decoration: none; }
-#tabs .selected { background: white; border-bottom: none; padding-bottom: .1em; }
+.tabs .selected { background: white; border-bottom: none; padding-bottom: .1em; }
 
-#site_classifications { }
-.site { }
-.site_column { float: left; width: 30%; }
-.site_column h3 { text-align: center; }
+#site_classifications table tr td { width: 4em; vertical-align: top; }
+#procrasdonate_col { border-right: 1px solid #CCCCCC; }
+#undefined_col { border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC; }
+#timewellspent_col { border-left: 1px solid #CCCCCC; }
+
 .move_to_left { padding-right: 1em; }
 
 #ranks { text-align: left; }
@@ -66,3 +72,22 @@ ul li input { display: block; text-align: center; }
 .site_rank .rank_text {}
 .move_to_right { padding-left: 1em; }
 
+/**** REGISTER TABS ****/
+#next_register_track { margin: 1em -10em 1em 50%; }
+#prev_register_track { margin: 1em 50% 1em -10em; }
+
+/**** RECIPIENTS ****/
+
+.recipient_row { margin: .2em 0em .2em 0em; clear: both; }
+.recipient_row div { float: left; }
+.recipient { border: 1px solid #DDDDFF; -moz-border-radius: 4px; margin: .3em 0em; width: 60%; }
+.recipient .name { font-size: 1.1em; padding: .2em .4em; }
+.recipient .description { padding: .2em .4em; text-align: left; }
+.recipient_row .remove { text-decoration: none; background: #FFDDDD; -moz-border-radius: 4px; margin-top: .3em; padding: .2em .4em; }
+.recipient_row .add { text-decoration: none; background: #DDFFFF; -moz-border-radius: 4px; margin-top: .3em; padding: .2em .4em; }
+.recipient_row .slider { width: 25%; }
+.recipient_row .input { float: left; margin: 0em 1em; }
+
+/**** SUPPORT ****/
+#support_slider { width: 10em; float: left; }
+#support_input { float: left; } 

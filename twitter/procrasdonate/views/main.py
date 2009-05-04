@@ -11,7 +11,19 @@ def main(request):
     return HttpResponseRedirect(reverse('learn_more'))
 
 def start_now(request):
-    return settings(request)
+    app_name = 'procrasdonate'
+    app_page = 'StartNow'
+    page_name = 'Start Now'
+    
+    return render_response(request, 'procrasdonate/settings.html', locals())
+
+def settings(request):
+    app_name = 'procrasdonate'
+    app_page = 'StartNow'
+    page_name = 'Settings'
+    
+    return render_response(request, 'procrasdonate/settings.html', locals())
+
 
 """
 As long as templates extend 'twitter/base.html', then views must define three variables:
@@ -22,7 +34,7 @@ As long as templates extend 'twitter/base.html', then views must define three va
 app_name should always be 'procrasdonate'
 
 app_page defines the menu item under which the page falls. It should be one of:
-   [LearnMore, Settings, MyImpact, OurCommunity]
+   [LearnMore, StartNow(->Settings), MyImpact, OurCommunity]
 (feedback gets added automatically by the twitter templatetag)
 
 page_name is what gets displayed in the menu and can be anything
@@ -48,13 +60,6 @@ def my_impact(request):
     page_name = 'My Impact'
     
     return render_response(request, 'procrasdonate/my_impact.html', locals())
-
-def settings(request):
-    app_name = 'procrasdonate'
-    app_page = 'Settings'
-    page_name = 'Settings'
-    
-    return render_response(request, 'procrasdonate/settings.html', locals())
 
 def data(request):
     """

@@ -3,7 +3,15 @@
 {% block window_title %}{{ page_name }}{% endblock %}
 
 {% block head %}
-	{% include 'procrasdonate/snippets/procrasdonate_head.html' %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/css/text_pages.css">
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}twitter/procrasdonate/css/procrasdonate.css">
+	
+	<link type="text/css" href="http://jqueryui.com/latest/themes/base/ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.core.js"></script>
+ 	<script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.slider.js"></script>
+		
+	<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}twitter/procrasdonate/js/procrasdonate.js"></script>
+	
 {% endblock %}
 
 {% block logo %}
