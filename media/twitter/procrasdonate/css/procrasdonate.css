@@ -1,11 +1,11 @@
 #apps_menu { display: none; }
 
-#app_menu { border: none; position: absolute; left: 0em; top: 10em; }
-#app_menu div { display: block; }
+#app_menu { border: none; position: absolute; left: 2em; top: 10em; }
+#app_menu div { display: block; text-align: left; }
 #app_menu .here_we_are a { font-size: 2em; }
 
-#logo { position: absolute; left: 0em; top: 1em; }
-#logo img { background: none; width: 14em; }
+#logo { position: absolute; left: 2em; top: 1em; }
+#logo img { background: none; width: 10em; }
 
 h5 {
   font-family:Georgia, "Times New Roman", Times, serif;
@@ -36,6 +36,8 @@ label { padding-right: 1em; }
 ul { list-style-type: none; }
 ul li input { display: block; text-align: center; }
 */
+
+.horizontal { margin-right: 1em; }
 
 .smallheader { font-variant: small-caps; color: #6C0B5D; letter-spacing: .2em; }
 
@@ -75,6 +77,10 @@ ul li input { display: block; text-align: center; }
 /**** REGISTER TABS ****/
 #next_register_track { margin: 1em -10em 1em 50%; }
 #prev_register_track { margin: 1em 50% 1em -10em; }
+
+/**** IMAGES ****/
+
+.small-image { width: 4em; float: left; margin-left: -5.5em; margin-top: -3.3em; }
 
 /**** RECIPIENTS ****/
 
